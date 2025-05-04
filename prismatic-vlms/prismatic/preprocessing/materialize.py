@@ -12,7 +12,7 @@ from transformers import PreTrainedTokenizerBase
 from prismatic.conf import DatasetConfig
 from prismatic.models.backbones.llm.prompting import PromptBuilder
 from prismatic.models.backbones.vision import ImageTransform
-from prismatic.preprocessing.datasets import AlignDataset, FinetuneDataset, PreTrainDataset, FinetuneLargeDataset
+from prismatic.preprocessing.datasets import AlignDataset, FinetuneDataset, PreTrainDataset, FinetuneLargeDataset, WDSPackedDataset
 from prismatic.util.data_utils import PaddedCollatorForLanguageModeling, PaddedCollatorForMMLanguageModeling, SharedEpoch, DataInfo, detshuffle2, ResampledShards2
 from prismatic.util.data_utils import get_dataset_size, count_samples, log_and_continue, group_by_keys_nothrow, tarfile_to_samples_nothrow, pytorch_worker_seed, world_info_from_env
 
@@ -42,7 +42,7 @@ N_CHANNELS = 3
 MIN_KB = 10
 
 # Dataset Initializers =>> Maps Stage --> cls()
-DATASET_INITIALIZER = {"align": AlignDataset, "finetune": FinetuneDataset, "full-finetune": FinetuneDataset, "large-finetune": FinetuneLargeDataset, "pretrain": PreTrainDataset, "full-pretrain": PreTrainDataset}
+DATASET_INITIALIZER = {"align": AlignDataset, "finetune": FinetuneDataset, "full-finetune": FinetuneDataset, "large-finetune": FinetuneLargeDataset, "pretrain": PreTrainDataset, "full-pretrain": PreTrainDataset, "wds-pretrain": WDSPackedDataset}
 
 
 def get_dataset_and_collator(
@@ -89,6 +89,24 @@ def get_dataset_and_collator(
             tokenizer,
             prompt_builder_fn=prompt_builder_fn,
             train_num_samples=dataset_cfg.train_num_samples,
+        )
+        return dataset, collator
+        
+    elif stage == "wds-pretrain":
+        # For WebDataset streaming version
+        collator = PaddedCollatorForMMLanguageModeling(
+            tokenizer.model_max_length, tokenizer.pad_token_id, default_image_resolution, padding_side=padding_side
+        )
+        
+        # Return the WDSPackedDataset instance directly - it will create the dataloader later
+        dataset = dataset_cls(
+            str(dataset_root_dir),  # Path to shards.txt or directory of tar files
+            image_transform,
+            tokenizer,
+            prompt_builder_fn=prompt_builder_fn,
+            train_num_samples=dataset_cfg.train_num_samples,
+            workers=getattr(dataset_cfg, "workers", 4),
+            shuffle_buffer=getattr(dataset_cfg, "shuffle_buffer", 1000),
         )
         return dataset, collator
 

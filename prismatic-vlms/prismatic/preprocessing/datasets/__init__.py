@@ -1,1 +1,2 @@
-from .datasets import AlignDataset, FinetuneDataset, PreTrainDataset, FinetuneLargeDataset
+from prismatic.preprocessing.datasets.datasets import AlignDataset, FinetuneDataset, FinetuneLargeDataset, PreTrainDataset
+from prismatic.preprocessing.datasets.wds_dataset import WDSPackedDataset

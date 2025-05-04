@@ -102,7 +102,7 @@ class TrainingStrategy(ABC):
 
     def run_training(
         self,
-        dataset: Dataset,
+        dataset,  # Can be Dataset or WDSPackedDataset
         collator,#: Optional[PaddedCollatorForLanguageModeling, PaddedCollatorForMMLanguageModeling],
         metrics: Metrics,
         stage: str = "finetune",
@@ -113,6 +113,12 @@ class TrainingStrategy(ABC):
 
         # Load the latest checkpoint if available
         resume_step = self.load_latest_checkpoint(metrics.run_dir) or 0
+        
+        # Special handling for WebDataset streaming from S3
+        if stage == "wds-pretrain":
+            # Use WDSPackedDataset's built-in dataloader
+            dataloader = dataset.get_dataloader(batch_size=self.per_device_batch_size)
+            return self.run_training_with_wds_dataloader(dataloader, metrics, stage, seed)
         
         if "finetune" in stage and batch_construction_strategy == "split-modality":
             # Instantiate the split-modality sampler; if you want to extend with other batch construction schemes,
@@ -253,6 +259,115 @@ class TrainingStrategy(ABC):
                 self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
                 dist.barrier()
 
+    def run_training_with_wds_dataloader(
+        self,
+        dataloader,
+        metrics: Metrics,
+        stage: str = "wds-pretrain",
+        seed: int = 7,
+    ) -> None:
+        """Run training using a WebDataset dataloader."""
+        # Load the latest checkpoint if available
+        resume_step = self.load_latest_checkpoint(metrics.run_dir) or 0
+        
+        # Max Steps vs. Epochs Computation
+        steps_per_epoch = dataloader.num_batches // self.grad_accumulation_steps
+        if self.max_steps is not None and steps_per_epoch < self.max_steps:
+            # Just set `epochs` to some large number --> we'll short-circuit based on steps anyway
+            self.epochs = 100
+
+        # === Train ===
+        status = metrics.get_status()
+        with tqdm(
+            total=(
+                (self.epochs * (dataloader.num_batches // self.grad_accumulation_steps))
+                if self.max_steps is None
+                else self.max_steps
+            ),
+            initial=resume_step,
+            desc=status,
+            leave=False,
+            disable=not overwatch.is_rank_zero(),
+        ) as progress:
+            for epoch in range(self.epochs):
+                self.vlm.train()
+                
+                # Zero-Gradients (just in case)
+                self.optimizer.zero_grad()
+
+                # Note that we'll unpack batch (and let AMP/FSDP do its thing) in the VLM.forward() call
+                for train_idx, batch in enumerate(dataloader):
+                    # Process the batch - convert to dict format if it's a tuple
+                    if isinstance(batch, tuple):
+                        batch_dict = {
+                            "pixel_values": batch[0], 
+                            "input_ids": batch[1],
+                            "labels": batch[2]
+                        }
+                        batch = batch_dict
+                    
+                    # Restart from the resume step
+                    if metrics.global_step < resume_step:
+                        metrics.commit(global_step=metrics.global_step + 1)
+                        continue
+                    
+                    # Forward pass with autocast
+                    with torch.autocast(
+                        "cuda",
+                        dtype=self.mixed_precision_dtype,
+                        enabled=self.enable_mixed_precision_training,
+                    ):
+                        output = self.vlm(
+                            input_ids=batch["input_ids"],
+                            attention_mask=getattr(batch, "attention_mask", None),
+                            pixel_values=batch["pixel_values"],
+                            labels=batch["labels"],
+                        )
+                        loss = output.loss
+
+                    # Commit Loss (Prior to Gradient Accumulation Normalization)
+                    metrics.commit(loss=loss)
+
+                    # Normalize Loss and backward
+                    normalized_loss = loss / self.grad_accumulation_steps
+                    normalized_loss.backward()
+
+                    # Step =>> Only if Done w/ Gradient Accumulation
+                    if (train_idx + 1) % self.grad_accumulation_steps == 0:
+                        metrics.commit(update_step_time=True)
+
+                        # Clip Gradients
+                        self.clip_grad_norm()
+
+                        # Optimizer & LR Scheduler Step
+                        self.optimizer.step()
+                        self.lr_scheduler.step()
+                        self.optimizer.zero_grad()
+
+                        # Push Metrics
+                        metrics.commit(global_step=metrics.global_step + 1, lr=self.lr_scheduler.get_last_lr()[0])
+                        status = metrics.push()
+
+                        # Checkpoint saving
+                        if metrics.global_step % 15625 == 0:
+                            self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
+                            dist.barrier()
+                        
+                        # Check for termination
+                        if self.max_steps is not None and metrics.global_step >= self.max_steps:
+                            self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
+                            dist.barrier()
+                            return
+
+                        # Update Progress Bar
+                        progress.update()
+                        progress.set_description(status)
+
+            # Save checkpoint at end of training
+            if self.max_steps is None:
+                self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
+                dist.barrier()
+    
     def run_training_with_dataloader(
         self,
         datainfo: DataInfo,
