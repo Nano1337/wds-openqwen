@@ -11,14 +11,14 @@ export HF_TOKEN="evals"
 
 # Define datasets to prepare
 DATASETS=(
-    # "ai2d"
-    # "text-vqa"
-    # "pope"
+    "ai2d"
+    "text-vqa"
+    "pope"
     "mmmu"
     "mmbench"
-    # "seedbench"
-    # "mmstar"
-    # "mathvista"
+    "seedbench"
+    "mmstar"
+    "mathvista"
 )
 
 # Function to prepare a dataset
