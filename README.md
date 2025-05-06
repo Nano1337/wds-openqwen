@@ -17,6 +17,16 @@ uv pip install -e prismatic-vlms
 
 ### Train Data Prep
 
+After downloading the data, run multimodal sequence packing: 
+
+```bash
+
+bash mm_sequence_packing/multiprocess_sequence_packing_image_to_pil.sh 0 4 504 datacomp /home/ec2-user/Open-Qwen2VL-Data 
+bash mm_sequence_packing/multiprocess_sequence_packing_image_to_pil.sh 0 4 326 ccs /home/ec2-user/Open-Qwen2VL-Data
+
+```
+
+
 ## Evals
 
 ### Eval Data Prep
