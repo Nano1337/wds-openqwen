@@ -12,7 +12,8 @@ from transformers import PreTrainedTokenizerBase
 from prismatic.conf import DatasetConfig
 from prismatic.models.backbones.llm.prompting import PromptBuilder
 from prismatic.models.backbones.vision import ImageTransform
-from prismatic.preprocessing.datasets import AlignDataset, FinetuneDataset, PreTrainDataset, FinetuneLargeDataset, WDSPackedDataset
+from prismatic.preprocessing.datasets import (AlignDataset, FinetuneDataset, 
+                                           FinetuneLargeDataset, PreTrainDataset, WDSDynamicPackingDataset)
 from prismatic.util.data_utils import PaddedCollatorForLanguageModeling, PaddedCollatorForMMLanguageModeling, SharedEpoch, DataInfo, detshuffle2, ResampledShards2
 from prismatic.util.data_utils import get_dataset_size, count_samples, log_and_continue, group_by_keys_nothrow, tarfile_to_samples_nothrow, pytorch_worker_seed, world_info_from_env
 
@@ -42,7 +43,15 @@ N_CHANNELS = 3
 MIN_KB = 10
 
 # Dataset Initializers =>> Maps Stage --> cls()
-DATASET_INITIALIZER = {"align": AlignDataset, "finetune": FinetuneDataset, "full-finetune": FinetuneDataset, "large-finetune": FinetuneLargeDataset, "pretrain": PreTrainDataset, "full-pretrain": PreTrainDataset, "wds-pretrain": WDSPackedDataset}
+DATASET_INITIALIZER = {
+    "align": AlignDataset, 
+    "finetune": FinetuneDataset, 
+    "full-finetune": FinetuneDataset, 
+    "large-finetune": FinetuneLargeDataset, 
+    "pretrain": PreTrainDataset, 
+    "full-pretrain": PreTrainDataset, 
+    "dynamic-pretrain": WDSDynamicPackingDataset
+}
 
 
 def get_dataset_and_collator(
@@ -51,8 +60,9 @@ def get_dataset_and_collator(
     image_transform: ImageTransform,
     tokenizer: PreTrainedTokenizerBase,
     prompt_builder_fn: Type[PromptBuilder],
-    default_image_resolution: Tuple[int, int, int],
-    padding_side: str = "right",
+    default_image_resolution: Tuple[int, int, int],  
+    padding_side: str = "right",  # Token padding direction
+    per_device_batch_size: int = None,  # Batch size from PretrainConfig
 ) -> Tuple[Dataset, PaddedCollatorForLanguageModeling]:
     dataset_cls = DATASET_INITIALIZER[stage]
     dataset_root_dir = dataset_cfg.dataset_root_dir
@@ -92,21 +102,26 @@ def get_dataset_and_collator(
         )
         return dataset, collator
         
-    elif stage == "wds-pretrain":
-        # For WebDataset streaming version
+    elif stage == "dynamic-pretrain":
+        # For WebDataset streaming with on-the-fly sequence packing
         collator = PaddedCollatorForMMLanguageModeling(
             tokenizer.model_max_length, tokenizer.pad_token_id, default_image_resolution, padding_side=padding_side
         )
-        
-        # Return the WDSPackedDataset instance directly - it will create the dataloader later
+    
+        # Initialize pure-WDS dynamic packing dataset
+        shards_pattern = str(dataset_root_dir)
+
+        # Initialize WDSDynamicPackingDataset with direct parameters instead of preprocess_fn
         dataset = dataset_cls(
-            str(dataset_root_dir),  # Path to shards.txt or directory of tar files
-            image_transform,
+            shards_pattern,
             tokenizer,
-            prompt_builder_fn=prompt_builder_fn,
+            image_transform,
+            context_len=tokenizer.model_max_length,
             train_num_samples=dataset_cfg.train_num_samples,
-            workers=getattr(dataset_cfg, "workers", 4),
-            shuffle_buffer=getattr(dataset_cfg, "shuffle_buffer", 1000),
+            num_workers=dataset_cfg.workers,  
+            shuffle_buffer=dataset_cfg.shuffle_buffer,
+            samples_per_pack=dataset_cfg.samples_per_pack,
+            collator=collator,
         )
         return dataset, collator
 
@@ -300,6 +315,8 @@ def preprocess_obliecs_interleaved(
     #     (input_ids, attention_mask, labels),
     # )
 
+_SAMPLE_SHUFFLE_SIZE = 1000000
+_SAMPLE_SHUFFLE_INITIAL = 100000
 
 def get_mmc4_dataset(dataset_cfg, gloabl_batch_size, per_device_batch_size, image_transform, tokenizer, epoch=0, floor=False):
     """
@@ -428,17 +445,3 @@ def tokenizer_image_token(prompt, tokenizer, image_token_index=IMAGE_TOKEN_INDEX
             return torch.tensor(input_ids, dtype=torch.long), torch.tensor(labels, dtype=torch.long)
         raise ValueError(f'Unsupported tensor type: {return_tensors}')
     return input_ids, labels
-
-
-def expand2square(pil_img, background_color):
-    width, height = pil_img.size
-    if width == height:
-        return pil_img
-    elif width > height:
-        result = Image.new(pil_img.mode, (width, width), background_color)
-        result.paste(pil_img, (0, (width - height) // 2))
-        return result
-    else:
-        result = Image.new(pil_img.mode, (height, height), background_color)
-        result.paste(pil_img, ((height - width) // 2, 0))
-        return result

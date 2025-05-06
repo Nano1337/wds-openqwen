@@ -9,4 +9,13 @@ dependencies = [
     "setuptools>=80.3.0",
     "torch>=2.7.0",
     "flash-attn @ https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.6cxx11abiTRUE-cp310-cp310-linux_x86_64.whl",
+    "prismatic",
+    "pandas>=2.2.3",
+    "boto3>=1.38.9",
+    "s3fs>=0.4.2",
+    "s3cmd>=2.4.0",
+    "awscli>=1.40.8",
 ]
+
+[tool.uv.sources]
+prismatic = { path = "prismatic-vlms", editable = true }

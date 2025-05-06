@@ -26,6 +26,10 @@ class DatasetConfig(ChoiceRegistry):
     finetune_stage_components: Tuple[Path, Path]    # Path to annotation file and images directory for `finetune` stage
 
     dataset_root_dir: str                          # Path to dataset root directory; others paths are relative to root
+
+    # Dynamic packing parameters
+    shuffle_buffer: int = 5000                      # Size of shuffle buffer for WebDataset
+    samples_per_pack: int = 128                     # Number of samples to accumulate before packing
     # fmt: on
 
 

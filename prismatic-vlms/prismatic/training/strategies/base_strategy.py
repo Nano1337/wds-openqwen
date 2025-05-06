@@ -115,10 +115,10 @@ class TrainingStrategy(ABC):
         resume_step = self.load_latest_checkpoint(metrics.run_dir) or 0
         
         # Special handling for WebDataset streaming from S3
-        if stage == "wds-pretrain":
+        if stage == "dynamic-pretrain":
             # Use WDSPackedDataset's built-in dataloader
-            dataloader = dataset.get_dataloader(batch_size=self.per_device_batch_size)
-            return self.run_training_with_wds_dataloader(dataloader, metrics, stage, seed)
+            data_info = dataset.get_dataloader(batch_size=self.per_device_batch_size)
+            return self.run_training_with_wds_dataloader(data_info, metrics, stage, seed)
         
         if "finetune" in stage and batch_construction_strategy == "split-modality":
             # Instantiate the split-modality sampler; if you want to extend with other batch construction schemes,
@@ -261,26 +261,27 @@ class TrainingStrategy(ABC):
 
     def run_training_with_wds_dataloader(
         self,
-        dataloader,
+        data_info,
         metrics: Metrics,
-        stage: str = "wds-pretrain",
+        stage: str = "dynamic-pretrain",
         seed: int = 7,
     ) -> None:
         """Run training using a WebDataset dataloader."""
+        # Extract loader and shared epoch info
+        loader = data_info.dataloader
         # Load the latest checkpoint if available
         resume_step = self.load_latest_checkpoint(metrics.run_dir) or 0
-        
         # Max Steps vs. Epochs Computation
-        steps_per_epoch = dataloader.num_batches // self.grad_accumulation_steps
+        steps_per_epoch = loader.num_batches // self.grad_accumulation_steps
         if self.max_steps is not None and steps_per_epoch < self.max_steps:
-            # Just set `epochs` to some large number --> we'll short-circuit based on steps anyway
+            # Increase epochs to meet max_steps
             self.epochs = 100
 
         # === Train ===
         status = metrics.get_status()
         with tqdm(
             total=(
-                (self.epochs * (dataloader.num_batches // self.grad_accumulation_steps))
+                (self.epochs * (loader.num_batches // self.grad_accumulation_steps))
                 if self.max_steps is None
                 else self.max_steps
             ),
@@ -290,13 +291,15 @@ class TrainingStrategy(ABC):
             disable=not overwatch.is_rank_zero(),
         ) as progress:
             for epoch in range(self.epochs):
+                # Reseed WebDataset shuffle per epoch
+                data_info.set_epoch(epoch)
                 self.vlm.train()
                 
                 # Zero-Gradients (just in case)
                 self.optimizer.zero_grad()
 
                 # Note that we'll unpack batch (and let AMP/FSDP do its thing) in the VLM.forward() call
-                for train_idx, batch in enumerate(dataloader):
+                for train_idx, batch in enumerate(loader):
                     # Process the batch - convert to dict format if it's a tuple
                     if isinstance(batch, tuple):
                         batch_dict = {

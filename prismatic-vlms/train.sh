@@ -1,10 +1,27 @@
-CKPTID=$1
-STAGE=$2
-BSZ=$3
-PER_GPU_BSZ=$4
+#!/bin/bash
 
-torchrun --nproc_per_node 8 scripts/pretrain.py \
-  --stage ${STAGE} \
+# Usage: ./train.sh [CKPTID] [GLOBAL_BATCH_SIZE] [PER_GPU_BATCH_SIZE] [DATASET_PATH]
+# Example:
+#   ./train.sh exp1 64 8 s3://your-bucket/multimodal-data/{00000..00099}.tar  # Stream from S3
+#   ./train.sh exp1 64 8 s3://your-bucket/multimodal-data/shards.txt          # Using shard list file
+#   ./train.sh exp1 64 8 /path/to/local/raw_webdataset                        # Local WebDataset files
+
+CKPTID=$1
+BSZ=$2
+PER_GPU_BSZ=$3
+DATASET_PATH=${4:-"Open-Qwen2VL-Data"}  # Default dataset path if not provided
+
+# Dynamic packing configuration
+WORKERS=8
+SHUFFLE_BUFFER=5000
+SAMPLES_PER_PACK=128
+echo "Using dynamic sequence packing with $WORKERS workers"
+
+# Dynamic packing specific args
+DYNAMIC_ARGS="--dataset.workers $WORKERS --dataset.shuffle_buffer $SHUFFLE_BUFFER --dataset.samples_per_pack $SAMPLES_PER_PACK"
+
+torchrun --nproc_per_node 8 prismatic-vlms/scripts/pretrain.py \
+  --stage dynamic-pretrain \
   --model.type "one-stage+7b" \
   --model.model_id qwen2.5-1.5b-instruct-continue-training-${CKPTID} \
   --model.arch_specifier "no-align+avgpool" \
@@ -17,4 +34,5 @@ torchrun --nproc_per_node 8 scripts/pretrain.py \
   --mount_path Qwen \
   --run_root_dir checkpoints/ \
   --dataset.type "pretrain" \
-  --dataset.dataset_root_dir data/datacomp/datacomp_hq_single_pkl_pil:data/ccs/ccs_single_pkl_pil/:data/laion/laion_single_pkl_pil/
+  --dataset.dataset_root_dir ${DATASET_PATH} \
+  ${DYNAMIC_ARGS}

@@ -201,6 +201,7 @@ def pretrain(cfg: PretrainConfig) -> None:
         prompt_builder_fn=llm_backbone.prompt_builder_fn,
         default_image_resolution=vision_backbone.default_image_resolution,
         padding_side=tokenizer.padding_side,
+        per_device_batch_size=cfg.per_device_batch_size,  # Pass the batch size from config
     )
 
     # Create Train Strategy
@@ -223,7 +224,10 @@ def pretrain(cfg: PretrainConfig) -> None:
         reduce_in_full_precision=cfg.model.reduce_in_full_precision,
         worker_init_fn=worker_init_fn,
     )
-    train_strategy.run_setup(run_dir=run_dir, n_train_examples=len(train_dataset), save_vision_backbone=("full-pretrain" in str(cfg.pretrained_checkpoint)))#, low_cpu_fsdp=cfg.low_cpu_fsdp)
+
+    # get number of train examples
+    num_train_samples = 4000 # FIXME: hardcode for now, calculate later
+    train_strategy.run_setup(run_dir=run_dir, n_train_examples=num_train_samples, save_vision_backbone=("full-pretrain" in str(cfg.pretrained_checkpoint)))#, low_cpu_fsdp=cfg.low_cpu_fsdp)
 
     # Create Metrics =>> Handles on the fly tracking, logging to specified trackers (e.g., JSONL, Weights & Biases)
     overwatch.info(f"Creating Metrics with Active Trackers => `{cfg.trackers}`")

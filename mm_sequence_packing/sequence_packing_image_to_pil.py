@@ -23,12 +23,11 @@ import io
 import base64
 
 from tqdm import tqdm
-from typing import List, Tuple, Dict
+from typing import List, Tuple
 import logging
 import os, sys
 import torch
 import webdataset as wds
-from webdataset.writer import TarWriter
 import json
 import functools
 
@@ -299,36 +298,6 @@ def concat_documents(documents, context_len, pad_token_id):
     
     return {"image_tensors": new_image_tensors, "input_ids": new_input_ids, "lengths": new_length}
 
-def write_to_wds_tar(bins, final_data, output_path, context_len, pad_token_id):
-    """Write packed sequences to WebDataset tar format."""
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    total_len = []
-    
-    with TarWriter(output_path) as tar:
-        for i, bin in enumerate(bins):
-            bin_data = [final_data[key] for key, length in bin]
-            concat_pkl = concat_documents(bin_data, context_len, pad_token_id)
-            if not concat_pkl:
-                continue
-                
-            total_len.append(sum(concat_pkl['lengths']))
-            key_str = uuid.uuid4().hex
-            
-            # Serialize the data to bytes for WebDataset
-            with BytesIO() as buffer:
-                pickle.dump(concat_pkl, buffer)
-                buffer.seek(0)
-                pkl_bytes = buffer.read()
-            
-            # Add sample to tar with unique key
-            tar.write({
-                "__key__": key_str,
-                "pkl": pkl_bytes
-            })
-    
-    return total_len
-
-
 def main(args, gpu_id=0):
     # tokenizer = AutoTokenizer.from_pretrained("microsoft/Phi-3-mini-4k-instruct")
     tokenizer = AutoTokenizer.from_pretrained(args.model_path)
@@ -369,8 +338,15 @@ def main(args, gpu_id=0):
                 continue
             
             logger.info(f"Start processing tar {tar_id}")
-            # Create output directories if they don't exist
-            os.makedirs(args.save_path, exist_ok=True)
+            if not os.path.exists(os.path.join(args.save_path, str(tar_id))):
+                os.mkdir(os.path.join(args.save_path, str(tar_id)))
+            else:
+                try:
+                    shutil.rmtree(os.path.join(args.save_path, str(tar_id)))
+                    print(f"Deleted folder and all its contents: {os.path.join(args.save_path, str(tar_id))}")
+                except Exception as e:
+                    print(f"Failed to delete folder. Reason: {e}")
+                os.mkdir(os.path.join(args.save_path, str(tar_id)))
             
             if "obelics" in args.tar_file_path.lower() or "mmc4" in args.tar_file_path.lower():
                 preprocess_fn = functools.partial(
@@ -387,7 +363,7 @@ def main(args, gpu_id=0):
                     # wds.batched(args.batch_size, partial=True),
                 ]
                 dataset = wds.DataPipeline(*pipeline)
-            else:
+            else: # mainly uses this part
                 preprocess_fn = functools.partial(
                     preprocess_caption,
                     tokenizer=tokenizer,
@@ -425,17 +401,19 @@ def main(args, gpu_id=0):
             
             bins = first_fit_decreasing_with_ids(length_to_uid, context_len)
 
-            # Write packed sequences to WebDataset tar format
-            wds_tar_path = os.path.join(args.save_path, f"packed_{tar_id}.tar")
-            total_len = write_to_wds_tar(bins, final_data, wds_tar_path, context_len, tokenizer.pad_token_id)
+            total_len = []
+            for bin in bins:
+                bin_data = [final_data[key] for key, length in bin]
+                concat_pkl = concat_documents(bin_data, context_len, tokenizer.pad_token_id)
+                if not concat_pkl:
+                    continue
+                total_len.append(sum(concat_pkl['lengths']))
+                key_str = uuid.uuid4().hex
+                with open(os.path.join(os.path.join(args.save_path,  str(tar_id)), f'{key_str}.pkl'), 'wb') as f:
+                    pickle.dump(concat_pkl, f)
             
-            # Write stats file
             with open(os.path.join(args.save_path, f'{tar_id}_stats.json'), 'w') as f:
-                f.write(json.dumps({
-                    "len": total_len,
-                    "wds_tar_path": wds_tar_path,
-                    "num_sequences": len(total_len)
-                }, indent=2))
+                f.write(json.dumps({"len": total_len}, indent=2))
                 
             del final_data
     
@@ -451,8 +429,15 @@ def main(args, gpu_id=0):
                 continue
             
             logger.info(f"Start processing tar {tar_id}")
-            # Create output directories if they don't exist
-            os.makedirs(args.save_path, exist_ok=True)
+            if not os.path.exists(os.path.join(args.save_path, str(tar_id))):
+                os.mkdir(os.path.join(args.save_path, str(tar_id)))
+            else:
+                try:
+                    shutil.rmtree(os.path.join(args.save_path, str(tar_id)))
+                    print(f"Deleted folder and all its contents: {os.path.join(args.save_path, str(tar_id))}")
+                except Exception as e:
+                    print(f"Failed to delete folder. Reason: {e}")
+                os.mkdir(os.path.join(args.save_path, str(tar_id)))
             
             preprocess_fn = functools.partial(
                 preprocess_mint_pdf_interleaved,
@@ -489,33 +474,19 @@ def main(args, gpu_id=0):
             
             bins = first_fit_decreasing_with_ids(length_to_uid, context_len)
 
-            # Write packed sequences to WebDataset tar format
-            wds_tar_path = os.path.join(args.save_path, f"packed_{tar_id}.tar")
-            total_len = write_to_wds_tar(bins, final_data, wds_tar_path, context_len, tokenizer.pad_token_id)
+            total_len = []
+            for bin in bins:
+                bin_data = [final_data[key] for key, length in bin]
+                concat_pkl = concat_documents(bin_data, context_len, tokenizer.pad_token_id)
+                total_len.append(sum(concat_pkl['lengths']))
+                key_str = uuid.uuid4().hex
+                with open(os.path.join(os.path.join(args.save_path,  str(tar_id)), f'{key_str}.pkl'), 'wb') as f:
+                    pickle.dump(concat_pkl, f)
             
-            # Write stats file
             with open(os.path.join(args.save_path, f'{tar_id}_stats.json'), 'w') as f:
-                f.write(json.dumps({
-                    "len": total_len,
-                    "wds_tar_path": wds_tar_path,
-                    "num_sequences": len(total_len)
-                }, indent=2))
+                f.write(json.dumps({"len": total_len}, indent=2))
                 
             del final_data
-
-def create_shard_list_file(save_path):
-    """Create a shard list file containing paths to all WebDataset tar files"""
-    shard_paths = []
-    for file in os.listdir(save_path):
-        if file.startswith("packed_") and file.endswith(".tar"):
-            shard_paths.append(os.path.join(save_path, file))
-    
-    shard_list_path = os.path.join(save_path, "shards.txt")
-    with open(shard_list_path, "w") as f:
-        for shard in shard_paths:
-            f.write(f"{shard}\n")
-    
-    return shard_list_path
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -533,13 +504,6 @@ if __name__ == "__main__":
     parser.add_argument("--load-4bit", action="store_true")
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--max-len", type=int, default=4096)
-    parser.add_argument("--wds-samples-per-shard", type=int, default=10000, help="Number of packed samples per WebDataset shard")
     args = parser.parse_args()
     logger.info(args)
     main(args, gpu_id=args.gpu_id)
-    
-    # Create shard list file if this is the last GPU
-    if args.gpu_id == args.num_gpus - 1:
-        logger.info("Creating shard list file")
-        shard_list_path = create_shard_list_file(args.save_path)
-        logger.info(f"Shard list created at: {shard_list_path}")

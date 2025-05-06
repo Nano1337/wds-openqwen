@@ -25,5 +25,5 @@ uv pip install -e prismatic-vlms
 
 To set up the data (if it doesn't already exist in `/fsx/data/common/vlm_eval_data`), run:
 ```Shell
-python data_filtering/prepare_data.py
+./prepare_vlm_eval_data.sh
 ```
