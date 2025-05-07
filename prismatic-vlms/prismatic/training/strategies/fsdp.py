@@ -25,6 +25,7 @@ from torch.distributed.fsdp import (
     FullOptimStateDictConfig,
     MixedPrecision,
     ShardingStrategy,
+    BackwardPrefetch,
     StateDictType,
 )
 from torch.distributed.fsdp import FullyShardedDataParallel as FSDP
@@ -229,6 +230,7 @@ class FSDPStrategy(TrainingStrategy):
             mixed_precision=fsdp_precision_policy,
             sharding_strategy=self.fsdp_sharding_strategy,
             device_id=torch.cuda.current_device(),
+            backward_prefetch=BackwardPrefetch.BACKWARD_PRE,
             limit_all_gathers=True,
             use_orig_params=True,
         )

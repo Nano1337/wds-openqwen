@@ -60,6 +60,7 @@ class WDSDynamicPackingDataset:
         self.image_transform = image_transform
         self.samples_per_pack = samples_per_pack
         self.collator = collator
+        self.train_num_samples = train_num_samples
         
         # Epoch counter for deterministic shuffling
         self.shared_epoch = SharedEpoch(0)
@@ -71,8 +72,45 @@ class WDSDynamicPackingDataset:
         grouped_urls = [expand_urls(p) for p in parts]
         pipeline_urls = [f'pipe:aws s3 cp {u} -' for url_list in grouped_urls for u in url_list]
 
+        # set the pack count for correct epoching during dynamic multimodal sequence packing
+        self._set_sizing(grouped_urls)
+        
+        # Define a custom batching function to handle bin packing
+        def custom_batcher(samples):
+            # Filter out None and pack; return list of packed dicts
+            samples = [x for x in samples if x is not None]
+            if not samples:
+                return []
+            return self._pack_batch(samples)
+        
+        # Set up the data pipeline for streaming and processing
+        pipeline = [
+            wds.SimpleShardList(pipeline_urls),
+            # Deterministic shuffling with epoch support
+            detshuffle2(bufsize=shuffle_buffer, initial=min(shuffle_buffer, 1000), 
+                       seed=0, epoch=self.shared_epoch),
+            wds.split_by_node,  # Split by node for multi-node training
+            wds.split_by_worker, # Split by worker for multi-process data loading
+            tarfile_to_samples_nothrow, # Robust tar file handling
+            wds.shuffle(bufsize=shuffle_buffer), # Additional shuffling
+            wds.decode("pilrgb"),  # Decode images to PIL
+            wds.rename(image="jpg;png;jpeg;webp", text="txt", json="json"),
+            wds.to_tuple("image", "text", "json"),
+            wds.map(self._preprocess_sample),  # Convert to (image, input_ids, length)
+            wds.batched(samples_per_pack, collation_fn=None, partial=True),  # Batch raw samples into lists
+            wds.map(custom_batcher),                                        # Pack this list into list of dicts
+            unlisted(),                                                     # Flatten packed dicts back into the stream
+        ]
+        
+        self.dataset = wds.DataPipeline(*pipeline)
+        self.num_workers = num_workers
+        self._pack_calls = 0  # count pack invocations for periodic logging
+
+    def __len__(self):
+        return self.num_packs
+
+    def _set_sizing(self, grouped_urls):
         # Dry-run on rank 0: sample one shard per pattern to estimate avg length, then broadcast
-        # TODO (haoli): move this logic to somewhere else and improve logging
         try:
             import torch.distributed as dist
             # only rank 0 computes dry-run
@@ -105,44 +143,11 @@ class WDSDynamicPackingDataset:
                 dist.broadcast(t, src=0)
                 avg_len = t.cpu().item()
             # final pack count
-            self.num_packs = math.ceil(train_num_samples * avg_len / self.context_len) if avg_len > 0 else math.ceil(train_num_samples / self.samples_per_pack)
+            self.num_packs = math.ceil(self.train_num_samples * avg_len / self.context_len) if avg_len > 0 else math.ceil(self.train_num_samples / self.samples_per_pack)
         except Exception:
             import traceback
             traceback.print_exc()
-            self.num_packs = math.ceil(train_num_samples / self.samples_per_pack)
-
-        # Define a custom batching function to handle bin packing
-        def custom_batcher(samples):
-            # Filter out None and pack; return list of packed dicts
-            samples = [x for x in samples if x is not None]
-            if not samples:
-                return []
-            return self._pack_batch(samples)
-        
-        # Set up the data pipeline for streaming and processing
-        pipeline = [
-            wds.SimpleShardList(pipeline_urls),
-            # Deterministic shuffling with epoch support
-            detshuffle2(bufsize=shuffle_buffer, initial=min(shuffle_buffer, 1000), 
-                       seed=0, epoch=self.shared_epoch),
-            wds.split_by_node,  # Split by node for multi-node training
-            wds.split_by_worker, # Split by worker for multi-process data loading
-            tarfile_to_samples_nothrow, # Robust tar file handling
-            wds.shuffle(bufsize=shuffle_buffer), # Additional shuffling
-            wds.decode("pilrgb"),  # Decode images to PIL
-            wds.rename(image="jpg;png;jpeg;webp", text="txt", json="json"),
-            wds.to_tuple("image", "text", "json"),
-            wds.map(self._preprocess_sample),  # Convert to (image, input_ids, length)
-            wds.batched(samples_per_pack, collation_fn=None, partial=True),  # Batch raw samples into lists
-            wds.map(custom_batcher),                                        # Pack this list into list of dicts
-            unlisted(),                                                     # Flatten packed dicts back into the stream
-        ]
-        
-        self.dataset = wds.DataPipeline(*pipeline)
-        self.num_workers = num_workers
-
-    def __len__(self):
-        return self.num_packs
+            self.num_packs = math.ceil(self.train_num_samples / self.samples_per_pack)
 
     def _preprocess_sample(self, data_tuple):
         """Process a single sample from WebDataset, using the same approach as PreTrainDataset.preprocess_obelics_interleaved"""
@@ -213,8 +218,10 @@ class WDSDynamicPackingDataset:
         if total_bins > 0 and total_tokens > 0:
             avg_bin_size = total_tokens / total_bins
             efficiency = avg_bin_size / self.context_len
-            # TODO (haoli): improve logging
-            print(f"Packing efficiency: {efficiency:.2f} (avg tokens per bin: {avg_bin_size:.1f})")
+            # periodic logging of efficiency (once then every 10 packs)
+            self._pack_calls += 1
+            if self._pack_calls == 1 or self._pack_calls % 10 == 0:
+                print(f"Packing efficiency: {efficiency:.2f} (avg tokens per bin: {avg_bin_size:.1f}) [pack {self._pack_calls}]")
         
         # For each bin, concatenate the samples
         results = []

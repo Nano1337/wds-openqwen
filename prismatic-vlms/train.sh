@@ -20,6 +20,7 @@ echo "Using dynamic sequence packing with $WORKERS workers"
 # Dynamic packing specific args
 DYNAMIC_ARGS="--dataset.workers $WORKERS --dataset.shuffle_buffer $SHUFFLE_BUFFER --dataset.samples_per_pack $SAMPLES_PER_PACK"
 
+# fsdp-shard-grad-op is zero2 since we're using 8 H100-80GB
 torchrun --nproc_per_node 8 prismatic-vlms/scripts/pretrain.py \
   --stage dynamic-pretrain \
   --model.type "one-stage+7b" \
@@ -31,8 +32,10 @@ torchrun --nproc_per_node 8 prismatic-vlms/scripts/pretrain.py \
   --model.pretrain_global_batch_size ${BSZ} \
   --model.pretrain_per_device_batch_size ${PER_GPU_BSZ} \
   --model.pretrain_epochs 1 \
+  --model.pretrain_train_strategy "fsdp-shard-grad-op" \
   --mount_path Qwen \
   --run_root_dir checkpoints/ \
   --dataset.type "pretrain" \
+  --dataset.train_num_samples 3000000 \
   --dataset.dataset_root_dir ${DATASET_PATH} \
   ${DYNAMIC_ARGS}

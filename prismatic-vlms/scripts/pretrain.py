@@ -225,9 +225,7 @@ def pretrain(cfg: PretrainConfig) -> None:
         worker_init_fn=worker_init_fn,
     )
 
-    # get number of train examples
-    num_train_samples = 4000 # FIXME: hardcode for now, calculate later
-    train_strategy.run_setup(run_dir=run_dir, n_train_examples=num_train_samples, save_vision_backbone=("full-pretrain" in str(cfg.pretrained_checkpoint)))#, low_cpu_fsdp=cfg.low_cpu_fsdp)
+    train_strategy.run_setup(run_dir=run_dir, n_train_examples=cfg.dataset.train_num_samples, save_vision_backbone=("full-pretrain" in str(cfg.pretrained_checkpoint)))#, low_cpu_fsdp=cfg.low_cpu_fsdp)
 
     # Create Metrics =>> Handles on the fly tracking, logging to specified trackers (e.g., JSONL, Weights & Biases)
     overwatch.info(f"Creating Metrics with Active Trackers => `{cfg.trackers}`")
