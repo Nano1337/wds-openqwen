@@ -9,6 +9,7 @@ import functools
 import re
 import boto3
 import webdataset as wds
+from webdataset.filters import unlisted
 import time
 from typing import Dict, List, Tuple
 from PIL import Image
@@ -68,16 +69,11 @@ class WDSDynamicPackingDataset:
 
         # Define a custom batching function to handle bin packing
         def custom_batcher(samples):
-            # Filter out None values
+            # Filter out None and pack; return list of packed dicts
             samples = [x for x in samples if x is not None]
             if not samples:
                 return []
-                
-            # Use the packing algorithm on this batch
-            packed_samples = self._pack_batch(samples)
-            
-            # Return a list of packed samples
-            return packed_samples
+            return self._pack_batch(samples)
         
         # Set up the data pipeline for streaming and processing
         pipeline = [
@@ -93,8 +89,9 @@ class WDSDynamicPackingDataset:
             wds.rename(image="jpg;png;jpeg;webp", text="txt", json="json"),
             wds.to_tuple("image", "text", "json"),
             wds.map(self._preprocess_sample),  # Convert to (image, input_ids, length)
-            wds.batched(samples_per_pack, partial=True, collation_fn=custom_batcher),  # Custom batching
-            wds.unbatched(), # Flatten the batches into individual samples
+            wds.batched(samples_per_pack, collation_fn=None, partial=True),  # Batch raw samples into lists
+            wds.map(custom_batcher),                                        # Pack this list into list of dicts
+            unlisted(),                                                     # Flatten packed dicts back into the stream
         ]
         
         self.dataset = wds.DataPipeline(*pipeline)
@@ -165,7 +162,7 @@ class WDSDynamicPackingDataset:
             return []
             
         # Create a length_to_uid dictionary
-        length_to_uid = {i: sample[2]["length"] for i, sample in enumerate(batch)}
+        length_to_uid = {i: sample[2] for i, sample in enumerate(batch)}
         
         # Use first-fit-decreasing bin packing algorithm
         bins = first_fit_decreasing_with_ids(length_to_uid, self.context_len)

@@ -42,8 +42,8 @@ echo "========================="
 ########
 # Set training configuration
 CKPTID="qwen_vlm_dp"                                         # Checkpoint ID 
-GLOBAL_BSZ=64                                               # Global batch size
-PER_GPU_BSZ=8                                               # Per GPU batch size
+GLOBAL_BSZ=8                                               # Global batch size
+PER_GPU_BSZ=1                                               # Per GPU batch size
 
 # Hardcoded dataset paths with WebDataset :: operator to concatenate
 DATASET_PATH="s3://datology-research/haoli/Open-Qwen2VL-Data/ccs_webdataset/{00000..01302}.tar::s3://datology-research/haoli/Open-Qwen2VL-Data/datacomp_medium_mlm_filter_su_85_union_dfn_webdataset/{00000000..00002012}.tar"

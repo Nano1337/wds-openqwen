@@ -235,7 +235,13 @@ def group_by_keys_nothrow(
     """
     current_sample = None
     for filesample in data:
-        assert isinstance(filesample, dict)
+        # Skip invalid file samples without expected keys
+        if not isinstance(filesample, dict):
+            logging.warning(f"Skipping non-dict filesample: {filesample}")
+            continue
+        if "fname" not in filesample or "data" not in filesample:
+            logging.warning(f"Skipping malformed filesample missing 'fname' or 'data': {filesample}")
+            continue
         fname, value = filesample["fname"], filesample["data"]
         prefix, suffix = keys(fname)
         if prefix is None:
