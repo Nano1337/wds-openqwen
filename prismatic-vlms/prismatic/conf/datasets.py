@@ -55,6 +55,7 @@ class LLaVa_V15_Config(DatasetConfig):
     workers: int = 4
 
 # [PreTrain]
+# NOTE: this is the data config that's utilized for pretraining
 @dataclass
 class OBELICS_PreTrain_Config(DatasetConfig):
     dataset_id: str = "pretrain"
@@ -73,7 +74,7 @@ class OBELICS_PreTrain_Config(DatasetConfig):
     dataset_resampled: bool = True
     min_num_images: int = 1
     max_num_images: int = 6
-    workers: int = 4
+    workers: int = 8
 
 # [Multimodal-Only] LLava-v15 WITHOUT the Language-Only ShareGPT Data (No Co-Training)
 @dataclass

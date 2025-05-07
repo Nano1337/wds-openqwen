@@ -24,6 +24,7 @@ from prismatic.util.data_utils import (
 )
 from prismatic.util.data_utils import tokenizer_image_token
 from mm_sequence_packing.sequence_packing_image_to_pil import first_fit_decreasing_with_ids
+import math
 
 # Import constants from datasets.py
 IGNORE_INDEX = -100
@@ -63,9 +64,52 @@ class WDSDynamicPackingDataset:
         # Epoch counter for deterministic shuffling
         self.shared_epoch = SharedEpoch(0)
         
-        # Build pipeline - use direct S3 URLs since we have custom URL opener
-        urls = expand_urls(shards_pattern)
-        pipeline_urls = [f'pipe:aws s3 cp {u} -' for u in urls]
+        # Accept one or more S3 patterns separated by '::'
+        if not isinstance(shards_pattern, str):
+            raise ValueError("shards_pattern must be a string of S3 patterns separated by '::'")
+        parts = shards_pattern.split("::")
+        grouped_urls = [expand_urls(p) for p in parts]
+        pipeline_urls = [f'pipe:aws s3 cp {u} -' for url_list in grouped_urls for u in url_list]
+
+        # Dry-run on rank 0: sample one shard per pattern to estimate avg length, then broadcast
+        # TODO (haoli): move this logic to somewhere else and improve logging
+        try:
+            import torch.distributed as dist
+            # only rank 0 computes dry-run
+            if not (dist.is_available() and dist.is_initialized()) or dist.get_rank() == 0:
+                # pick first shard of each pattern
+                dry_urls = [grp[0] for grp in grouped_urls if grp]
+                dry_pipe = wds.DataPipeline(
+                    wds.SimpleShardList([f'pipe:aws s3 cp {u} -' for u in dry_urls]),
+                    tarfile_to_samples_nothrow,
+                    wds.decode("pilrgb"),
+                    wds.rename(image="jpg;png;jpeg;webp", text="txt", json="json"),
+                    wds.to_tuple("image", "text", "json"),
+                    wds.map(self._preprocess_sample),
+                )
+                lengths = []
+                for i, s in zip(range(100), dry_pipe):
+                    if s is None: break
+                    lengths.append(s[2])
+                avg_len = sum(lengths) / len(lengths) if lengths else self.context_len
+            else:
+                avg_len = 0.0
+            # broadcast estimate (use CUDA tensor if available to match NCCL backend)
+            if dist.is_available() and dist.is_initialized():
+                # choose device for tensor
+                if torch.cuda.is_available():
+                    dev = torch.device('cuda', torch.cuda.current_device())
+                else:
+                    dev = torch.device('cpu')
+                t = torch.tensor([avg_len], dtype=torch.float32, device=dev)
+                dist.broadcast(t, src=0)
+                avg_len = t.cpu().item()
+            # final pack count
+            self.num_packs = math.ceil(train_num_samples * avg_len / self.context_len) if avg_len > 0 else math.ceil(train_num_samples / self.samples_per_pack)
+        except Exception:
+            import traceback
+            traceback.print_exc()
+            self.num_packs = math.ceil(train_num_samples / self.samples_per_pack)
 
         # Define a custom batching function to handle bin packing
         def custom_batcher(samples):
@@ -96,10 +140,6 @@ class WDSDynamicPackingDataset:
         
         self.dataset = wds.DataPipeline(*pipeline)
         self.num_workers = num_workers
-        
-        # Estimate number of packed examples per epoch
-        packing_efficiency = 0.8  # Estimate of how efficiently samples can be packed
-        self.num_packs = int((train_num_samples * packing_efficiency) / samples_per_pack)
 
     def __len__(self):
         return self.num_packs
@@ -173,6 +213,7 @@ class WDSDynamicPackingDataset:
         if total_bins > 0 and total_tokens > 0:
             avg_bin_size = total_tokens / total_bins
             efficiency = avg_bin_size / self.context_len
+            # TODO (haoli): improve logging
             print(f"Packing efficiency: {efficiency:.2f} (avg tokens per bin: {avg_bin_size:.1f})")
         
         # For each bin, concatenate the samples
@@ -279,8 +320,8 @@ class WDSDynamicPackingDataset:
             collate_fn=self.collator,  # Use our custom collator for final batch preparation
         )
         
-        # Set number of batches per epoch - critical for training loop
-        loader.num_batches = self.num_packs
+        # Set number of batches per epoch based on pack count and loader batch size
+        loader.num_batches = math.ceil(self.num_packs / batch_size)
             
         # Return DataInfo which is expected by run_training_with_wds_dataloader
         return DataInfo(dataloader=loader, shared_epoch=self.shared_epoch)
