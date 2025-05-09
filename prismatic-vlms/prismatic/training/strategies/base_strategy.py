@@ -188,71 +188,77 @@ class TrainingStrategy(ABC):
                         metrics.commit(global_step=metrics.global_step + 1)
                         continue
                     
-                    # [Contract] self.vlm.forward() must automatically compute `loss` and return!
-                    with torch.autocast(
-                        "cuda",
-                        dtype=self.mixed_precision_dtype,
-                        enabled=self.enable_mixed_precision_training,
-                    ):
-                        output: CausalLMOutputWithPast = self.vlm(
-                            input_ids=batch["input_ids"],
-                            attention_mask=getattr(batch, "attention_mask", None),
-                            pixel_values=batch["pixel_values"],
-                            labels=batch["labels"],
-                            # multimodal_indices=batch["multimodal_indices"],
-                        )
-                        loss = output.loss
+                    try:
+                        # [Contract] self.vlm.forward() must automatically compute `loss` and return!
+                        with torch.autocast(
+                            "cuda",
+                            dtype=self.mixed_precision_dtype,
+                            enabled=self.enable_mixed_precision_training,
+                        ):
+                            output: CausalLMOutputWithPast = self.vlm(
+                                input_ids=batch["input_ids"],
+                                attention_mask=getattr(batch, "attention_mask", None),
+                                pixel_values=batch["pixel_values"],
+                                labels=batch["labels"],
+                                # multimodal_indices=batch["multimodal_indices"],
+                            )
+                            loss = output.loss
 
-                    # Commit Loss (Prior to Gradient Accumulation Normalization)
-                    metrics.commit(loss=loss)
+                        # Commit Loss (Prior to Gradient Accumulation Normalization)
+                        metrics.commit(loss=loss)
 
-                    # Normalize Loss to account for Gradient Accumulation --> Backward!
-                    # [IMPORTANT] Technically speaking, doing gradient accumulation in this way is "incorrect"; this is
-                    #             because in general, each batch has a *different number of masked out tokens* (because
-                    #             we're instruct-tuning). Taking the mean over two unbalanced means != the right thing!
-                    #
-                    #             HOWEVER -- at least at the 7B scale, the "naive" approach is just as performant as
-                    #             the "correct" implementation, without adding extra complexity.
-                    #
-                    # That being said =>> at the 13B scale, *no matter what we tried, ANY gradient accumulation is just
-                    #   really bad for downstream performance. Initial investigation shows that BF16 accumulation
-                    #   just really tanks in precision... and don't have a good/clean way to fix this. Would love for
-                    #   someone to PR and fix this (and I'd greatly appreciate it!!!)
-                    normalized_loss = loss / self.grad_accumulation_steps
-                    normalized_loss.backward()
+                        # Normalize Loss to account for Gradient Accumulation --> Backward!
+                        # [IMPORTANT] Technically speaking, doing gradient accumulation in this way is "incorrect"; this is
+                        #             because in general, each batch has a *different number of masked out tokens* (because
+                        #             we're instruct-tuning). Taking the mean over two unbalanced means != the right thing!
+                        #
+                        #             HOWEVER -- at least at the 7B scale, the "naive" approach is just as performant as
+                        #             the "correct" implementation, without adding extra complexity.
+                        #
+                        # That being said =>> at the 13B scale, *no matter what we tried, ANY gradient accumulation is just
+                        #   really bad for downstream performance. Initial investigation shows that BF16 accumulation
+                        #   just really tanks in precision... and don't have a good/clean way to fix this. Would love for
+                        #   someone to PR and fix this (and I'd greatly appreciate it!!!)
+                        normalized_loss = loss / self.grad_accumulation_steps
+                        normalized_loss.backward()
 
-                    # Step =>> Only if Done w/ Gradient Accumulation
-                    if (train_idx + 1) % self.grad_accumulation_steps == 0:
-                        metrics.commit(update_step_time=True)
+                        # Step =>> Only if Done w/ Gradient Accumulation
+                        if (train_idx + 1) % self.grad_accumulation_steps == 0:
+                            metrics.commit(update_step_time=True)
 
-                        # Clip Gradients --> this is custom, per-strategy because of DDP vs. FSDP locality-assumptions
-                        self.clip_grad_norm()
+                            # Clip Gradients --> this is custom, per-strategy because of DDP vs. FSDP locality-assumptions
+                            self.clip_grad_norm()
 
-                        # Optimizer & LR Scheduler Step
-                        self.optimizer.step()
-                        self.lr_scheduler.step()
-                        self.optimizer.zero_grad()
+                            # Optimizer & LR Scheduler Step
+                            self.optimizer.step()
+                            self.lr_scheduler.step()
+                            self.optimizer.zero_grad()
 
-                        # Push Metrics
-                        metrics.commit(global_step=metrics.global_step + 1, lr=self.lr_scheduler.get_last_lr()[0])
-                        status = metrics.push()
+                            # Push Metrics
+                            metrics.commit(global_step=metrics.global_step + 1, lr=self.lr_scheduler.get_last_lr()[0])
+                            status = metrics.push()
 
-                        # Save ckpt every 5k steps
-                        # if self.max_steps is not None and metrics.global_step % 10000 == 0 and metrics.global_step < self.max_steps:
-                        if metrics.global_step % 15625 == 0:
-                            self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
-                            dist.barrier()
-                        
-                        # Check for Termination & Save Final Checkpoint (in case `max_steps` is not None)
-                        if self.max_steps is not None and metrics.global_step >= self.max_steps:
-                            self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
-                            dist.barrier()
+                            # Save ckpt every 5k steps
+                            # if self.max_steps is not None and metrics.global_step % 10000 == 0 and metrics.global_step < self.max_steps:
+                            if metrics.global_step % 15625 == 0:
+                                self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
+                                dist.barrier()
+                            
+                            # Check for Termination & Save Final Checkpoint (in case `max_steps` is not None)
+                            if self.max_steps is not None and metrics.global_step >= self.max_steps:
+                                self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
+                                dist.barrier()
 
-                            return
+                                return
 
-                        # Update Progress Bar
-                        progress.update()
-                        progress.set_description(status)
+                            # Update Progress Bar
+                            progress.update()
+                            progress.set_description(status)
+                    except json.JSONDecodeError as ex:
+                        # Log warning and continue to next batch
+                        import logging
+                        logging.warning(f"Skipping batch {train_idx} due to JSONDecodeError: {ex}")
+                        continue
 
             # Save checkpoint at end each epoch (if `self.max_steps` is None)
             if self.max_steps is None:
@@ -314,57 +320,63 @@ class TrainingStrategy(ABC):
                         metrics.commit(global_step=metrics.global_step + 1)
                         continue
                     
-                    # Forward pass with autocast
-                    with torch.autocast(
-                        "cuda",
-                        dtype=self.mixed_precision_dtype,
-                        enabled=self.enable_mixed_precision_training,
-                    ):
-                        output = self.vlm(
-                            input_ids=batch["input_ids"],
-                            attention_mask=getattr(batch, "attention_mask", None),
-                            pixel_values=batch["pixel_values"],
-                            labels=batch["labels"],
-                        )
-                        loss = output.loss
+                    try:
+                        # Forward pass with autocast
+                        with torch.autocast(
+                            "cuda",
+                            dtype=self.mixed_precision_dtype,
+                            enabled=self.enable_mixed_precision_training,
+                        ):
+                            output = self.vlm(
+                                input_ids=batch["input_ids"],
+                                attention_mask=getattr(batch, "attention_mask", None),
+                                pixel_values=batch["pixel_values"],
+                                labels=batch["labels"],
+                            )
+                            loss = output.loss
 
-                    # Commit Loss (Prior to Gradient Accumulation Normalization)
-                    metrics.commit(loss=loss)
+                        # Commit Loss (Prior to Gradient Accumulation Normalization)
+                        metrics.commit(loss=loss)
 
-                    # Normalize Loss and backward
-                    normalized_loss = loss / self.grad_accumulation_steps
-                    normalized_loss.backward()
+                        # Normalize Loss and backward
+                        normalized_loss = loss / self.grad_accumulation_steps
+                        normalized_loss.backward()
 
-                    # Step =>> Only if Done w/ Gradient Accumulation
-                    if (train_idx + 1) % self.grad_accumulation_steps == 0:
-                        metrics.commit(update_step_time=True)
+                        # Step =>> Only if Done w/ Gradient Accumulation
+                        if (train_idx + 1) % self.grad_accumulation_steps == 0:
+                            metrics.commit(update_step_time=True)
 
-                        # Clip Gradients
-                        self.clip_grad_norm()
+                            # Clip Gradients
+                            self.clip_grad_norm()
 
-                        # Optimizer & LR Scheduler Step
-                        self.optimizer.step()
-                        self.lr_scheduler.step()
-                        self.optimizer.zero_grad()
+                            # Optimizer & LR Scheduler Step
+                            self.optimizer.step()
+                            self.lr_scheduler.step()
+                            self.optimizer.zero_grad()
 
-                        # Push Metrics
-                        metrics.commit(global_step=metrics.global_step + 1, lr=self.lr_scheduler.get_last_lr()[0])
-                        status = metrics.push()
+                            # Push Metrics
+                            metrics.commit(global_step=metrics.global_step + 1, lr=self.lr_scheduler.get_last_lr()[0])
+                            status = metrics.push()
 
-                        # Checkpoint saving
-                        if metrics.global_step % 15625 == 0:
-                            self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
-                            dist.barrier()
-                        
-                        # Check for termination
-                        if self.max_steps is not None and metrics.global_step >= self.max_steps:
-                            self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
-                            dist.barrier()
-                            return
+                            # Checkpoint saving
+                            if metrics.global_step % 15625 == 0:
+                                self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
+                                dist.barrier()
+                            
+                            # Check for termination
+                            if self.max_steps is not None and metrics.global_step >= self.max_steps:
+                                self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
+                                dist.barrier()
+                                return
 
-                        # Update Progress Bar
-                        progress.update()
-                        progress.set_description(status)
+                            # Update Progress Bar
+                            progress.update()
+                            progress.set_description(status)
+                    except json.JSONDecodeError as ex:
+                        # Log warning and continue to next batch
+                        import logging
+                        logging.warning(f"Skipping batch {train_idx} due to JSONDecodeError: {ex}")
+                        continue
 
             # Save checkpoint at end of training
             if self.max_steps is None:
@@ -444,78 +456,84 @@ class TrainingStrategy(ABC):
                 # Note that we'll unpack batch (and let AMP/FSDP do its thing) in the VLM.forward() call
                 #   => Basically, if we're using mixed precision (or not), autocast()/FSDP will move to device!
                 for train_idx, batch in enumerate(dataloader):
-                    # [Contract] self.vlm.forward() must automatically compute `loss` and return!
-                    with torch.autocast(
-                        "cuda",
-                        dtype=self.mixed_precision_dtype,
-                        enabled=self.enable_mixed_precision_training,
-                    ):
-                        pixel_values, input_ids, labels, attention_mask = batch
+                    try:
+                        # [Contract] self.vlm.forward() must automatically compute `loss` and return!
+                        with torch.autocast(
+                            "cuda",
+                            dtype=self.mixed_precision_dtype,
+                            enabled=self.enable_mixed_precision_training,
+                        ):
+                            pixel_values, input_ids, labels, attention_mask = batch
 
-                        output: CausalLMOutputWithPast = self.vlm(
-                            input_ids=input_ids,
-                            pixel_values=pixel_values,
-                            labels=labels,
-                            attention_mask=attention_mask
-                        )
-                        # output: CausalLMOutputWithPast = self.vlm(
-                        #     input_ids=batch["input_ids"],
-                        #     attention_mask=batch["attention_mask"],
-                        #     pixel_values=batch["pixel_values"],
-                        #     labels=batch["labels"],
-                        #     multimodal_indices=batch["multimodal_indices"],
-                        # )
-                        loss = output.loss
+                            output: CausalLMOutputWithPast = self.vlm(
+                                input_ids=input_ids,
+                                pixel_values=pixel_values,
+                                labels=labels,
+                                attention_mask=attention_mask
+                            )
+                            # output: CausalLMOutputWithPast = self.vlm(
+                            #     input_ids=batch["input_ids"],
+                            #     attention_mask=batch["attention_mask"],
+                            #     pixel_values=batch["pixel_values"],
+                            #     labels=batch["labels"],
+                            #     multimodal_indices=batch["multimodal_indices"],
+                            # )
+                            loss = output.loss
 
-                    # Commit Loss (Prior to Gradient Accumulation Normalization)
-                    metrics.commit(loss=loss)
+                        # Commit Loss (Prior to Gradient Accumulation Normalization)
+                        metrics.commit(loss=loss)
 
-                    # Normalize Loss to account for Gradient Accumulation --> Backward!
-                    # [IMPORTANT] Technically speaking, doing gradient accumulation in this way is "incorrect"; this is
-                    #             because in general, each batch has a *different number of masked out tokens* (because
-                    #             we're instruct-tuning). Taking the mean over two unbalanced means != the right thing!
-                    #
-                    #             HOWEVER -- at least at the 7B scale, the "naive" approach is just as performant as
-                    #             the "correct" implementation, without adding extra complexity.
-                    #
-                    # That being said =>> at the 13B scale, *no matter what we tried, ANY gradient accumulation is just
-                    #   really bad for downstream performance. Initial investigation shows that BF16 accumulation
-                    #   just really tanks in precision... and don't have a good/clean way to fix this. Would love for
-                    #   someone to PR and fix this (and I'd greatly appreciate it!!!)
-                    normalized_loss = loss / self.grad_accumulation_steps
-                    normalized_loss.backward()
+                        # Normalize Loss to account for Gradient Accumulation --> Backward!
+                        # [IMPORTANT] Technically speaking, doing gradient accumulation in this way is "incorrect"; this is
+                        #             because in general, each batch has a *different number of masked out tokens* (because
+                        #             we're instruct-tuning). Taking the mean over two unbalanced means != the right thing!
+                        #
+                        #             HOWEVER -- at least at the 7B scale, the "naive" approach is just as performant as
+                        #             the "correct" implementation, without adding extra complexity.
+                        #
+                        # That being said =>> at the 13B scale, *no matter what we tried, ANY gradient accumulation is just
+                        #   really bad for downstream performance. Initial investigation shows that BF16 accumulation
+                        #   just really tanks in precision... and don't have a good/clean way to fix this. Would love for
+                        #   someone to PR and fix this (and I'd greatly appreciate it!!!)
+                        normalized_loss = loss / self.grad_accumulation_steps
+                        normalized_loss.backward()
 
-                    # Step =>> Only if Done w/ Gradient Accumulation
-                    if (train_idx + 1) % self.grad_accumulation_steps == 0:
-                        metrics.commit(update_step_time=True)
+                        # Step =>> Only if Done w/ Gradient Accumulation
+                        if (train_idx + 1) % self.grad_accumulation_steps == 0:
+                            metrics.commit(update_step_time=True)
 
-                        # Clip Gradients --> this is custom, per-strategy because of DDP vs. FSDP locality-assumptions
-                        self.clip_grad_norm()
+                            # Clip Gradients --> this is custom, per-strategy because of DDP vs. FSDP locality-assumptions
+                            self.clip_grad_norm()
 
-                        # Optimizer & LR Scheduler Step
-                        self.optimizer.step()
-                        self.lr_scheduler.step()
-                        self.optimizer.zero_grad()
+                            # Optimizer & LR Scheduler Step
+                            self.optimizer.step()
+                            self.lr_scheduler.step()
+                            self.optimizer.zero_grad()
 
-                        # Push Metrics
-                        metrics.commit(global_step=metrics.global_step + 1, lr=self.lr_scheduler.get_last_lr()[0])
-                        status = metrics.push()
+                            # Push Metrics
+                            metrics.commit(global_step=metrics.global_step + 1, lr=self.lr_scheduler.get_last_lr()[0])
+                            status = metrics.push()
 
-                        # Save ckpt every 5k steps
-                        if self.max_steps is not None and metrics.global_step % 5000 == 0 and metrics.global_step < self.max_steps:
-                            self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
-                            dist.barrier()
+                            # Save ckpt every 5k steps
+                            if self.max_steps is not None and metrics.global_step % 5000 == 0 and metrics.global_step < self.max_steps:
+                                self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
+                                dist.barrier()
 
-                        # Check for Termination & Save Final Checkpoint (in case `max_steps` is not None)
-                        if self.max_steps is not None and metrics.global_step >= self.max_steps:
-                            self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
-                            dist.barrier()
+                            # Check for Termination & Save Final Checkpoint (in case `max_steps` is not None)
+                            if self.max_steps is not None and metrics.global_step >= self.max_steps:
+                                self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
+                                dist.barrier()
 
-                            return
+                                return
 
-                        # Update Progress Bar
-                        progress.update()
-                        progress.set_description(status)
+                            # Update Progress Bar
+                            progress.update()
+                            progress.set_description(status)
+                    except json.JSONDecodeError as ex:
+                        # Log warning and continue to next batch
+                        import logging
+                        logging.warning(f"Skipping batch {train_idx} due to JSONDecodeError: {ex}")
+                        continue
 
             # Save checkpoint at end each epoch (if `self.max_steps` is None)
             if self.max_steps is None:

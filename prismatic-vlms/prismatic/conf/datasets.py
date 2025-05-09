@@ -52,7 +52,7 @@ class LLaVa_V15_Config(DatasetConfig):
     dataset_resampled: bool = True
     min_num_images: int = 1
     max_num_images: int = 6
-    workers: int = 4
+    workers: int = 9
 
 # [PreTrain]
 # NOTE: this is the data config that's utilized for pretraining

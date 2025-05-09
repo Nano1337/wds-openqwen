@@ -115,6 +115,8 @@ class WDSDynamicPackingDataset:
             import torch.distributed as dist
             # only rank 0 computes dry-run
             if not (dist.is_available() and dist.is_initialized()) or dist.get_rank() == 0:
+                print("Dry running to estimate avg length")
+
                 # pick first shard of each pattern
                 dry_urls = [grp[0] for grp in grouped_urls if grp]
                 dry_pipe = wds.DataPipeline(
@@ -130,6 +132,7 @@ class WDSDynamicPackingDataset:
                     if s is None: break
                     lengths.append(s[2])
                 avg_len = sum(lengths) / len(lengths) if lengths else self.context_len
+                print(f"Dry run avg length: {avg_len}")
             else:
                 avg_len = 0.0
             # broadcast estimate (use CUDA tensor if available to match NCCL backend)

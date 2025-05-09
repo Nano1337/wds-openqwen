@@ -14,7 +14,7 @@ DATASET_PATH=${4:-"Open-Qwen2VL-Data"}  # Default dataset path if not provided
 # Dynamic packing configuration
 WORKERS=8
 SHUFFLE_BUFFER=5000
-SAMPLES_PER_PACK=128
+SAMPLES_PER_PACK=64
 echo "Using dynamic sequence packing with $WORKERS workers"
 
 # Dynamic packing specific args

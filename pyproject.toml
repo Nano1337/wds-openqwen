@@ -15,6 +15,7 @@ dependencies = [
     "s3fs>=0.4.2",
     "s3cmd>=2.4.0",
     "awscli>=1.40.8",
+    "ijson>=3.4.0",
 ]
 
 [tool.uv.sources]

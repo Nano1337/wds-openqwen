@@ -29,7 +29,7 @@ from transformers import LlamaTokenizerFast, PreTrainedTokenizerBase
 
 from prismatic.models.backbones.llm.prompting import PromptBuilder
 from prismatic.models.backbones.vision import ImageTransform
-from prismatic.util.data_utils import tokenizer_image_token
+from prismatic.util.data_utils import tokenizer_image_token, log_and_continue
 
 # HuggingFace Default / LLaMa-2 IGNORE_INDEX (for labels)
 IGNORE_INDEX = -100
@@ -262,7 +262,12 @@ class FinetuneLargeDataset(Dataset[Dict[str, torch.Tensor]]):
         :return: Dictionary of {"pixel_values": torch.Tensor, "input_ids": torch.Tensor, "labels": torch.Tensor}
         """
         json_path = os.path.join(os.path.join(os.path.dirname(self.instruct_json), "instruction_si_split"), self.examples[idx]["path"])
-        example = json.load(open(json_path))
+        try:
+            with open(json_path, "r") as f:
+                example = json.load(f)
+        except Exception as ex:
+            log_and_continue(ex)
+            return dict(pixel_values=None, input_ids=torch.tensor([], dtype=torch.long), labels=torch.tensor([], dtype=torch.long))
         conversation = example["conversations"]
 
         # Create Prompt Builder --> add each message sequentially
