@@ -10,6 +10,8 @@ heavy lifting.
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Callable, Optional
+import json
+import time
 
 import torch
 import torch.distributed as dist
@@ -272,40 +274,87 @@ class TrainingStrategy(ABC):
         stage: str = "dynamic-pretrain",
         seed: int = 7,
     ) -> None:
-        """Run training using a WebDataset dataloader."""
+        """Run training using a WebDataset dataloader for a single epoch."""
         # Extract loader and shared epoch info
         loader = data_info.dataloader
         # Load the latest checkpoint if available
         resume_step = self.load_latest_checkpoint(metrics.run_dir) or 0
+        
+        # For single-epoch training, ensure epochs is 1
+        if self.epochs > 1 and overwatch.is_rank_zero():
+            overwatch.info(f"Note: Multiple epochs ({self.epochs}) configured, but typically running for just one epoch")
+        
         # Max Steps vs. Epochs Computation
-        steps_per_epoch = loader.num_batches // self.grad_accumulation_steps
-        if self.max_steps is not None and steps_per_epoch < self.max_steps:
-            # Increase epochs to meet max_steps
-            self.epochs = 100
+        estimated_steps_per_epoch = loader.num_batches // self.grad_accumulation_steps
+        
+        # For single-epoch training with max_steps, ensure it doesn't exceed the epoch
+        if self.max_steps is not None:
+            if self.max_steps > estimated_steps_per_epoch and overwatch.is_rank_zero():
+                overwatch.info(f"Warning: max_steps ({self.max_steps}) exceeds estimated steps in one epoch ({estimated_steps_per_epoch})")
+                overwatch.info(f"Since you're running for one epoch, actual steps will be limited to {estimated_steps_per_epoch}")
+        
+        # Calculate the total number of steps for tqdm - for single epoch, this is just the steps in one epoch
+        total_steps = self.max_steps if self.max_steps is not None else estimated_steps_per_epoch
+        
+        # Log training plan for clarity
+        if overwatch.is_rank_zero():
+            overwatch.info(f"=== Single-Epoch Training Plan ===")
+            overwatch.info(f"Batches in epoch (estimated): {loader.num_batches:,}")
+            overwatch.info(f"Gradient accumulation steps: {self.grad_accumulation_steps}")
+            overwatch.info(f"Training steps (estimated): {estimated_steps_per_epoch:,}")
+            if self.max_steps is not None:
+                overwatch.info(f"Max steps override: {min(self.max_steps, estimated_steps_per_epoch):,}")
+            overwatch.info(f"==================")
+        
+        # Keep track of actual batches processed
+        actual_batches_processed = 0
+        
+        # Calculate checkpoint frequency - save approximately every 20-30 minutes of training
+        # For expected ~500 steps, this would be around every 100 steps
+        checkpoint_frequency = 500 # TODO (haoli): make this configurable via args
+        if overwatch.is_rank_zero():
+            overwatch.info(f"Will save checkpoints every {checkpoint_frequency} steps")
 
         # === Train ===
         status = metrics.get_status()
         with tqdm(
-            total=(
-                (self.epochs * (loader.num_batches // self.grad_accumulation_steps))
-                if self.max_steps is None
-                else self.max_steps
-            ),
+            total=total_steps,
             initial=resume_step,
             desc=status,
             leave=False,
             disable=not overwatch.is_rank_zero(),
         ) as progress:
-            for epoch in range(self.epochs):
-                # Reseed WebDataset shuffle per epoch
-                data_info.set_epoch(epoch)
-                self.vlm.train()
-                
-                # Zero-Gradients (just in case)
-                self.optimizer.zero_grad()
+            # Single epoch training
+            epoch = 0
+            # Reseed WebDataset shuffle
+            data_info.set_epoch(epoch)
+            self.vlm.train()
+            
+            # Reset batch counter
+            actual_batches_processed = 0
+            epoch_start_time = time.time()
+            
+            # Periodic logging frequency - more frequent for single-epoch case
+            log_frequency = min(50, max(1, estimated_steps_per_epoch // 20))  # Log ~20 times during training
+            
+            # Zero-Gradients (just in case)
+            self.optimizer.zero_grad()
+            
+            # Track last active time to detect hangs
+            last_activity_time = time.time()
+            # Timeout detection - if no progress for 30 minutes, save a checkpoint
+            activity_timeout_seconds = 1800  # 30 minutes
 
+            # Set up special exception handling
+            try:
                 # Note that we'll unpack batch (and let AMP/FSDP do its thing) in the VLM.forward() call
                 for train_idx, batch in enumerate(loader):
+                    # Update activity time
+                    last_activity_time = time.time()
+                    
+                    # Count this batch
+                    actual_batches_processed += 1
+                    
                     # Process the batch - convert to dict format if it's a tuple
                     if isinstance(batch, tuple):
                         batch_dict = {
@@ -354,12 +403,39 @@ class TrainingStrategy(ABC):
                             self.lr_scheduler.step()
                             self.optimizer.zero_grad()
 
-                            # Push Metrics
+                            # Update step count and metrics
                             metrics.commit(global_step=metrics.global_step + 1, lr=self.lr_scheduler.get_last_lr()[0])
                             status = metrics.push()
+                            
+                            # Track current step progress
+                            current_steps_completed = (actual_batches_processed // self.grad_accumulation_steps)
+                            
+                            # For single-epoch: If we've exceeded the estimated steps, we need to update the progress bar's total
+                            if current_steps_completed > estimated_steps_per_epoch and self.max_steps is None:
+                                # Only log this once when we first exceed the estimate
+                                if current_steps_completed == estimated_steps_per_epoch + 1 and overwatch.is_rank_zero():
+                                    overwatch.info(
+                                        f"Actual steps ({current_steps_completed}) exceeds estimated steps ({estimated_steps_per_epoch}). "
+                                        f"Adjusting progress bar."
+                                    )
+                                
+                                # Dynamically update the progress bar total as we go
+                                # For single-epoch, we can reasonably guess we're about x% through based on the
+                                # current step vs. total samples
+                                progress_fraction = min(0.99, actual_batches_processed / loader.num_batches)
+                                if progress_fraction > 0:
+                                    estimated_total_steps = int(current_steps_completed / progress_fraction)
+                                    if abs(estimated_total_steps - progress.total) > max(10, progress.total * 0.05):  # Only update if significant change
+                                        old_total = progress.total
+                                        progress.total = estimated_total_steps
+                                        if overwatch.is_rank_zero():
+                                            overwatch.info(f"Adjusted progress bar total: {old_total:,} → {estimated_total_steps:,} steps")
+                                        progress.refresh()
 
-                            # Checkpoint saving
-                            if metrics.global_step % 15625 == 0:
+                            # More frequent checkpoint saving - ensure we don't lose progress
+                            if metrics.global_step % checkpoint_frequency == 0:
+                                if overwatch.is_rank_zero():
+                                    overwatch.info(f"Saving periodic checkpoint at step {metrics.global_step}")
                                 self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
                                 dist.barrier()
                             
@@ -372,17 +448,79 @@ class TrainingStrategy(ABC):
                             # Update Progress Bar
                             progress.update()
                             progress.set_description(status)
-                    except json.JSONDecodeError as ex:
-                        # Log warning and continue to next batch
+                            
+                            # More frequent progress logging for single-epoch training
+                            if metrics.global_step % log_frequency == 0 and overwatch.is_rank_zero():
+                                elapsed_steps = metrics.global_step - resume_step
+                                if elapsed_steps > 0:
+                                    current_total = progress.total  # Use the potentially adjusted total
+                                    percent_complete = (elapsed_steps / current_total) * 100 if current_total > 0 else 0
+                                    remaining_steps = max(0, current_total - elapsed_steps)
+                                    if current_steps_completed > 0:
+                                        steps_per_sec = elapsed_steps / (time.time() - epoch_start_time)
+                                        est_remaining_time = remaining_steps / steps_per_sec if steps_per_sec > 0 else 0
+                                        overwatch.info(f"Step {metrics.global_step}: {percent_complete:.1f}% complete ({elapsed_steps}/{current_total} steps) "
+                                                      f"- Est. remaining: {est_remaining_time/60:.1f} min")
+                                    else:
+                                        overwatch.info(f"Step {metrics.global_step}: {percent_complete:.1f}% complete ({elapsed_steps}/{current_total} steps)")
+                                
+                    except Exception as ex:
+                        # More comprehensive error handling
                         import logging
-                        logging.warning(f"Skipping batch {train_idx} due to JSONDecodeError: {ex}")
-                        continue
+                        if "CUDA out of memory" in str(ex):
+                            logging.error(f"CUDA OOM error at batch {train_idx}: {ex}")
+                            # Try to save checkpoint before crashing
+                            try:
+                                if overwatch.is_rank_zero():
+                                    overwatch.info("Saving emergency checkpoint due to CUDA OOM")
+                                emergency_path = metrics.run_dir / f"emergency_cuda_oom_step{metrics.global_step}"
+                                self.save_checkpoint(emergency_path, metrics.global_step, epoch, loss.item() if 'loss' in locals() else None)
+                            except:
+                                logging.error("Could not save emergency checkpoint")
+                            raise  # Re-raise to stop training
+                        elif "JSONDecodeError" in str(ex) or "connection" in str(ex).lower() or "timeout" in str(ex).lower():
+                            # Network/data errors - can continue
+                            logging.warning(f"Recoverable error at batch {train_idx}, skipping: {ex}")
+                            continue
+                        else:
+                            # Unknown error - log but try to continue
+                            logging.error(f"Error at batch {train_idx}: {ex}")
+                            continue
+                    
+                    # Check for potential hangs - if no progress for 30 minutes, save checkpoint
+                    if time.time() - last_activity_time > activity_timeout_seconds:
+                        if overwatch.is_rank_zero():
+                            overwatch.info(f"No activity detected for {activity_timeout_seconds/60:.1f} minutes, saving emergency checkpoint")
+                        emergency_path = metrics.run_dir / f"emergency_timeout_step{metrics.global_step}"
+                        self.save_checkpoint(emergency_path, metrics.global_step, epoch, loss.item() if 'loss' in locals() else None)
+                        last_activity_time = time.time()  # Reset timer
+            
+            except Exception as global_ex:
+                # Catch any exceptions that might happen outside the batch loop
+                if overwatch.is_rank_zero():
+                    overwatch.info(f"Caught exception outside batch loop: {global_ex}")
+                    overwatch.info("Saving emergency checkpoint")
+                emergency_path = metrics.run_dir / f"emergency_global_step{metrics.global_step}"
+                self.save_checkpoint(emergency_path, metrics.global_step, epoch, loss.item() if 'loss' in locals() else None)
+                raise  # Re-raise after saving
+            
+            # Log the full training summary
+            if overwatch.is_rank_zero():
+                epoch_time = time.time() - epoch_start_time
+                actual_steps = actual_batches_processed // self.grad_accumulation_steps
+                overwatch.info(f"=== Training Complete ===")
+                overwatch.info(f"Processed {actual_batches_processed:,} batches, {actual_steps:,} steps in {epoch_time:.1f}s")
+                overwatch.info(f"Throughput: {actual_batches_processed/epoch_time:.1f} batches/sec, {actual_steps/epoch_time:.1f} steps/sec")
+                
+                # Report accuracy of initial estimate
+                if abs(actual_steps - estimated_steps_per_epoch) > estimated_steps_per_epoch * 0.05:  # >5% difference
+                    percent_diff = abs(actual_steps - estimated_steps_per_epoch)/estimated_steps_per_epoch * 100
+                    overwatch.info(f"Initial step estimate was off by {percent_diff:.1f}%: estimated {estimated_steps_per_epoch:,}, actual {actual_steps:,}")
 
             # Save checkpoint at end of training
-            if self.max_steps is None:
-                self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
-                dist.barrier()
-    
+            self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
+            dist.barrier()
+
     def run_training_with_dataloader(
         self,
         datainfo: DataInfo,

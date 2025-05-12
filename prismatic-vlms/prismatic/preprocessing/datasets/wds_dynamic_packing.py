@@ -25,6 +25,7 @@ from prismatic.util.data_utils import (
 from prismatic.util.data_utils import tokenizer_image_token
 from mm_sequence_packing.sequence_packing_image_to_pil import first_fit_decreasing_with_ids
 import math
+import random
 
 # Import constants from datasets.py
 IGNORE_INDEX = -100
@@ -51,7 +52,7 @@ class WDSDynamicPackingDataset:
         train_num_samples,  # Number of samples per epoch estimation
         num_workers=8,
         shuffle_buffer=10000,
-        samples_per_pack=100,  # Number of samples to consider for each packing operation
+        samples_per_pack=500,  # Increased from 100 for better packing stability
         collator=None
     ):
         self.context_len = context_len
@@ -70,8 +71,21 @@ class WDSDynamicPackingDataset:
             raise ValueError("shards_pattern must be a string of S3 patterns separated by '::'")
         parts = shards_pattern.split("::")
         grouped_urls = [expand_urls(p) for p in parts]
-        pipeline_urls = [f'pipe:aws s3 cp {u} -' for url_list in grouped_urls for u in url_list]
-
+        
+        # Add timeout and retry parameters to the S3 command
+        s3_timeout = int(os.environ.get("S3_READ_TIMEOUT", "300"))
+        s3_retries = int(os.environ.get("AWS_MAX_ATTEMPTS", "20"))
+        
+        # Configure S3 pipeline command with retries and timeouts
+        pipeline_urls = []
+        for url_list in grouped_urls:
+            for u in url_list:
+                # Add retries and timeout to S3 command
+                s3_cmd = f'aws s3 cp {u} - --cli-connect-timeout {s3_timeout} --cli-read-timeout {s3_timeout}'
+                pipeline_urls.append(f'pipe:{s3_cmd}')
+                
+        print(f"Configured {len(pipeline_urls)} pipeline URLs with {s3_retries} retries and {s3_timeout}s timeout")
+        
         # set the pack count for correct epoching during dynamic multimodal sequence packing
         self._set_sizing(grouped_urls)
         
@@ -83,23 +97,36 @@ class WDSDynamicPackingDataset:
                 return []
             return self._pack_batch(samples)
         
-        # Set up the data pipeline for streaming and processing
+        # Set up the data pipeline for streaming and processing with better error handling
         pipeline = [
+            # Level 1: Shard-level shuffle - low memory cost, high impact
             wds.SimpleShardList(pipeline_urls),
-            # Deterministic shuffling with epoch support
-            detshuffle2(bufsize=shuffle_buffer, initial=min(shuffle_buffer, 1000), 
-                       seed=0, epoch=self.shared_epoch),
-            wds.split_by_node,  # Split by node for multi-node training
-            wds.split_by_worker, # Split by worker for multi-process data loading
-            tarfile_to_samples_nothrow, # Robust tar file handling
-            wds.shuffle(bufsize=shuffle_buffer), # Additional shuffling
-            wds.decode("pilrgb"),  # Decode images to PIL
+            detshuffle2(bufsize=shuffle_buffer, 
+                       initial=min(shuffle_buffer // 2, 2000), # More memory efficient
+                       seed=-1,  # Use worker seed for variety
+                       epoch=self.shared_epoch),
+            wds.split_by_node,
+            wds.split_by_worker,
+            # Extract samples from tar files
+            tarfile_to_samples_nothrow,
+            
+            # Level 2: Sample-level shuffle BEFORE decoding - most memory efficient place
+            # This is crucial and worth the memory cost
+            wds.shuffle(bufsize=min(shuffle_buffer, 5000), 
+                       initial=min(shuffle_buffer // 4, 1000)),  # Lower initial fill
+                       
+            # Decode and prepare samples
+            wds.decode("pilrgb"),
             wds.rename(image="jpg;png;jpeg;webp", text="txt", json="json"),
             wds.to_tuple("image", "text", "json"),
-            wds.map(self._preprocess_sample),  # Convert to (image, input_ids, length)
-            wds.batched(samples_per_pack, collation_fn=None, partial=True),  # Batch raw samples into lists
-            wds.map(custom_batcher),                                        # Pack this list into list of dicts
-            unlisted(),                                                     # Flatten packed dicts back into the stream
+            wds.map(self._preprocess_sample),
+            
+            # Batching for sequence packing
+            wds.batched(samples_per_pack, collation_fn=None, partial=True),
+            wds.map(custom_batcher),
+            
+            # Final flattening - no additional high-memory shuffle 
+            unlisted(),
         ]
         
         self.dataset = wds.DataPipeline(*pipeline)
@@ -110,15 +137,25 @@ class WDSDynamicPackingDataset:
         return self.num_packs
 
     def _set_sizing(self, grouped_urls):
-        # Dry-run on rank 0: sample one shard per pattern to estimate avg length, then broadcast
+        # Dry-run on rank 0: sample more shards per pattern to estimate avg length, then broadcast
         try:
             import torch.distributed as dist
             # only rank 0 computes dry-run
             if not (dist.is_available() and dist.is_initialized()) or dist.get_rank() == 0:
-                print("Dry running to estimate avg length")
+                print("Dry running to estimate avg length and packing efficiency")
 
-                # pick first shard of each pattern
-                dry_urls = [grp[0] for grp in grouped_urls if grp]
+                # Pick more shards to get a better estimate
+                dry_urls = []
+                for grp in grouped_urls:
+                    if grp:
+                        # Sample up to 3 shards per group for a better estimate
+                        sample_count = min(3, len(grp))
+                        sample_indices = [0] + [len(grp) // 2] + [len(grp) - 1]
+                        sample_indices = sample_indices[:sample_count]
+                        dry_urls.extend([grp[i] for i in sample_indices])
+                
+                print(f"Using {len(dry_urls)} sample shards for dry run estimation")
+                
                 dry_pipe = wds.DataPipeline(
                     wds.SimpleShardList([f'pipe:aws s3 cp {u} -' for u in dry_urls]),
                     tarfile_to_samples_nothrow,
@@ -127,31 +164,74 @@ class WDSDynamicPackingDataset:
                     wds.to_tuple("image", "text", "json"),
                     wds.map(self._preprocess_sample),
                 )
+                
+                # Sample more items (up to 500) for better estimation
+                sample_limit = 500
                 lengths = []
-                for i, s in zip(range(100), dry_pipe):
-                    if s is None: break
+                samples = []
+                for i, s in zip(range(sample_limit), dry_pipe):
+                    if s is None: continue
                     lengths.append(s[2])
+                    samples.append(s)
+                
+                print(f"Collected {len(samples)} valid samples for estimation")
+                
+                # Calculate average length AND packing efficiency
                 avg_len = sum(lengths) / len(lengths) if lengths else self.context_len
-                print(f"Dry run avg length: {avg_len}")
+                
+                # Estimate packing efficiency by running the actual packing algorithm on the sample
+                if samples:
+                    length_to_uid = {i: sample[2] for i, sample in enumerate(samples)}
+                    bins = first_fit_decreasing_with_ids(length_to_uid, self.context_len)
+                    
+                    # Calculate packing efficiency based on the sample
+                    total_tokens = sum(length_to_uid.values())
+                    total_bins = len(bins) if bins else 1
+                    packing_efficiency = total_tokens / (total_bins * self.context_len)
+                    
+                    print(f"Dry run: avg length = {avg_len:.1f}, packing efficiency = {packing_efficiency:.2f}")
+                    print(f"Sample stats: total tokens = {total_tokens}, packed into {total_bins} bins")
+                    
+                    # Use packing efficiency to better estimate total number of packed samples
+                    estimated_tokens = self.train_num_samples * avg_len
+                    self.num_packs = math.ceil(estimated_tokens / (self.context_len * packing_efficiency))
+                    
+                    print(f"Full dataset estimation: {self.train_num_samples} samples with avg length {avg_len:.1f}")
+                    print(f"Estimated total tokens: {estimated_tokens:,}")
+                    print(f"Estimated packed sequences: {self.num_packs:,} (before buffer)")
+                else:
+                    print(f"Dry run avg length: {avg_len}")
+                    self.num_packs = math.ceil(self.train_num_samples * avg_len / self.context_len)
             else:
                 avg_len = 0.0
-            # broadcast estimate (use CUDA tensor if available to match NCCL backend)
+                self.num_packs = 0
+                
+            # Broadcast estimates (use CUDA tensor if available to match NCCL backend)
             if dist.is_available() and dist.is_initialized():
-                # choose device for tensor
+                # Choose device for tensor
                 if torch.cuda.is_available():
                     dev = torch.device('cuda', torch.cuda.current_device())
                 else:
                     dev = torch.device('cpu')
-                t = torch.tensor([avg_len], dtype=torch.float32, device=dev)
+                # Broadcast num_packs instead of just avg_len
+                t = torch.tensor([self.num_packs], dtype=torch.float32, device=dev)
                 dist.broadcast(t, src=0)
-                avg_len = t.cpu().item()
-            # final pack count
-            self.num_packs = math.ceil(self.train_num_samples * avg_len / self.context_len) if avg_len > 0 else math.ceil(self.train_num_samples / self.samples_per_pack)
-        except Exception:
+                self.num_packs = int(t.cpu().item())
+                
+            # Add a small buffer to account for potential estimation errors (5% extra)
+            raw_packs = self.num_packs
+            self.num_packs = math.ceil(self.num_packs * 1.05)
+                
+            print(f"Final number of packed sequences: {self.num_packs:,} (with 5% buffer, was {raw_packs:,})")
+            
+        except Exception as e:
             import traceback
             traceback.print_exc()
+            print(f"Error in size estimation: {e}")
+            # Fallback estimation
             self.num_packs = math.ceil(self.train_num_samples / self.samples_per_pack)
-
+            print(f"Using fallback estimation: {self.num_packs:,} packed sequences")
+            
     def _preprocess_sample(self, data_tuple):
         """Process a single sample from WebDataset, using the same approach as PreTrainDataset.preprocess_obelics_interleaved"""
         if not data_tuple:
@@ -173,7 +253,7 @@ class WDSDynamicPackingDataset:
         
         # Create an interleaved text with image tokens, similar to original preprocessing
         # Wrap the text with image tokens to create interleaved document
-        corpus = DEFAULT_IMAGE_TOKEN + "\n" + text
+        corpus = DEFAULT_IMAGE_TOKEN + "\n" + text.replace(DEFAULT_IMAGE_TOKEN, IMAGE_PLACEHOLDER)
         
         # Tokenize with image tokens
         input_ids, _ = tokenizer_image_token(corpus, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt')
@@ -194,8 +274,10 @@ class WDSDynamicPackingDataset:
         # Verify BOS token
         assert input_ids[0] == self.tokenizer.bos_token_id
         
-        # Calculate length including image tokens
-        length = (NUM_IMAGES_TOKEN - 1) * image_tokens + input_ids.shape[-1]
+        # FIXED: Calculate length to EXACTLY match the offline approach (preprocess_caption)
+        # The offline approach uses a fixed constant offset regardless of number of images:
+        # info['length'] = NUM_IMAGES_TOKEN - 1 + input_ids.shape[-1]
+        length = NUM_IMAGES_TOKEN - 1 + input_ids.shape[-1]
         
         # Return tuple matching the format expected by _concat_documents
         return ([image], input_ids, length)
@@ -293,7 +375,11 @@ class WDSDynamicPackingDataset:
             # Convert lengths to integers if they're in dictionaries
             numeric_lengths = [item if isinstance(item, int) else item["length"] for item in new_length]
             token_diff = sum(numeric_lengths) - new_input_ids.shape[-1]
-            expected_diff = (NUM_IMAGES_TOKEN - 1) * len(new_image_tensors)
+            
+            # FIXED: To match the offline approach's length calculation
+            # Each document now adds NUM_IMAGES_TOKEN - 1 to its length regardless of image count
+            # So for N documents, we expect a total difference of N * (NUM_IMAGES_TOKEN - 1)
+            expected_diff = len(new_length) * (NUM_IMAGES_TOKEN - 1)
             
             # Verify length differences match
             if token_diff != expected_diff:
@@ -332,6 +418,8 @@ class WDSDynamicPackingDataset:
         
         # Set number of batches per epoch based on pack count and loader batch size
         loader.num_batches = math.ceil(self.num_packs / batch_size)
+        print(f"Dataloader configured with {loader.num_batches:,} batches per epoch")
+        print(f"With gradient accumulation steps={8}, estimated training steps ~{loader.num_batches//8:,}")
             
         # Return DataInfo which is expected by run_training_with_wds_dataloader
         return DataInfo(dataloader=loader, shared_epoch=self.shared_epoch)

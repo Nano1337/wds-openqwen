@@ -11,14 +11,25 @@ BSZ=$2
 PER_GPU_BSZ=$3
 DATASET_PATH=${4:-"Open-Qwen2VL-Data"}  # Default dataset path if not provided
 
+# Echo Python path for debugging
+echo "Using PYTHONPATH: $PYTHONPATH"
+
 # Dynamic packing configuration
 WORKERS=8
 SHUFFLE_BUFFER=5000
-SAMPLES_PER_PACK=64
+SAMPLES_PER_PACK=256
 echo "Using dynamic sequence packing with $WORKERS workers"
 
 # Dynamic packing specific args
 DYNAMIC_ARGS="--dataset.workers $WORKERS --dataset.shuffle_buffer $SHUFFLE_BUFFER --dataset.samples_per_pack $SAMPLES_PER_PACK"
+
+# Ensure we include the current directory and any parent directories in the python path for imports
+if [ -z "$PYTHONPATH" ]; then
+  export PYTHONPATH="$(pwd)"
+else
+  export PYTHONPATH="$(pwd):$PYTHONPATH"
+fi
+echo "Updated PYTHONPATH: $PYTHONPATH"
 
 # fsdp-shard-grad-op is zero2 since we're using 8 H100-80GB
 torchrun --nproc_per_node 8 prismatic-vlms/scripts/pretrain.py \
@@ -32,7 +43,7 @@ torchrun --nproc_per_node 8 prismatic-vlms/scripts/pretrain.py \
   --model.pretrain_global_batch_size ${BSZ} \
   --model.pretrain_per_device_batch_size ${PER_GPU_BSZ} \
   --model.pretrain_epochs 1 \
-  --model.pretrain_train_strategy "fsdp-shard-grad-op" \
+  --model.pretrain_train_strategy "fsdp-full-shard" \
   --mount_path Qwen \
   --run_root_dir checkpoints/ \
   --dataset.type "pretrain" \
