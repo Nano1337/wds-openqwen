@@ -1,0 +1,9 @@
+eval_name,accuracy
+mmstar/mmstar-full/qwen_vlm_dp,0.382
+mathvista/mathvista-full/qwen_vlm_dp,0.352
+pope/pope-full/qwen_vlm_dp,0.866438717067583
+mmbench/mmbench-full/qwen_vlm_dp,0.7498286497601097
+seedbench/seedbench-full/qwen_vlm_dp,0.6543244572472423
+ai2d/ai2d-full/qwen_vlm_dp,0.5514896373056994
+text-vqa/text-vqa-full/qwen_vlm_dp,0.5015000000000002
+mmmu/mmmu-full/qwen_vlm_dp,0.3811111111111111

@@ -120,7 +120,8 @@ class WDSDynamicPackingDataset:
             wds.rename(image="jpg;png;jpeg;webp", text="txt", json="json"),
             wds.to_tuple("image", "text", "json"),
             wds.map(self._preprocess_sample),
-            
+
+
             # Batching for sequence packing
             wds.batched(samples_per_pack, collation_fn=None, partial=True),
             wds.map(custom_batcher),

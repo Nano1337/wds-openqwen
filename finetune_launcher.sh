@@ -10,7 +10,7 @@
 #SBATCH --partition=main
 #SBATCH -t 72:00:00                          # Time limit (hh:mm:ss)
 #SBATCH --gpus-per-node=8                       # Specify a list of generic consumable resources (per node)
-#SBATCH --reservation=haoli_resv
+#SBATCH --reservation=haoli_resv2
 ########
 # Manually set and enter project root (FSX mount)
 export PROJECT_ROOT="/fsx/users/haoli/datopenqwen"
@@ -24,6 +24,10 @@ source "$PROJECT_ROOT/.venv/bin/activate"
 
 # Point to venv python
 export PYTHON="$PROJECT_ROOT/.venv/bin/python"
+
+# Add mm_sequence_packing to Python path
+export PYTHONPATH="$PROJECT_ROOT:$PYTHONPATH"
+echo "PYTHONPATH is set to: $PYTHONPATH"
 
 # Set environment variables for better performance
 export NCCL_DEBUG=INFO

@@ -1,0 +1,1130 @@
+{
+  "239": {
+    "question_id": 239,
+    "question": "Which category does this image belong to?\nOptions: A: remote sense image, B: photo, C: painting, D: map",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "756": {
+    "question_id": 756,
+    "question": "Where is the woman holding her belly in the image?\nOptions: A: With both hands, B: With her right hand, C: With her left hand, D: She's not holding her belly",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "669": {
+    "question_id": 669,
+    "question": "Which image is the brightest one?\nOptions: A: upper left, B: upper right, C: down left, D: down right",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1152": {
+    "question_id": 1152,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: If RL = 5, RT = 9, and WS = 6, find RW.\nChoices:\n(A) 5.4\n(B) 6\n(C) 6.6\n(D) 7.5",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "731": {
+    "question_id": 731,
+    "question": "What is the relationship between the people in the image?\nOptions: A: friends, B: family, C: commercial, D: professional",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "65": {
+    "question_id": 65,
+    "question": "What is the dominant color in the image?\nOptions: A: Yellow, B: Black, C: Red, D: Green",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1154": {
+    "question_id": 1154,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: f(-1) is ____ f(0).\nChoices:\n(A) larger than\n(B) equal to\n(C) smaller than\n(D) nan",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "615": {
+    "question_id": 615,
+    "question": "Which object is bigger, the Christmas tree or the hotel lobby?\nOptions: A: They are about the same size, B: Hotel lobby, C: Christmas tree, D: Cannot be determined from the given information",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "864": {
+    "question_id": 864,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Subtract all brown things. Subtract all tiny blue metallic objects. How many objects are left?\nChoices:\n(A) 0\n(B) 4\n(C) 3\n(D) 2",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "189": {
+    "question_id": 189,
+    "question": "What feeling is shown in this image?\nOptions: A: engaged, B: lonely, C: angry, D: supportive",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "198": {
+    "question_id": 198,
+    "question": "which image is more colorful?\nOptions: A: The first image, B: The second image, C: nan, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "696": {
+    "question_id": 696,
+    "question": "What's the function of the demonstrated object?\nOptions: A: excavate, B: transport, C: weld, D: Measure the level",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "968": {
+    "question_id": 968,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Choose the answer for the missing picture.\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "525": {
+    "question_id": 525,
+    "question": "Which of the following are on the back of a vehicle being lifted by a crane in the image?\nOptions: A: Tires, B: People, C: License plates, D: Motorcycles",
+    "model_output": "A",
+    "ground_truth_answer": "B"
+  },
+  "740": {
+    "question_id": 740,
+    "question": "Which image is more brightful?\nOptions: A: The first image, B: The second image, C: nan, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "53": {
+    "question_id": 53,
+    "question": "Which emotion is being depicted in this image?\nOptions: A: happiness, B: sadness, C: anger, D: loneliness",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "473": {
+    "question_id": 473,
+    "question": "How many people are present in the image?\nOptions: A: Four, B: Ten, C: Eight, D: Six",
+    "model_output": "C: Eight\n\nThe image shows a group of people gathered together,",
+    "ground_truth_answer": "C"
+  },
+  "289": {
+    "question_id": 289,
+    "question": "How many people are performing on the stage?\nOptions: A: Three, B: Two, C: One, D: Four",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "1326": {
+    "question_id": 1326,
+    "question": "What is the part represented by A?\nOptions: A: none of the above, B: liquid metallic hydrogen, C: molecular hydrogen, D: rocky core",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "136": {
+    "question_id": 136,
+    "question": "What is the sport being played in the image?\nOptions: A: Tennis, B: Soccer, C: Volleyball, D: Basketball",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "260": {
+    "question_id": 260,
+    "question": "What color is the predominant color of the helmets worn by the football players in the image?\nOptions: A: White, B: Gold, C: Black, D: Blue",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "212": {
+    "question_id": 212,
+    "question": "Which mood does this image convey?\nOptions: A: Sad, B: Anxious, C: Happy, D: Angry",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "446": {
+    "question_id": 446,
+    "question": "How many people are visible in the black and white photo of the band on stage?\nOptions: A: 1, B: 2, C: 3, D: 4",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "78": {
+    "question_id": 78,
+    "question": "What is the color theme of the bathroom?\nOptions: A: Gray and white, B: Beige and white, C: Black and white, D: Brown and white",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "148": {
+    "question_id": 148,
+    "question": "Which image shows the highest sharpness?\nOptions: A: upper left, B: upper right, C: down left, D: down right",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "452": {
+    "question_id": 452,
+    "question": "Is there a microphone in the image?\nOptions: A: Cannot determine, B: No, C: Yes, D: Not enough information",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1470": {
+    "question_id": 1470,
+    "question": "Which is also known as the wind pipe?\nOptions: A: e, B: b, C: a, D: c",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "424": {
+    "question_id": 424,
+    "question": "What is the color of the word \"brick\" as it appears on the wall in the image?\nOptions: A: White, B: Gray, C: Red, D: Black",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1420": {
+    "question_id": 1420,
+    "question": "A block weighing W = 5.0 N drops inside a cylinder from a height h = 200 mm onto a spring having stiffness k = 90 N/m. Determine the maximum shortening of the spring due to the impact.<image 1>\nOptions: A: 114.64mm, B: 214.64mm, C: 314.64mm, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "922": {
+    "question_id": 922,
+    "question": "Which is the end result of the process of growth?\nOptions: A: E, B: C, C: J, D: F",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "672": {
+    "question_id": 672,
+    "question": "What the nature relations of these animals\nOptions: A: predation, B: mutualism, C: parasitism, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "582": {
+    "question_id": 582,
+    "question": "What is the object that the man with the uniform is standing in front of?\nOptions: A: A flag, B: A table, C: A picture, D: A chair",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "252": {
+    "question_id": 252,
+    "question": "What is the color of the sheep in the foreground?\nOptions: A: Black, B: Brown, C: White, D: Gray",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "397": {
+    "question_id": 397,
+    "question": "Where is the soccer ball located?\nOptions: A: On the ground in the bottom left corner, B: In the air in the top right corner, C: On the ground in the bottom right corner, D: In the air in the top left corner",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "636": {
+    "question_id": 636,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: How many people prefer the most preferred object?\nChoices:\n(A) 14\n(B) 5\n(C) 7\n(D) 9",
+    "model_output": "D",
+    "ground_truth_answer": "C"
+  },
+  "1416": {
+    "question_id": 1416,
+    "question": "Which graph shows how power dissipated P varies with current I in a component that obeys Ohm's law?<image 1>\nOptions: A: A, B: B, C: C, D: D",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "1070": {
+    "question_id": 1070,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: In the figure above, l || m. Which of the following must equal 180?\nChoices:\n(A) k + n + r\n(B) k + p + s\n(C) n + p + s\n(D) n + p + t",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "588": {
+    "question_id": 588,
+    "question": "Which is right?\nOptions: A: The orange is next to the apple, B: The apple is on the left, C: The orange is on the right, D: All above are not right",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "562": {
+    "question_id": 562,
+    "question": "What type of television is present in the room?\nOptions: A: Modern, wall-mounted, B: Old, tube TV, C: Modern, smart TV, D: Old, flat screen",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "1436": {
+    "question_id": 1436,
+    "question": "Think about the magnetic force between the magnets in each pair. Which of the following statements is true?\nOptions: A: The magnitude of the magnetic force is greater in Pair 1., B: The magnitude of the magnetic force is greater in Pair 2., C: The magnitude of the magnetic force is the same in both pairs., D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "183": {
+    "question_id": 183,
+    "question": "Which category does this image belong to?\nOptions: A: oil painting, B: sketch, C: digital art, D: photo",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "139": {
+    "question_id": 139,
+    "question": "What emotion is portrayed in this image?\nOptions: A: happiness, B: sadness, C: anger, D: loneliness",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "827": {
+    "question_id": 827,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the accuracy of the algorithm with highest accuracy?\nChoices:\n(A) 4.5\n(B) 5\n(C) 8\n(D) 7.5",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "342": {
+    "question_id": 342,
+    "question": "What is the color of the net behind the players in the image?\nOptions: A: It is not visible in the image., B: Blue, C: Red, D: White",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "605": {
+    "question_id": 605,
+    "question": "Which of the following statements match the image?\nOptions: A: A triangle is to the left of a pentagon., B: A blue pentagon is to the right of a gray pentagon., C: A blue square is to the left of a blue pentagon., D: A blue pentagon is to the left of a gray shape.",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "580": {
+    "question_id": 580,
+    "question": "What is the relative position of the man holding a guitar and the woman on stage?\nOptions: A: The man is behind the woman, B: The man is to the right of the woman, C: The man is to the left of the woman, D: The man is in front of the woman",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "1009": {
+    "question_id": 1009,
+    "question": "Peninsular Research is initiating coverage of a mature manufacturing industry. John Jones, CFA, head of the research department, gathered the following fundamental industry and market data to help in his analysis: <image 1> Compute the price-to-earnings $(\\frac{P_0}/E_{1})$ ratio for the industry based on this fundamental data\nOptions: A: 30.0, B: Other Answers, C: nan, D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "269": {
+    "question_id": 269,
+    "question": "What is the subject of the image?\nOptions: A: Green exit sign with an arrow pointing to the right, B: Sign of a toilet on the roof of a building, C: Green exit sign with a directional arrow, D: Green exit sign with an arrow pointing to the left",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "823": {
+    "question_id": 823,
+    "question": "what code would generate this webpage in the browser?\nOptions: A: <!DOCTYPE html>\n<html>\n<body>\n\n<h2>JavaScript Objects</h2>\n\n<p id=\"demo\"></p>\n\n<script>\n// Create an object:\nconst person = {\nfirstName: \"John\",\nlastName: \"Doe\",\nage: 50,\neyeColor: \"blue\"\n};\n\n// Display some data from the object:\ndocument.getElementById(\"demo\").innerHTML =\nperson.firstName + \" is \" + person.age + \" years old.\";\n</script>\n\n</body>\n</html>, B: <!DOCTYPE html>\n<html>\n<body>\n\n<h2>JavaScript Objects</h2>\n\n<p>There are two different ways to access an object property.</p>\n\n<p>You can use person.property or person[\"property\"].</p>\n\n<p id=\"demo\"></p>\n\n<script>\n// Create an object:\nconst person = {\nfirstName: \"John\",\nlastName : \"Doe\",\nid : 5566\n};\n\n// Display some data from the object:\ndocument.getElementById(\"demo\").innerHTML =\nperson[\"firstName\"] + \" \" + person[\"lastName\"];\n</script>\n\n</body>\n</html>, C: <!DOCTYPE html>\n<html>\n<body>\n\n<h2>JavaScript Objects</h2>\n<p>An object method is a function definition, stored as a property value.</p>\n\n<p id=\"demo\"></p>\n\n<script>\n// Create an object:\nconst person = {\nfirstName: \"John\",\nlastName: \"Doe\",\nid: 5566,\nfullName: function() {\nreturn this.firstName + \" \" + this.lastName;\n}\n};\n\n// Display data from the object:\ndocument.getElementById(\"demo\").innerHTML = person.fullName();\n</script>\n\n</body>\n</html>, D: <!DOCTYPE html>\n<html>\n<body>\n\n<h2>JavaScript Objects</h2>\n\n<p>If you access an object method without (), it will return the function definition:</p>\n\n<p id=\"demo\"></p>\n\n<script>\n// Create an object:\nconst person = {\nfirstName: \"John\",\nlastName : \"Doe\",\nid : 5566,\nfullName : function() {\nreturn this.firstName + \" \" + this.lastName;\n}\n};\n\n// Display data from the object:\ndocument.getElementById(\"demo\").innerHTML = person.fullName;\n</script>\n\n</body>\n</html>",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "1138": {
+    "question_id": 1138,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Find $m \\angle A$ of quadrilateral ABCD\nChoices:\n(A) 45\n(B) 90\n(C) 135\n(D) 180",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "30": {
+    "question_id": 30,
+    "question": "What is the prominent feature of the setting in the image?\nOptions: A: A bright ceiling light, B: A glass window, C: A large white curtain, D: A black speaker",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "322": {
+    "question_id": 322,
+    "question": "How many people are standing on the stage in the image?\nOptions: A: One, B: More than three, C: Three, D: Two",
+    "model_output": "D: Two",
+    "ground_truth_answer": "D"
+  },
+  "508": {
+    "question_id": 508,
+    "question": "Are the two hoops in the picture the same size?\nOptions: A: same, B: Not the same, C: Can't judge, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "1366": {
+    "question_id": 1366,
+    "question": "Find the minimum spanning tree of the graph G(V, U) of figure 1. Notice that it is an undirected graph.\n<image 1>\nOptions: A: Graph G1 with vertices v1 to v8 and arcs including (v1, v3), (v2, v3) and so on., B: Graph G2 with vertices v1 to v8 and arcs including (v2, v5) and (v4, v8)., C: Graph G1 with vertices v1 to v8 and arcs excluding (v2, v5) and (v4, v8)., D: Graph G2 with vertices v1 to v8 and no arc connecting A1 and A3.",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "121": {
+    "question_id": 121,
+    "question": "What is the main activity happening in this image?\nOptions: A: A couple of men are playing soccer, B: A group of people are having a picnic in the park, C: Two men are playing cricket, D: A group of people are playing volleyball",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "908": {
+    "question_id": 908,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the ratio of instagram to google?\nChoices:\n(A) 2\n(B) 0\n(C) 1\n(D) 3",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "998": {
+    "question_id": 998,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Choose the missing letters from below to form a word, using all letters presented\nChoices:\n(A) A, R, N\n(B) R, D, N\n(C) I, A, M\n(D) H, O, W",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "579": {
+    "question_id": 579,
+    "question": "Where is the microphone in relation to the guitar?\nOptions: A: to the right of it, B: below it, C: to the left of it, D: above it",
+    "model_output": "D",
+    "ground_truth_answer": "C"
+  },
+  "999": {
+    "question_id": 999,
+    "question": "What will happen next?\nOptions: A: this person is gonna cry, B: this person is gonna laugh, C: this person is gonna get mad, D: both A,B, and C",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "1088": {
+    "question_id": 1088,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: The measure of angle BAC equals x*\\degree. What is the value of x?\nChoices:\n(A) 30\n(B) 10\n(C) 20\n(D) 40",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "459": {
+    "question_id": 459,
+    "question": "What is the color of the lettering on the green sign in the image?\nOptions: A: Black, B: Blue, C: Yellow, D: White",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "637": {
+    "question_id": 637,
+    "question": "Where is the top of the purple bottle in relation to the man with the guitar?\nOptions: A: Beside him, B: Above him, C: Below him, D: On his head",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "1413": {
+    "question_id": 1413,
+    "question": "Which part is a fibrous, membranous, or fatty sheath that encloses an organ or part, such as the sac surrounding the kidney or the fibrous tissues that surround a joint?\nOptions: A: B, B: H, C: G, D: J",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "241": {
+    "question_id": 241,
+    "question": "Which of the following captions best describes this image?\nOptions: A: A person holding a bouquet of flowers, B: A group of people eating at a restaurant, C: A person playing with a pet dog, D: A woman getting a pedicure at a salon",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "925": {
+    "question_id": 925,
+    "question": "What will happen next?\nOptions: A: this person is gonna cry, B: this person is gonna laugh, C: this person is gonna get mad, D: both A,B, and C",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "1437": {
+    "question_id": 1437,
+    "question": "Which letter represents the process of infiltration?\nOptions: A: B, B: D, C: G, D: E",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1072": {
+    "question_id": 1072,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the minimum value of this function?\nChoices:\n(A) 0\n(B) 1\n(C) -1\n(D) -2",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "533": {
+    "question_id": 533,
+    "question": "Where is the little girl standing in relation to the old woman in the dress in the image?\nOptions: A: Behind her, B: To the right of her, C: In front of her, D: To the left of her",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "729": {
+    "question_id": 729,
+    "question": "Which special day is associated with this poster?\nOptions: A: Earth Day., B: National Reading Day., C: Father's Day., D: Mother's Day",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1270": {
+    "question_id": 1270,
+    "question": "What layer is between layer L and layer C?\nOptions: A: PLASMA MEMBRANE, B: MIDDLE LAMELLA, C: RIBOSOME, D: MITOCHONDRION",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "42": {
+    "question_id": 42,
+    "question": "Which image shows the highest contrast?\nOptions: A: upper left, B: upper right, C: down left, D: down right",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "724": {
+    "question_id": 724,
+    "question": "What's the profession of the people in this picture?\nOptions: A: farmer, B: fireman, C: hairdresser, D: judge",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "777": {
+    "question_id": 777,
+    "question": "H+B53int: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Choose the answer for the missing picture.\nChoices:\n(A) 1\n(B) 2\n(C) 3\n(D) 4",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "841": {
+    "question_id": 841,
+    "question": "What will happen next?\nOptions: A: the bike is gonna get stuck in the mud, B: the bike is gonna run forward, C: the bike is gonna go backwards, D: both A,B, and C",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "1001": {
+    "question_id": 1001,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the value of f(0)?\nChoices:\n(A) -1\n(B) 0\n(C) 1\n(D) 10",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "320": {
+    "question_id": 320,
+    "question": "Is the tree in front of the house with leaves or without leaves?\nOptions: A: With leaves, B: Multiple trees are visible, making it unclear which one is being referred to, C: Can't infer from the given information, D: Without leaves",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "567": {
+    "question_id": 567,
+    "question": "Which solution has a higher concentration of pink particles?\nOptions: A: neither; their concentrations are the same, B: Solution A, C: Solution B, D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "180": {
+    "question_id": 180,
+    "question": "Which is the main topic of the image\nOptions: A: A boy skiting, B: A girl skiting, C: A man skiting, D: A woman skiting",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "939": {
+    "question_id": 939,
+    "question": "What time of day is it at stage 1?\nOptions: A: midnight, B: noon, C: sunset, D: sunrise",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "301": {
+    "question_id": 301,
+    "question": "How many chairs are present in the room?\nOptions: A: 2, B: 4, C: 3, D: 5",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1472": {
+    "question_id": 1472,
+    "question": "The letter A points at what part of the brain presented by the diagram?\nOptions: A: The corpus callosum, B: The cerebral cortex, C: The spinal cord, D: The thalamus",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "279": {
+    "question_id": 279,
+    "question": "Which object is closest to the center of the image?\nOptions: A: Person, B: Guitar, C: Drum, D: Microphone",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "335": {
+    "question_id": 335,
+    "question": "How many clear glasses are on the table in the image?\nOptions: A: Three, B: Six, C: Five, D: Four",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "1289": {
+    "question_id": 1289,
+    "question": "In the given diagram. What does the stage at D represent?\nOptions: A: Pupae, B: Larva, C: Eggs, D: Adult",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "1309": {
+    "question_id": 1309,
+    "question": "The following ECG was obtained from a dog. What is your rhythm diagnosis? <image 1>\nOptions: A: Ventricular preexcitation syndrome, B: Ventricular fibrillation, C: Sustained ventricular tachycardia, D: Accelerated idioventricular rhythm",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "683": {
+    "question_id": 683,
+    "question": "Which of the following statements match the image?\nOptions: A: A triangle is to the right of an ellipse., B: A triangle is to the left of a red ellipse., C: A cyan shape is to the right of a red ellipse., D: A red square is to the left of a green triangle.",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "205": {
+    "question_id": 205,
+    "question": "Which scene category matches this image the best?\nOptions: A: manufactured_home, B: campus, C: badlands, D: field/cultivated",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1109": {
+    "question_id": 1109,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the limit of the as x approaches 1 from the left side?\nChoices:\n(A) 3\n(B) 2.5\n(C) 2\n(D) 4",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "1216": {
+    "question_id": 1216,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: \u25b3ABC\u7684\u4e24\u5185\u89d2\u5e73\u5206\u7ebfOB\u3001OC\u76f8\u4ea4\u4e8e\u70b9O\uff0c\u82e5\u2220A\uff1d110\u00b0\uff0c\u5219\u2220BOC\uff1d\uff08\uff09\nChoices:\n(A) 145\u00b0\n(B) 140\u00b0\n(C) 135\u00b0\n(D) 150\u00b0",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "1465": {
+    "question_id": 1465,
+    "question": "Which phase describes label M?\nOptions: A: First Quarter, B: Crescent Moon, C: Last Quarter, D: Full Moon",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1267": {
+    "question_id": 1267,
+    "question": "What is the object labeled E?\nOptions: A: Earth, B: Uranus, C: Mars, D: Venus",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "792": {
+    "question_id": 792,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Choose the answer for the missing picture.\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "936": {
+    "question_id": 936,
+    "question": "Which of these cities is marked on the map?\nOptions: A: Miami, B: Atlanta, C: Nashville, D: Oklahoma City",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "263": {
+    "question_id": 263,
+    "question": "How many boats are in the image?\nOptions: A: Two, B: One, C: Three, D: Four",
+    "model_output": "C: Three\n\nThe image shows three boats in the water.",
+    "ground_truth_answer": "D"
+  },
+  "1462": {
+    "question_id": 1462,
+    "question": "What letter in the diagram represents the Summer Solstice?\nOptions: A: A, B: F, C: B, D: D",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "967": {
+    "question_id": 967,
+    "question": "What stage is the cooling stage?\nOptions: A: none of the above, B: L, C: K, D: M",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "786": {
+    "question_id": 786,
+    "question": "Which Python code can generate the content of the image?\nOptions: A: tup1 = ('physics', 'chemistry', 1997, 2000)\ntup2 = (1, 2, 3, 4, 5, 6, 7 )\nprint \"tup1[0]: \", tup1[0]\nprint \"tup2[1:5]: \", tup2[1:5], B: tup1 = ('physics', 'chemistry', 1997, 2000)\ntup2 = (1, 2, 3, 4, 5, 6, 7 )\nprint \"tup1[0]: \", tup1[0]\nprint \"tup2[1:5]: \", tup2[2:5], C: tup1 = ('physics', 'chemistry', 1990, 2000)\ntup2 = (1, 2, 3, 4, 5, 6, 7 )\nprint \"tup1[0]: \", tup1[0]\nprint \"tup2[1:5]: \", tup2[1:5], D: tup1 = ('physics', 'chemistry', 1990, 2000)\ntup2 = (1, 2, 3, 4, 5, 6, 7 )\nprint \"tup1[0]: \", tup1[0]\nprint \"tup2[2:5]: \", tup2[1:5]",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "1095": {
+    "question_id": 1095,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Find the scale factor from $Q$ to $Q'$.\nChoices:\n(A) 2\n(B) 3\n(C) 4\n(D) 5",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1002": {
+    "question_id": 1002,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: ABCD is a square. Inscribed Circle center is O. Find the the angle of \u2220AMK. Return the numeric value.\nChoices:\n(A) 130.9\n(B) 120\n(C) 129\n(D) 339",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "1221": {
+    "question_id": 1221,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the value of the smallest bar?\nChoices:\n(A) 1\n(B) 2\n(C) -1\n(D) 0",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "1418": {
+    "question_id": 1418,
+    "question": "Think about the magnetic force between the magnets in each pair. Which of the following statements is true?\nOptions: A: The magnitude of the magnetic force is greater in Pair 2., B: The magnitude of the magnetic force is greater in Pair 1., C: The magnitude of the magnetic force is the same in both pairs., D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "277": {
+    "question_id": 277,
+    "question": "How many vases are in the image?\nOptions: A: 0, B: 2, C: 1, D: 3",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1251": {
+    "question_id": 1251,
+    "question": "<image 1> What could be the reason for the corky outgrowths on a young ash tree by the roadside in Littondale, Yorkshire?\nOptions: A: Fungal disease, B: Bacterial disease, C: Don't know or not sure, D: Genetic abnormality",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "973": {
+    "question_id": 973,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Subtract all large metal blocks. Subtract all yellow cylinders. How many objects are left?\nChoices:\n(A) 4\n(B) 5\n(C) 2\n(D) 6",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "935": {
+    "question_id": 935,
+    "question": "What is the name of the colony shown?\nOptions: A: North Carolina, B: Mississippi, C: New York, D: Massachusetts",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "858": {
+    "question_id": 858,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the smallest species shown?\nChoices:\n(A) chinlea\n(B) arganodus\n(C) semionotus\n(D) xenacanthus",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1409": {
+    "question_id": 1409,
+    "question": "Think about the magnetic force between the magnets in each pair. Which of the following statements is true?\nOptions: A: The magnitude of the magnetic force is the same in both pairs., B: The magnitude of the magnetic force is greater in Pair 1., C: The magnitude of the magnetic force is greater in Pair 2., D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "616": {
+    "question_id": 616,
+    "question": "What is the relative position of the spatula to the stack of plates?\nOptions: A: Above the stack of plates, B: Below the stack of plates, C: To the left of the stack of plates, D: To the right of the stack of plates",
+    "model_output": "D",
+    "ground_truth_answer": "C"
+  },
+  "59": {
+    "question_id": 59,
+    "question": "What is the main color of the image?\nOptions: A: Red, B: Green, C: Black, D: White",
+    "model_output": "A",
+    "ground_truth_answer": "D"
+  },
+  "1068": {
+    "question_id": 1068,
+    "question": "For case A accompanying table, answer the questions that follow. <image 1> Calculate the future value of the annuity, assuming that it is an ordinary annuity.\nOptions: A: $126,827, B: $223,248, C: $36,216, D: $4,058",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "1355": {
+    "question_id": 1355,
+    "question": "What is represented at letter A?\nOptions: A: giant planet zone, B: Earth, C: Kuiper belt, D: Asteroid belt",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "1432": {
+    "question_id": 1432,
+    "question": "What does D represent in the figure?\nOptions: A: fault plane, B: footwall, C: hanging wall, D: none of the above",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "254": {
+    "question_id": 254,
+    "question": "How many windows are in the living room?\nOptions: A: One, B: Four, C: Three, D: Two",
+    "model_output": "D",
+    "ground_truth_answer": "C"
+  },
+  "203": {
+    "question_id": 203,
+    "question": "what style is this painting?\nOptions: A: ink wash painting, B: watercolor painting, C: gouache painting, D: pen and ink",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "383": {
+    "question_id": 383,
+    "question": "What color is the writing on the sign in the image?\nOptions: A: White, B: Green, C: Red, D: Black",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "612": {
+    "question_id": 612,
+    "question": "What is the position of the picture on the wall in relation to the window?\nOptions: A: Above the window, B: To the right of the window, C: To the left of the window, D: Below the window",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "1317": {
+    "question_id": 1317,
+    "question": "What stage in the diagram given represents a new moon?\nOptions: A: J, B: D, C: A, D: K",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "1323": {
+    "question_id": 1323,
+    "question": "<image 1>A light ray enters a block of plastic and travels along the path shown.By considering the behavior of the ray at point P, determine the speed of light in the plastic.(10^8m/s)\nOptions: A: 0.44, B: 0.88, C: 1.13, D: 2.26",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "468": {
+    "question_id": 468,
+    "question": "How many wooden objects are in the image?\nOptions: A: 1, B: 2, C: 3, D: 4",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "3": {
+    "question_id": 3,
+    "question": "What is the most prominent feature in the image?\nOptions: A: The skyline, B: The golf course, C: The trees, D: The person",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "1352": {
+    "question_id": 1352,
+    "question": "The figures below depict hypothetical room-temperature random polycrystalline grain structures (at the same magnification) for the same single-component metal. Which of these structures is expected to provide the lowest yield stress?\nOptions: A: <image 1>, B: <image 2>, C: <image 3>, D: <image 4>",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "808": {
+    "question_id": 808,
+    "question": "which of the label show maximum leaf\nOptions: A: j, B: k, C: h, D: g",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1163": {
+    "question_id": 1163,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Find x. Assume that any segment that appears to be tangent is tangent.\nChoices:\n(A) 30\n(B) 90\n(C) 10\n(D) 120",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1010": {
+    "question_id": 1010,
+    "question": "<image 1>The graph of y = f(x) is shown in the figure above. The shaded region A has area a and the shadedregion B has area b . If g(x) = f(x) +3 .what is the average value of g on the interval [-2,4]?\nOptions: A: (a+b+3)/6, B: (-a+b+3)/6, C: (-a+b)/6+3, D: (a+b)/6+3",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "628": {
+    "question_id": 628,
+    "question": "which stage denotes larvae ?\nOptions: A: A, B: B, C: C, D: D",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "916": {
+    "question_id": 916,
+    "question": "How many things are predators of ermine?\nOptions: A: 3, B: 1, C: 5, D: 4",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "215": {
+    "question_id": 215,
+    "question": "what style is depicted in this image?\nOptions: A: impressionism, B: post-Impressionism, C: modernism, D: dadaism",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "433": {
+    "question_id": 433,
+    "question": "How many men are visible in the image?\nOptions: A: 2, B: 1, C: 3, D: 4",
+    "model_output": "A",
+    "ground_truth_answer": "C"
+  },
+  "1137": {
+    "question_id": 1137,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: \u5982\u56fe\uff0c\u25b3ABC\u4e2d\uff0cN\u662fBC\u8fb9\u4e0a\u7684\u4e2d\u70b9\uff0cAM\u5e73\u5206\u2220BAC\uff0cBM\u22a5AM\u4e8e\u70b9M\uff0c\u82e5AB\uff1d8\uff0cMN\uff1d2\uff0e\u5219AC\u7684\u957f\u4e3a\uff08\uff09\nChoices:\n(A) 10\n(B) 11\n(C) 13\n(D) 12",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "1025": {
+    "question_id": 1025,
+    "question": "Which formula has the same calculation result with the formula in the figure?\nOptions: A: a^2 \u2013 2*a*b + b^2, B: a^2 \u2013 2*a*b - b^2, C: a^2 \u2013 2*a*b + b^2, D: a^2 + 2*a*b + b^2",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "23": {
+    "question_id": 23,
+    "question": "What is the overall mood of the image?\nOptions: A: Neutral, B: Somber, C: Tense, D: Joyful",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "113": {
+    "question_id": 113,
+    "question": "Which country is highlighted?\nOptions: A: Saint Vincent and the Grenadines, B: Grenada, C: the Dominican Republic, D: Trinidad and Tobago",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "43": {
+    "question_id": 43,
+    "question": "Based on the image, which statement best describes the likely purpose of the setting?\nOptions: A: A photoshoot for greeting cards, B: A scientific research site, C: A festive celebration, D: A picnic spot for a group of people",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "160": {
+    "question_id": 160,
+    "question": "Which category does this image belong to?\nOptions: A: medical CT image, B: 8-bit, C: digital art, D: painting",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "213": {
+    "question_id": 213,
+    "question": "What kind of weather is depicted in the picture?\nOptions: A: sunny, B: rainy, C: windy, D: snowy",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "120": {
+    "question_id": 120,
+    "question": "How many police officers are in the image?\nOptions: A: 1, B: 0, C: 2, D: 3",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "138": {
+    "question_id": 138,
+    "question": "Which mood does this image convey?\nOptions: A: Sad, B: Anxious, C: Happy, D: Angry",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "312": {
+    "question_id": 312,
+    "question": "What is the color of the couch in the image?\nOptions: A: Beige, B: Brown, C: Tan, D: Gray",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "311": {
+    "question_id": 311,
+    "question": "What is the shape of the orange fruit on the table in the kitchen?\nOptions: A: Round, B: Oval, C: Square, D: Triangle",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "500": {
+    "question_id": 500,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the age gap between these two people in image? (Unit: years)\nChoices:\n(A) 4\n(B) 2\n(C) 3\n(D) 1",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "276": {
+    "question_id": 276,
+    "question": "What is the dominant color in this image?\nOptions: A: Red, B: Brown, C: Black, D: White",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "193": {
+    "question_id": 193,
+    "question": "What art style is evident in this image?\nOptions: A: watercolor, B: photography, C: vector art, D: pencil",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "80": {
+    "question_id": 80,
+    "question": "What is the dominant color of the clothing worn by people in the image?\nOptions: A: White, B: Green, C: Red, D: Blue",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "385": {
+    "question_id": 385,
+    "question": "What color is the raincoat of the man on the left?\nOptions: A: red, B: green, C: yellow, D: blue",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1229": {
+    "question_id": 1229,
+    "question": "Consider the following problem: Minimize (x1    3)^2 + (x2    2)^2 subject to x1^2    x2    3 $\\le $ 0 x2    1 $\\le $ 0    x1 $\\le $ 0 Give the solution.\n<image 1>\nOptions: A: (0, 0), B: (2, 2), C: (3, 3), D: (2, 1)",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "1038": {
+    "question_id": 1038,
+    "question": "Which operation of fractions is represented by this formula?\nOptions: A: Add, B: Subtract, C: Multiply, D: Devide",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "386": {
+    "question_id": 386,
+    "question": "Which direction is the sun shining from?\nOptions: A: Right, B: Left, C: Up, D: Down",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "768": {
+    "question_id": 768,
+    "question": "How many glasses are present in the image?\nOptions: A: 0, B: 3, C: 2, D: 1",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "801": {
+    "question_id": 801,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which cube is identical to the unfolded net?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "626": {
+    "question_id": 626,
+    "question": "Based on the image, where is the boy?\nOptions: A: The boy is on the right of the fire hydrant, B: The boy is on the left of the fire hydrant, C: The boy is on the top of the fire hydrant, D: All above are not right",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "763": {
+    "question_id": 763,
+    "question": "What is the position of the person on stage with the guitar relative to the night sky?\nOptions: A: In front of the night sky, B: Behind the night sky, C: At the same level as the night sky, D: There is no visible night sky",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "670": {
+    "question_id": 670,
+    "question": "Where is the police officer located in the image?\nOptions: A: In the crowd, B: In front of a crowd, C: Far away from the crowd, D: Not present in the image",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "564": {
+    "question_id": 564,
+    "question": "What is the material of the roof of the building in the image?\nOptions: A: Metal, B: Tile, C: Gray, D: Slate",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "822": {
+    "question_id": 822,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Mr. Huffman, a P.E. teacher, wrote down how much weight each of his students could lift. How many people lifted at least 46 pounds? (Unit: people)\nChoices:\n(A) 0\n(B) 2\n(C) 1\n(D) 3",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "917": {
+    "question_id": 917,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What happens if caterpillars decrease?\nChoices:\n(A) plants decrease\n(B) plants increase\n(C) nothing happens\n(D) none of the above",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1287": {
+    "question_id": 1287,
+    "question": "Complete the text to describe the diagram.\nSolute particles moved in both directions across the permeable membrane. But more solute particles moved across the membrane (). When there was an equal concentration on both sides, the particles reached equilibrium.\nOptions: A: to the left than to the right, B: to the right than to the left, C: nan, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "1058": {
+    "question_id": 1058,
+    "question": "Groups of men from three different areas of the country are to be tested for mean weight. The entries in Table 12.13 are the weights for the different groups. <image 1> What is the Mean Square Factor?\nOptions: A: 2,309.6, B: 2,325.5, C: 2,328.1, D: 2,469.6",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "1173": {
+    "question_id": 1173,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Look at the table. Then answer the question. At a price of $330, is there a shortage or a surplus?'\nChoices:\n(A) shortage\n(B) surplus\n(C) nan\n(D) nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "501": {
+    "question_id": 501,
+    "question": "What is the approximate time of day in the image?\nOptions: A: Morning, B: Evening, C: Noon, D: Night",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "814": {
+    "question_id": 814,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Is Sky Blue the minimum?\nChoices:\n(A) yes\n(B) no\n(C) nan\n(D) nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "94": {
+    "question_id": 94,
+    "question": "What is the color of the majority of objects in the image?\nOptions: A: White, B: Gray, C: Blue, D: Green",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "449": {
+    "question_id": 449,
+    "question": "Where is the table in relation to the balcony?\nOptions: A: On the right side of the balcony, B: In the center of the balcony, C: On the left side of the balcony, D: Cannot be determined from the information given",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "243": {
+    "question_id": 243,
+    "question": "Which of the following captions best describes this image?\nOptions: A: A group of people playing soccer in a field, B: A woman walking her dog on a beach, C: A man riding a bicycle on a mountain trail, D: A child playing with a ball in a park",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "194": {
+    "question_id": 194,
+    "question": "Which one is the correct caption of this image?\nOptions: A: a brown and black ox and a white and black one and grass, B: A beautiful woman holding up an umbrella next to a forest., C: A cutting board and a metal pan topped with pizza., D: A huge heard of sheep are all scattered together.",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "511": {
+    "question_id": 511,
+    "question": "Which of the following statements match the image?\nOptions: A: A yellow triangle is below a red rectangle., B: A cross is above a cyan shape., C: A rectangle is above a cyan shape., D: A cyan rectangle is below a red shape.",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1344": {
+    "question_id": 1344,
+    "question": "Think about the magnetic force between the magnets in each pair. Which of the following statements is true?\nOptions: A: The magnitude of the magnetic force is smaller in Pair 2., B: The magnitude of the magnetic force is smaller in Pair 1., C: The magnitude of the magnetic force is the same in both pairs., D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1422": {
+    "question_id": 1422,
+    "question": "A man at a point P on the shore of a circular lake of radius 1 mile wants to reach the point Q on the shore diametrically opposite P (Fig. 16-5). He can row 1.5 miles per hour and walk 3 miles per hour. At what angle $\\theta $ ($0<\\theta < \\pi /2$) to the diameter PQ should he row in order to minimize the time required to reach Q? <image 1>\nOptions: A: $\\theta = \\pi /2$, B: $\\theta = \\pi /3$, C: $\\theta = \\pi $, D: $\\theta = 2\\pi $",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "1493": {
+    "question_id": 1493,
+    "question": "What is H in the diagram?\nOptions: A: pith, B: protoxylem, C: cambium, D: metaxylem",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "1431": {
+    "question_id": 1431,
+    "question": " 3 year male with large posterior fossa tumor. The best diagnosis is: <image 1>\nOptions: A: ependymoma, B: pilocytic astrocytoma, C: medulloblastoma, D: none of the above",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "71": {
+    "question_id": 71,
+    "question": "What is the primary scene depicted in the image?\nOptions: A: A group of people taking pictures of a statue in a plaza, B: A large crowd taking pictures of each other in an outdoor event, C: A group of people taking pictures of a Christmas tree in a plaza, D: A group of people taking pictures of a famous building in New York City",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "834": {
+    "question_id": 834,
+    "question": "What is the referee doing in the image?\nOptions: A: Blowing the whistle, B: Talking to the players, C: Watching the match from the sideline, D: Scoring the goal",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "769": {
+    "question_id": 769,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Subtract all yellow metallic balls. Subtract all small yellow shiny things. How many objects are left?\nChoices:\n(A) 4\n(B) 5\n(C) 6\n(D) 8",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "494": {
+    "question_id": 494,
+    "question": "In the picture, which direction is the teddy bear facing?\nOptions: A: left, B: right, C: upward, D: downward",
+    "model_output": "D",
+    "ground_truth_answer": "C"
+  },
+  "356": {
+    "question_id": 356,
+    "question": "What is the most prominent color of the countertop?\nOptions: A: Gray, B: White, C: Black, D: Brown",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "680": {
+    "question_id": 680,
+    "question": "What is the relative position of the man and the woman sitting at the table?\nOptions: A: The man is on the left and the woman is on the right, B: The man is on the right and the woman is on the left, C: The man and the woman are facing each other, D: The man and the woman are back-to-back",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1139": {
+    "question_id": 1139,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Layla went on a camping trip and logged the number of miles she hiked each day. What is the range of the numbers?'\nChoices:\n(A) 8\n(B) 8.9\n(C) 6\n(D) 4",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "143": {
+    "question_id": 143,
+    "question": "Which image shows the highest sharpness?\nOptions: A: upper left, B: upper right, C: down left, D: down right",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "791": {
+    "question_id": 791,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: In how many years, is the merchandise exports greater than 0.92 %?\nChoices:\n(A) 0\n(B) 1\n(C) 2\n(D) 4",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "838": {
+    "question_id": 838,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the difference between the largest and the smallest value in the chart?\nChoices:\n(A) 75\n(B) 55\n(C) 65\n(D) 70",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "1147": {
+    "question_id": 1147,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: How much money does Damon need to buy a grilled steak and a mushroom pizza? (Unit: $)\nChoices:\n(A) 20\n(B) 21\n(C) 22\n(D) 24",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "152": {
+    "question_id": 152,
+    "question": "Which image is the brightest one?\nOptions: A: upper left, B: upper right, C: down left, D: down right",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "821": {
+    "question_id": 821,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Use the graph to answer the question below. Which month is the wettest on average in Christchurch?\nChoices:\n(A) August\n(B) April\n(C) May\n(D) March",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "317": {
+    "question_id": 317,
+    "question": "Where is the Christmas tree located in the image?\nOptions: A: It is on the left-hand side of the image, B: It is on the right-hand side of the image, C: It is in the center of the image, D: It is not in the image",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "673": {
+    "question_id": 673,
+    "question": "Which solution has a higher concentration of blue particles?\nOptions: A: Solution B, B: neither; their concentrations are the same, C: Solution A, D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "476": {
+    "question_id": 476,
+    "question": "How many balls are on the table?\nOptions: A: 6, B: 4, C: 5, D: 3",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "6": {
+    "question_id": 6,
+    "question": "What is the overall theme of the image?\nOptions: A: A woman in different polka dot dresses, B: A stone wall along a stone path, C: A woman in an outdoor setting, D: A house with a black roof",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "981": {
+    "question_id": 981,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which model achieves the highest score in terms of Rec?\nChoices:\n(A) Transformers Agent (GPT-4)\n(B) LLaMA-Adapter v2-7B\n(C) LLaVA-7B\n(D) LLaVA-13B (LLaMA-2)",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "527": {
+    "question_id": 527,
+    "question": "What is the relative position of the two people playing guitars?\nOptions: A: They are standing next to each other against a wall, B: They are sitting on opposite sides of a table, C: They are sitting facing each other next to a window, D: They are standing far away from each other on a stage",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  }
+}

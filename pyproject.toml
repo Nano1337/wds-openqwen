@@ -16,7 +16,11 @@ dependencies = [
     "s3cmd>=2.4.0",
     "awscli>=1.40.8",
     "ijson>=3.4.0",
+    "vlm-eval",
+    "scikit-learn>=1.6.1",
+    "datasets>=3.6.0",
 ]
 
 [tool.uv.sources]
 prismatic = { path = "prismatic-vlms", editable = true }
+vlm-eval = { path = "vlm-evaluation", editable = true }

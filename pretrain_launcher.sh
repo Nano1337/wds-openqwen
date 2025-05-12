@@ -10,7 +10,7 @@
 #SBATCH --partition=main
 #SBATCH -t 72:00:00                          # Time limit (hh:mm:ss)
 #SBATCH --gpus-per-node=8                       # Specify a list of generic consumable resources (per node)
-#SBATCH --reservation=haoli_resv
+#SBATCH --reservation=haoli_resv2
 ########
 # Manually set and enter project root (FSX mount)
 export PROJECT_ROOT="/fsx/users/haoli/datopenqwen"

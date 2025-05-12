@@ -64,7 +64,8 @@ class EvaluationConfig:
     )
 
     # HF Hub Credentials (for LLaMa-2)
-    hf_token: Union[str, Path] = Path(".hf_token")  # Environment variable or Path to HF Token
+    # FIXME (haoli): currently hardcoded but should be set as environment variable
+    hf_token: Union[str, Path] = Path("/fsx/users/haoli/.cache/huggingface/token")  # Environment variable or Path to HF Token
 
     # Randomness
     seed: int = 21                                  # Random Seed (for reproducibility)

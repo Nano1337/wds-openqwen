@@ -17,11 +17,17 @@ torchrun --standalone --nnodes 1 --nproc-per-node 8 prismatic-vlms/scripts/pretr
   --model.vision_backbone_id "siglip-vit-so400m-384px" \
   --model.image_resize_strategy "resize-naive" \
   --model.llm_backbone_id qwen2.5-1.5b-instruct \
-  --model.finetune_global_batch_size 144 \
-  --model.finetune_per_device_batch_size 6 \
-  --model.finetune_max_steps 150000 \
+  --model.finetune_global_batch_size 128 \
+  --model.finetune_per_device_batch_size 4 \
+  --model.finetune_max_steps 62500 \
   --mount_path Qwen \
   --run_root_dir checkpoints \
   --dataset.type "llava-v15" \
   --pretrained_checkpoint ${CKPT_PATH}/checkpoints/latest-checkpoint.pt \
   --dataset.finetune_stage_components=["${DATAPATH}","${DATA_ROOT}/single_image_data"]
+
+  # took out --model.finetune_max_steps 1295 for dataset.train_num_samples
+
+    # --dataset.train_num_samples 200000 \
+
+  # train for 8M samples since they said last 2M isn't useful. Equates to 8M steps/128 batch size = 62500 steps

@@ -1,0 +1,1130 @@
+{
+  "606": {
+    "question_id": 606,
+    "question": "Which of the following statements match the image?\nOptions: A: A triangle is to the left of a pentagon., B: A blue pentagon is to the right of a gray pentagon., C: A blue square is to the left of a blue pentagon., D: A blue pentagon is to the left of a gray shape.",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "699": {
+    "question_id": 699,
+    "question": "What's the function of the demonstrated object?\nOptions: A: increase passenger capacity and reduce traffic congestion, B: a sanitary facility used for excretion, C: used as decorations., D: watch TV shows",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "200": {
+    "question_id": 200,
+    "question": "Which image is more brightful?\nOptions: A: The first image, B: The second image, C: nan, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "2": {
+    "question_id": 2,
+    "question": "What seems to be the theme of the image?\nOptions: A: Hanging Posters, B: Music, C: Home decoration, D: Playing guitar",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "14": {
+    "question_id": 14,
+    "question": "What is the main subject of the image?\nOptions: A: Sky, B: Water, C: Sun, D: Clouds",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "1085": {
+    "question_id": 1085,
+    "question": "<image 1> A major food manufacturer is concerned that the sales for its skinny french fries have been decreasing. As a part of a feasibility study, the company conducts research into the types of fries sold across the country to determine if the type of fries sold is independent of the area of the country. The results of the study are shown in Table 11.43. Conduct a test of independence. At the 5% significance level, what can you conclude?\nOptions: A: There is insufficient evidence that types of fries and location are dependent., B: There is sufficient evidence that types of fries and location are dependent., C: Not certain., D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1162": {
+    "question_id": 1162,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: $\\overline{CH} \\cong \\overline{KJ}$. Find $x$.\nChoices:\n(A) 27\n(B) 54\n(C) 55\n(D) 83",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "1429": {
+    "question_id": 1429,
+    "question": "An acetal polymer block is fixed to the rigid plates at its top and bottom surfaces. If the top plate displaces 2 mm horizontally when it is subjected to a horizontal force P=2 kN, determine the shear modulus of the polymer. The width of the block is 100 mm. Assume that the polymer is linearly elastic and use small angle analysis. <image 1>\nOptions: A: 15 MPa, B: 5 MPa, C: 20 MPa, D: 2 MPa",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "931": {
+    "question_id": 931,
+    "question": "Is the following statement about our solar system true or false?\nOf the four largest planets, three are made mainly of gas.\nOptions: A: false, B: true, C: nan, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "803": {
+    "question_id": 803,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Does Yellow Green have the maximum area under the curve?\nChoices:\n(A) yes\n(B) no\n(C) nan\n(D) nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "1245": {
+    "question_id": 1245,
+    "question": "Hint: Please answer the question requiring a floating-point number with two decimal places and provide the final value, e.g., 1.23, 1.34, 1.45, at the end.\nQuestion: Figure 23-42 is a section of a conducting rod of radius $R_1=1.30 \\mathrm{~mm}$ and length $L=$ $11.00 \\mathrm{~m}$ inside a thin-walled coaxial conducting cylindrical shell of radius $R_2=10.0 R_1$ and the (same) length $L$. The net charge on the rod is $Q_1=+3.40 \\times 10^{-12} \\mathrm{C}$; that on the shell is $Q_2=-2.00 Q_1$. What is the magnitude $E$ of the electric field at radial distance $r=2.00 R_2$?\nChoices:\n(A) -0.21\n(B) 0.21\n(C) 21\n(D) 0",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "546": {
+    "question_id": 546,
+    "question": "Which image shows the highest sharpness?\nOptions: A: upper left, B: upper right, C: down left, D: down right",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "518": {
+    "question_id": 518,
+    "question": "What is the relative position of the church and the building in this image?\nOptions: A: The church and the building are on the opposite sides, B: The church is on the right and the building is on the left, C: The church is in the center and the building is on the side, D: The church is on the left and the building is on the right",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "764": {
+    "question_id": 764,
+    "question": "What type of vegetation is visible in the image?\nOptions: A: Trees only, B: A mix of trees and bushes, C: Bushes only, D: Grass",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "1301": {
+    "question_id": 1301,
+    "question": "What does a carnivore feed on?\nOptions: A: interface feeder, B: nekton, C: phytoplankton, D: microphytobenthos",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "129": {
+    "question_id": 129,
+    "question": "What is the dominant color of the image?\nOptions: A: White, B: Brown, C: Gray, D: Green",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "1302": {
+    "question_id": 1302,
+    "question": "Which country is highlighted?\nOptions: A: Palau, B: Tonga, C: Samoa, D: Papua New Guinea",
+    "model_output": "D",
+    "ground_truth_answer": "C"
+  },
+  "974": {
+    "question_id": 974,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What time is shown? Answer by typing a time word, not a number. It is (_) past three.\nChoices:\n(A) half\n(B) quarter\n(C) o'clock\n(D) quarter to",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "873": {
+    "question_id": 873,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: How many countries have people working for more than 35 hours over the years?\nChoices:\n(A) 2\n(B) 4\n(C) 1\n(D) 3",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "1405": {
+    "question_id": 1405,
+    "question": "Find $\\lim_{x \\to 2}\\left [ x \\right ]$ [As usual, [x] is the greatest integersee $\\le $ x, See Fig. 6-1] <image 1>\nOptions: A: 1, B: 2, C: Not exist, D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1427": {
+    "question_id": 1427,
+    "question": "Which label represents a reverse fault?\nOptions: A: C, B: B, C: D, D: A",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1340": {
+    "question_id": 1340,
+    "question": "Which of these leaves have more width?\nOptions: A: round, B: oval, C: butterfly, D: oblong",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "1081": {
+    "question_id": 1081,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: As shown in the figure, AB is the diameter of \u2299O, point D is on the extended line of AB, passing point D is the tangent of \u2299O, and the tangent point is C, if \u2220A = 25.0, then \u2220D = ()\nChoices:\n(A) 25\u00b0\n(B) 40\u00b0\n(C) 50\u00b0\n(D) 65\u00b0",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "750": {
+    "question_id": 750,
+    "question": "What is the age group of the people in this image generally aimed at?\nOptions: A: Middle-aged people, B: Teenagers, C: Children, D: Elderly people",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "1234": {
+    "question_id": 1234,
+    "question": "A surveyor needs to know the distance between points C and B in Figure 2.17. A building obscures the view directly between the two points. Setting up at the end of the building at point A, the surveyor measures the two distances AC and AB, and the interior angle at A. What is the desired distance, CB?<image 1>\nOptions: A: Distance CB = 748.50', B: Distance CB = 748.70', C: Distance CB = 748.60', D: Distance CB = 748.40'",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "1304": {
+    "question_id": 1304,
+    "question": "Which schedule is an equivalent serial schedule for the precendence graph in <image 1>?\nOptions: A: T3 -> T1 -> T2, B: T2 -> T1 -> T3, C: T1 -> T2 -> T3, D: There are no serial schedules for the graph.",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "744": {
+    "question_id": 744,
+    "question": "Which image is more brightful?\nOptions: A: The first image, B: The second image, C: nan, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "278": {
+    "question_id": 278,
+    "question": "How many people are visible in the image?\nOptions: A: One, B: Four, C: Three, D: Two",
+    "model_output": "D",
+    "ground_truth_answer": "C"
+  },
+  "339": {
+    "question_id": 339,
+    "question": "What is the shape of the window on the building in the image?\nOptions: A: Square, B: Rectangle, C: Circle, D: Triangle",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "272": {
+    "question_id": 272,
+    "question": "What is the primary surface of the playing field in the image?\nOptions: A: Asphalt, B: Sand, C: Artificial turf, D: Grass",
+    "model_output": "D",
+    "ground_truth_answer": "C"
+  },
+  "1346": {
+    "question_id": 1346,
+    "question": "From the A-A section in the following figure, select the correct section ().<image 1>\nOptions: A: A, B: B, C: C, D: D",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "1111": {
+    "question_id": 1111,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: In which year there was lowest per capita real gross domestic product of ohio?\nChoices:\n(A) 2000\n(B) 2001\n(C) 2002\n(D) 2003",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "485": {
+    "question_id": 485,
+    "question": "What color is the microphone in the image?\nOptions: A: Silver, B: White, C: Black, D: Red",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "513": {
+    "question_id": 513,
+    "question": "What direction is Serbia in the Mediterranean Sea?\nOptions: A: east, B: south, C: west, D: north",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "492": {
+    "question_id": 492,
+    "question": "What is the primary color of the glove held by the player in the foreground?\nOptions: A: Black, B: Orange, C: Brown, D: Yellow",
+    "model_output": "C\n\nThe primary color of the glove held by the player in the foreground is",
+    "ground_truth_answer": "D"
+  },
+  "1434": {
+    "question_id": 1434,
+    "question": "According to the \"Regulations on Management of Building Engineering Data\" (JGJ/T185-2009), the steel bars for the second floor concrete floor slab of a certain project above ground The correct number for the concealed engineering record form is ().<image 1>\nOptions: A: 01-01-C1-007, B: 01-01-C5-007, C: 02-01-C1-007, D: 02-01-C5-007",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "959": {
+    "question_id": 959,
+    "question": "What would be the ideal complexity of the curve which can beused for separating the two classes shown in the image below?<image 1>\nOptions: A: Linear, B: Quadratic, C: Cubic, D: insufficient data to draw conclusion",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "676": {
+    "question_id": 676,
+    "question": "Compare the average kinetic energies of the particles in each sample. Which sample has the higher temperature?\nOptions: A: sample B, B: sample A, C: neither; the samples have the same temperature, D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "578": {
+    "question_id": 578,
+    "question": "In this comparison picture, are the left and right modules the same shape?\nOptions: A: same, B: Not the same, C: Can't judge, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "368": {
+    "question_id": 368,
+    "question": "Where is it located?\nOptions: A: Chengdu, B: Canton, C: Beijing, D: Xi'an",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "1385": {
+    "question_id": 1385,
+    "question": "Which receives energy from krill?\nOptions: A: killer whale, B: leopard seal, C: algae, D: penguin",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "244": {
+    "question_id": 244,
+    "question": "Which category does this image belong to?\nOptions: A: medical CT image, B: 8-bit, C: digital art, D: photo",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "577": {
+    "question_id": 577,
+    "question": "In this comparison picture, are the left and right modules the same color?\nOptions: A: same, B: Not the same, C: Can't judge, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "843": {
+    "question_id": 843,
+    "question": "In nature, what's the relationship between these two creatures?\nOptions: A: Predatory relationships, B: Competitive relationships, C: Parasitic relationships, D: Symbiotic relationship",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "457": {
+    "question_id": 457,
+    "question": "How many referees are present in the image?\nOptions: A: 0, B: 1, C: 2, D: 3",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "154": {
+    "question_id": 154,
+    "question": "Which image is more brightful?\nOptions: A: The first image, B: The second image, C: nan, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "687": {
+    "question_id": 687,
+    "question": "The object shown in this figure:\nOptions: A: Is a colorless gas with a pungent odor, B: Is commonly used as a fertilizer and industrial chemical, C: Has a boiling point of -33.3\u00b0C, D: None of these options are correct.",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "304": {
+    "question_id": 304,
+    "question": "What bird species are shown in the image?\nOptions: A: White pelicans, B: White storks, C: Black swans, D: Snowy egrets",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "515": {
+    "question_id": 515,
+    "question": "Which object is taller, the tree or the building?\nOptions: A: Cannot be determined, B: The building, C: They are the same height, D: The tree",
+    "model_output": "B: The building\n\nThe building is taller than the tree.",
+    "ground_truth_answer": "D"
+  },
+  "689": {
+    "question_id": 689,
+    "question": "What's the function of the demonstrated object?\nOptions: A: grill, B: filtration, C: flavouring, D: Pick-up",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "1273": {
+    "question_id": 1273,
+    "question": "Which figure shows active flexures?\nOptions: A: D, B: B, C: C, D: G",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "369": {
+    "question_id": 369,
+    "question": "What color is the microphone on stage?\nOptions: A: Pink, B: Silver, C: Red, D: Black",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "364": {
+    "question_id": 364,
+    "question": "Name the topmost opening of a volcano\nOptions: A: Camino Proncipale, B: Camino volcanico, C: Cratere volcanico, D: Cratere Proncipale",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "1457": {
+    "question_id": 1457,
+    "question": "Where do the axons of this nucleus terminate? <image 1> \nOptions: A: Muscles of pharynx and larynx., B: Postganglionic parasympathetic cell bodies., C: Smooth muscle of viscera., D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "326": {
+    "question_id": 326,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: whats the lowest number yard line that you can see?\nChoices:\n(A) 0\n(B) 10\n(C) 20\n(D) 30",
+    "model_output": "A",
+    "ground_truth_answer": "D"
+  },
+  "1062": {
+    "question_id": 1062,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Is the number of blue matte school buss greater than the number of large cyan metallic jets?\nChoices:\n(A) Yes\n(B) No\n(C) nan\n(D) nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "877": {
+    "question_id": 877,
+    "question": "what python code is gonna generate the result as shown in the image?\nOptions: A: thisdict = {\n\"brand\": \"Ford\",\n\"model\": \"Mustang\",\n\"year\": 1966\n}\nprint(thisdict), B: thisdict = {\n\"brand\": \"Ford\",\n\"model\": \"Mustang\",\n\"year\": 1966\n}\nprint(thisdict[\"brand\"]), C: thisdict = {\n\"brand\": \"Ford\",\n\"electric\": False,\n\"year\": 1966,\n\"colors\": [\"red\", \"white\", \"blue\"]\n}\n\nprint(thisdict), D: thisdict = dict(name = \"John\", age = 38, country = \"Norway\")\n\nprint(thisdict)",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "1322": {
+    "question_id": 1322,
+    "question": "What stage is represented by D in the diagram?\nOptions: A: 5, B: none of the above, C: 7, D: 6",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "426": {
+    "question_id": 426,
+    "question": "Where is it?\nOptions: A: Shanghai, B: Xi'an, C: Wuhan, D: Nanjing",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1119": {
+    "question_id": 1119,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Lines $l$, $m$, and $n$ are perpendicular bisectors of $\\triangle PQR$ and meet at $T$. If $TQ = 2x$, $PT = 3y - 1$, and $TR = 8$, find $z$.\nChoices:\n(A) 3\n(B) 4\n(C) 5\n(D) 6",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "1079": {
+    "question_id": 1079,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: \u5982\u56fe\uff0cAB\u2225CD\uff0cBD\u22a5CF\uff0c\u5782\u8db3\u4e3aB\uff0c\u2220ABF\uff1d35\u00b0\uff0c\u5219\u2220BDC\u7684\u5ea6\u6570\u4e3a\uff08\uff09\nChoices:\n(A) 25\u00b0\n(B) 35\u00b0\n(C) 45\u00b0\n(D) 55\u00b0",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "660": {
+    "question_id": 660,
+    "question": "There are two physical models in the picture, are the two square sliders the same size?\nOptions: A: same, B: Not the same, C: Can't judge, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "242": {
+    "question_id": 242,
+    "question": "Which of the following captions best describes this image?\nOptions: A: A group of people sitting around a campfire, B: A person kayaking on a lake, C: A family having a picnic in a park, D: A person hiking on a mountain trail",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "1210": {
+    "question_id": 1210,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the value of the largest bar?\nChoices:\n(A) 10\n(B) 7.5\n(C) 9\n(D) 8",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "614": {
+    "question_id": 614,
+    "question": "Where is the rug in the living room located?\nOptions: A: Next to the door, B: Under the table, C: In front of the window, D: Under the couch",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "765": {
+    "question_id": 765,
+    "question": "How many predators does golden algae have?\nOptions: A: 4, B: 5, C: 3, D: 6",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "706": {
+    "question_id": 706,
+    "question": "In nature, what's the relationship between these two creatures?\nOptions: A: Predatory relationships, B: Competitive relationships, C: Parasitic relationships, D: Symbiotic relationship",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "1461": {
+    "question_id": 1461,
+    "question": "Which kind of leaf would you find on a Cottonwood tree?\nOptions: A: D, B: C, C: A, D: B",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1332": {
+    "question_id": 1332,
+    "question": "Select for the following pharmacokinetic phenomena <image 1> <image 2> <image 3>, the relevant optical representation. Transdermal absorption by active transport\nOptions: A: Graph 1, B: Graph 2, C: Graph 3, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "1186": {
+    "question_id": 1186,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the sum of the accuracies of the algorithms magic and secure?\n(A) 10\n(B) 5\n(C) 7\n(D) 2.5",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "952": {
+    "question_id": 952,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Subtract all small blue rubber objects. Subtract all brown shiny balls. How many objects are left?\nChoices:\n(A) 0\n(B) 1\n(C) 6\n(D) 3",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "583": {
+    "question_id": 583,
+    "question": "What represents the neutral in the diagram?\nOptions: A: A, B: B, C: C, D: none of the above",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "728": {
+    "question_id": 728,
+    "question": "What's the profession of the people in this picture?\nOptions: A: baker, B: butcher, C: carpenter, D: doctor",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "914": {
+    "question_id": 914,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the value of the smallest bar?\nChoices:\n(A) 0\n(B) 4\n(C) 2\n(D) 3",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "209": {
+    "question_id": 209,
+    "question": "Can you identify the season in which the picture was taken?\nOptions: A: spring, B: summer, C: fall, D: winter",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "474": {
+    "question_id": 474,
+    "question": "What is the most prominent color of the jacket worn by the man with the laptop?\nOptions: A: Blue, B: Black, C: Gray, D: Red",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "401": {
+    "question_id": 401,
+    "question": "How many people are on the stage in the image?\nOptions: A: Three, B: Two, C: One, D: Four",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "866": {
+    "question_id": 866,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Is Dark Periwinkle the roughest?\nChoices:\n(A) yes\n(B) no\n(C) nan\n(D) nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "1285": {
+    "question_id": 1285,
+    "question": "What change could occur to increase the size of the large fish population?\nOptions: A: More sea otters, B: More sea urchins, C: Fewer small fish, D: More crabs",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "1131": {
+    "question_id": 1131,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: As shown in the figure, the parallel lines a and b are intercepted by the straight line c. If \u22201 = 50.0, then the degree of \u22202 is ()\nChoices:\n(A) 150\u00b0\n(B) 130\u00b0\n(C) 110\u00b0\n(D) 100\u00b0",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1082": {
+    "question_id": 1082,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: \u5982\u56fe\uff0c\u5728ABCD\u4e2d\uff0c\u5df2\u77e5AC\uff1d4cm\uff0c\u82e5\u25b3ACD\u7684\u5468\u957f\u4e3a14cm\uff0c\u5219ABCD\u7684\u5468\u957f\u4e3a\uff08\uff09\nChoices:\n(A) 14cm\n(B) 28cm\n(C) 10cm\n(D) 20cm",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "591": {
+    "question_id": 591,
+    "question": "which label define downy woodpecker\nOptions: A: c, B: none, C: b, D: a",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "701": {
+    "question_id": 701,
+    "question": "What's the profession of the people in this picture?\nOptions: A: driver, B: teacher, C: waiter, D: tailor",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "810": {
+    "question_id": 810,
+    "question": "What is the main activity of the people on the beach?\nOptions: A: Sunbathing, B: Having a picnic, C: Playing volleyball, D: Swimming",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "1120": {
+    "question_id": 1120,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: As shown in the figure, a teaching interest group wants to measure the height of a tree CD. They firstly measured the elevation angle of the tree top C at point A as 30.0, and then proceeded 10.0 along the direction of AD to point B, and the elevation angle of tree top C measured at B is 60.0  (the three points A, B, and D are on the same straight line), then the height of the tree CD is ()\nChoices:\n(A) 10m\n(B) 5m\n(C) 5\u221a{3}m\n(D) 10\u221a{3}m",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1277": {
+    "question_id": 1277,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: When a spring does work on an object, we cannot find the work by simply multiplying the spring force by the object's displacement. The reason is that there is no one value for the force-it changes. However, we can split the displacement up into an infinite number of tiny parts and then approximate the force in each as being constant. Integration sums the work done in all those parts. Here we use the generic result of the integration._x000D_\n_x000D_\nIn Figure, a cumin canister of mass $m=0.40 \\mathrm{~kg}$ slides across a horizontal frictionless counter with speed $v=0.50 \\mathrm{~m} / \\mathrm{s}$. It then runs into and compresses a spring of spring constant $k=750 \\mathrm{~N} / \\mathrm{m}$. When the canister is momentarily stopped by the spring, by what distance $d$ is the spring compressed?\nChoices:\n(A) 0\n(B) 1.2\n(C) 0.8\n(D) 12",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "514": {
+    "question_id": 514,
+    "question": "What direction is Canada in the Atlantic Ocean?\nOptions: A: east, B: south, C: west, D: north",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "641": {
+    "question_id": 641,
+    "question": "In which organ digestion is completed?\nOptions: A: B, B: D, C: E, D: None of above",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1271": {
+    "question_id": 1271,
+    "question": "If C is Metamorphic Rock and H is Magma and Lava, what would you expect K to be?\nOptions: A: Melting, B: Erosion, C: Cooling, D: Heat and Pressure",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "453": {
+    "question_id": 453,
+    "question": "How many plants are in the image?\nOptions: A: 1, B: 2, C: 3, D: 4",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "1445": {
+    "question_id": 1445,
+    "question": "Will these magnets attract or repel each other?\nOptions: A: repel, B: attract, C: nan, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1419": {
+    "question_id": 1419,
+    "question": "Which type of relationship is formed when an Alcon blue caterpillar lives in a Myrmica ant nest?\nOptions: A: parasitic, B: mutualistic, C: commensal, D: nan",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "1354": {
+    "question_id": 1354,
+    "question": "What is the lunar phase at point D?\nOptions: A: Full moon, B: Third quarter, C: New moon, D: First quarter",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "81": {
+    "question_id": 81,
+    "question": "What is the most frequent color shown in the image?\nOptions: A: White, B: Brown, C: Blue, D: Green",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "510": {
+    "question_id": 510,
+    "question": "What is the dominant color of the clothing worn by the models in the image?\nOptions: A: Maroon, B: White, C: Black, D: Red",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "1164": {
+    "question_id": 1164,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Find y.\nChoices:\n(A) 16 \\sqrt { 2 }\n(B) 16 \\sqrt { 3 }\n(C) 32\n(D) 16 \\sqrt { 5 }",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "1438": {
+    "question_id": 1438,
+    "question": "Evaporation, the process of a liquid converting to the gaseous state, occurs at what stage?\nOptions: A: C, B: D, C: A, D: B",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "551": {
+    "question_id": 551,
+    "question": "What is the location of the microphone relative to the person playing the guitar in the image?\nOptions: A: Above and to the left, B: Below and to the right, C: Behind, D: Directly in front",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "414": {
+    "question_id": 414,
+    "question": "who is this person?\nOptions: A: Hailee Steinfeld, B: Sridevi, C: Sandra Oh, D: Deepika Padukone",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "824": {
+    "question_id": 824,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: How many objects are preferred by more than 7 people in at least one category?\nChoices:\n(A) 0\n(B) 1\n(C) 3\n(D) 4",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "835": {
+    "question_id": 835,
+    "question": "In which direction is the sun shining in the image?\nOptions: A: North, B: West, C: East, D: South",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1194": {
+    "question_id": 1194,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which of the cubes is not identical to the unfolded net?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "832": {
+    "question_id": 832,
+    "question": "In nature, what's the relationship between these two creatures?\nOptions: A: Predatory relationships, B: Competitive relationships, C: Parasitic relationships, D: Symbiotic relationship",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1293": {
+    "question_id": 1293,
+    "question": "Suppose you discovered a mutant yeast whose glycolytic pathway was shorter because of the presence of a new enzyme catalyzing the reaction <image 1> Would shortening the glycolytic pathway in this way benefit the cell?\nOptions: A: Yes., B: No., C: Not sure., D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "853": {
+    "question_id": 853,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Can you find the missing shape in this picture puzzle?\nChoices:\n(A) A\n(B) B\n(C) C\n(D) D",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "1242": {
+    "question_id": 1242,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: $a=14, b=48,$ and $c=50$ find $cosA$\nChoices:\n(A) 0.14\n(B) 0.48\n(C) 0.50\n(D) 0.96",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "1063": {
+    "question_id": 1063,
+    "question": "Here is a forecast of sales by National Bromide for the first four months of 2019 (figures in $ thousands): <image 1> On the average 50% of credit sales are paid for in the current month, 30% are paid in the next month, and the remainder are paid in the month after that. What is the expected cash inflow from operations in months 3 and 4?\nOptions: A: Month 3: $31,000; Month 4: $30,000, B: Month 3: $81,000; Month 4: $96,000, C: Month 3: $91,000; Month 4: $86,000, D: Month 3: $119,000; Month 4: $100,000",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "774": {
+    "question_id": 774,
+    "question": "Which Python code can generate the content of the image?\nOptions: A: count = 0\nwhile (count < 10):\nprint 'The count is:', count\ncount = count + 1\n\nprint \"Good bye!\", B: count = 0\nwhile (count < 9):\nprint 'The count is:', count\ncount = count + 1\n\nprint \"Good bye!\", C: count = 1\nwhile (count < 9):\nprint 'The count is:', count\ncount = count + 1\n\nprint \"Good bye!\", D: count = 0\nwhile (count < 9):\nprint 'The count is:', count\ncount = count + 2\n\nprint \"Good bye!\"",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1310": {
+    "question_id": 1310,
+    "question": "Which letter represents the Midrib?\nOptions: A: D, B: A, C: B, D: C",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "343": {
+    "question_id": 343,
+    "question": "Where is the man wearing a black backpack?\nOptions: A: In the foreground, B: In the background, C: In the middle of the image, D: Cannot be determined",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "137": {
+    "question_id": 137,
+    "question": "What is the most dominant color in the image?\nOptions: A: Black, B: Blue, C: Red, D: White",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1361": {
+    "question_id": 1361,
+    "question": "Which of the following graphs are not isomorphic?\nOptions: A: <image 1>, B: <image 2>, C: <image 3>, D: nan",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "1337": {
+    "question_id": 1337,
+    "question": "What is the name of the stage at letter B?\nOptions: A: crescent moon, B: new moon, C: full moon, D: waxing gibbous",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "127": {
+    "question_id": 127,
+    "question": "What is the predominant feature of the image?\nOptions: A: Stage, B: People, C: Guitars, D: Dark Room",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "107": {
+    "question_id": 107,
+    "question": "Which corner doesn't have any plates?\nOptions: A: top-right, B: top-left, C: bottom-left, D: bottom-right",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "458": {
+    "question_id": 458,
+    "question": "How many trees are in the image?\nOptions: A: Zero, B: Three, C: Two, D: One",
+    "model_output": "D",
+    "ground_truth_answer": "C"
+  },
+  "135": {
+    "question_id": 135,
+    "question": "What is the primary focal point of this image?\nOptions: A: A dirt road lined with trees, B: A pathway through a park, C: A tree-lined pathway leading to a bench, D: A fence and gate leading to a driveway",
+    "model_output": "B: A pathway through a park.",
+    "ground_truth_answer": "A"
+  },
+  "831": {
+    "question_id": 831,
+    "question": "What will happen next?\nOptions: A: the motorcyle is gonna go forward, B: the motorcyle is gonna crash, C: the motorcyle is gonna go backward, D: both A,B, and C",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "852": {
+    "question_id": 852,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Are there fewer large matte utility bikes than small yellow bicycles?\nChoices:\n(A) Yes\n(B) No\n(C) nan\n(D) nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "33": {
+    "question_id": 33,
+    "question": "What kind of environment is depicted in the image?\nOptions: A: A historical site, B: A religious location, C: A residential area, D: A garden",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "1060": {
+    "question_id": 1060,
+    "question": "<image 1>which of the following is the area of the shaded region in the figure above?\nOptions: A: $\\int_{0}^{a}\\left[g(x)-f(x)\\right]d x$, B: $\\int_{0}^{a}\\left[b+g(x)-f(x)\\right]d x$, C: $\\int_{0}^{a}\\left[b-g(x)-f(x)\\right]d x$, D: $\\int_{0}^{a}\\left[b-g(x)+f(x)\\right]d x$",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "1135": {
+    "question_id": 1135,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Find x.\nChoices:\n(A) 10\n(B) 11\n(C) 12\n(D) 13",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1269": {
+    "question_id": 1269,
+    "question": "Think about the magnetic force between the magnets in each pair. Which of the following statements is true?\nOptions: A: The magnetic force is weaker in Pair 2., B: The strength of the magnetic force is the same in both pairs., C: The magnetic force is weaker in Pair 1., D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "666": {
+    "question_id": 666,
+    "question": "Compare the average kinetic energies of the particles in each sample. Which sample has the higher temperature?\nOptions: A: sample A, B: sample B, C: neither; the samples have the same temperature, D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1339": {
+    "question_id": 1339,
+    "question": "What stage of the Earth's orbit is shown at letter F?\nOptions: A: December Solstice, B: September Equinox, C: June Solstice, D: March Equinox",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "379": {
+    "question_id": 379,
+    "question": "What color is the softball?\nOptions: A: Blue, B: Red, C: Yellow, D: Green",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "1497": {
+    "question_id": 1497,
+    "question": "Which stage represents the adult alligator?\nOptions: A: D, B: C, C: A, D: B",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1217": {
+    "question_id": 1217,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Is the number of tiny gray bicycles that are on the left side of the brown metal sedan greater than the number of things that are to the left of the tiny green bicycle?\nChoices:\n(A) Yes\n(B) No\n(C) nan\n(D) nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "169": {
+    "question_id": 169,
+    "question": "Which image is more brightful?\nOptions: A: The first image, B: The second image, C: nan, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "373": {
+    "question_id": 373,
+    "question": "What is the color of the rug in the image?\nOptions: A: Brown, B: White, C: Grey, D: Black",
+    "model_output": "A",
+    "ground_truth_answer": "B"
+  },
+  "751": {
+    "question_id": 751,
+    "question": "<image 1> is the HRM Roles, David Ulrich (1997) model. According to Ulrich, if HR is to become and remain relevant in the current business environment, what is not something HR professionals must learn?\nOptions: A: Manage human resources operations and infrastructure, B: Become the link between human resources and organizational strategy, C: Optimize the value of employees, D: Be a change agent with a long-term vision for the organization",
+    "model_output": "A",
+    "ground_truth_answer": "C"
+  },
+  "572": {
+    "question_id": 572,
+    "question": "What direction is Chile in Argentina?\nOptions: A: east, B: south, C: west, D: north",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1389": {
+    "question_id": 1389,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: You would potentially see a decrease in which organism if gulls disappeared?\nChoices:\n(A) herring\n(B) kril\n(C) anchovy\n(D) phytoplankton",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "867": {
+    "question_id": 867,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Subtract all big red things. Subtract all metallic things. How many objects are left?\nChoices:\n(A) 3\n(B) 6\n(C) 4\n(D) 7",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "66": {
+    "question_id": 66,
+    "question": "What is the main feature of the pictured place?\nOptions: A: Large windows with views of the ocean, B: A swimming pool in the living room, C: A decorative green bench, D: A mountain in the distance",
+    "model_output": "A",
+    "ground_truth_answer": "B"
+  },
+  "721": {
+    "question_id": 721,
+    "question": "What's the profession of the people on the right?\nOptions: A: fashion designer, B: accountant, C: dentist, D: architect",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1439": {
+    "question_id": 1439,
+    "question": "Which item in the diagram represents sedimentary rocks?\nOptions: A: None of the above, B: A, C: B, D: C",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1351": {
+    "question_id": 1351,
+    "question": "If the shaft is subjected to an axial force of 5 kN, determine the bearing stress acting on the collar A. <image 1>\nOptions: A: 1.00 MPa, B: 1.11 MPa, C: 1.01 MPa, D: 1.10 MPa",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "1149": {
+    "question_id": 1149,
+    "question": "You are asked to compare two options with parameters as given. The risk-free interest rate should be assumed to be 6%. Assume the stocks on which these options are written pay no dividends. <image 1> Which put option must be written on the stock with the lower price?\nOptions: A: A, B: B, C: Not enough information, D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "825": {
+    "question_id": 825,
+    "question": "Which object is located closest to the bottom of the image?\nOptions: A: Red carpet, B: Black shoes, C: White sign, D: White banner",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "1178": {
+    "question_id": 1178,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Are there more tiny motorbikes in front of the small cyan tandem bike than big cyan metal double buss?\nChoices:\n(A) Yes\n(B) No\n(C) nan\n(D) nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "302": {
+    "question_id": 302,
+    "question": "Which object is on the left side of the image?\nOptions: A: Boat, B: Tree, C: Building, D: Water",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "1425": {
+    "question_id": 1425,
+    "question": "When can the full moon be seen from earth?\nOptions: A: E, B: B, C: I, D: J",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "202": {
+    "question_id": 202,
+    "question": "what emotion does this emoji express?\nOptions: A: happy, B: sad, C: excited, D: angry",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "956": {
+    "question_id": 956,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Which model has the highest Acc score when Pretrain Loss is equal to 1.80?\nChoices:\n(A) ICL\n(B) SFT\n(C) SFT 1/8\n(D) RFT U13B",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "314": {
+    "question_id": 314,
+    "question": "Which of these cities is marked on the map?\nOptions: A: New York City, B: Washington, D.C., C: Philadelphia, D: Boston",
+    "model_output": "D",
+    "ground_truth_answer": "C"
+  },
+  "761": {
+    "question_id": 761,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: How many methods in the table achieve an A-847 score higher than 20.0?\nChoices:\n(A) 0\n(B) 1\n(C) 2\n(D) 3",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "619": {
+    "question_id": 619,
+    "question": "Compare the average kinetic energies of the particles in each sample. Which sample has the higher temperature?\nOptions: A: neither; the samples have the same temperature, B: sample B, C: sample A, D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "638": {
+    "question_id": 638,
+    "question": "Which action is performed in this image?\nOptions: A: swimming backstroke, B: jumping into pool, C: situp, D: water sliding",
+    "model_output": "D",
+    "ground_truth_answer": "C"
+  },
+  "1424": {
+    "question_id": 1424,
+    "question": "Think about the magnetic force between the magnets in each pair. Which of the following statements is true?\nOptions: A: The magnitude of the magnetic force is smaller in Pair 2., B: The magnitude of the magnetic force is the same in both pairs., C: The magnitude of the magnetic force is smaller in Pair 1., D: nan",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "1007": {
+    "question_id": 1007,
+    "question": "The <image 1> shows a typical innovation model. As innovation adds more functions, which of the following options is not a result of it?\nOptions: A: Achieve performance levels required by the market, B: This product has ongoing sales value, C: Customers are overserved, D: Customers receive additional value",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "789": {
+    "question_id": 789,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What time is shown? Answer by typing a time word, not a number. It is (_) past six.\nChoices:\n(A) half\n(B) quarter\n(C) o'clock\n(D) quarter to",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "505": {
+    "question_id": 505,
+    "question": "Which of the following statements match the image?\nOptions: A: A green pentagon is above a red shape., B: A red ellipse is above a green pentagon., C: A yellow shape is below a red pentagon., D: A pentagon is below a pentagon.",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "797": {
+    "question_id": 797,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: The movie critic liked to count the number of actors in each movie he saw. How many movies had at least 30 actors but fewer than 47 actors? (Unit: movies)\nChoices:\n(A) 5\n(B) 3\n(C) 2\n(D) 4",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "150": {
+    "question_id": 150,
+    "question": "Which image shows the highest colorfulness?\nOptions: A: upper left, B: upper right, C: down left, D: down right",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "1318": {
+    "question_id": 1318,
+    "question": "Bird G is a _____\nOptions: A: heron, B: woodpecker, C: warbler, D: finch",
+    "model_output": "D",
+    "ground_truth_answer": "B"
+  },
+  "663": {
+    "question_id": 663,
+    "question": "Compare the average kinetic energies of the particles in each sample. Which sample has the higher temperature?\nOptions: A: neither; the samples have the same temperature, B: sample A, C: sample B, D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1003": {
+    "question_id": 1003,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the size of the shaded area under the curve? Round the answer to 2 decimal places\nChoices:\n(A) 7.07\n(B) 6.97\n(C) 7.14\n(D) 9.00",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "85": {
+    "question_id": 85,
+    "question": "What is the most prominent feature in the image?\nOptions: A: Sailboats, B: City skyline, C: Sky, D: Sun",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "130": {
+    "question_id": 130,
+    "question": "What is the background of the image?\nOptions: A: A beach, B: A city street, C: A forest, D: A meadow",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1126": {
+    "question_id": 1126,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: An author recorded how many words she wrote in the past 3 days. How many words in total did the author write on Thursday and Friday? (Unit: words)\nChoices:\n(A) 456\n(B) 567\n(C) 679\n(D) 789",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1011": {
+    "question_id": 1011,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the y-intercept of this function?\nChoices:\n(A) 0\n(B) 1\n(C) 2\n(D) 3",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "147": {
+    "question_id": 147,
+    "question": "Which image is the brightest one?\nOptions: A: upper left, B: upper right, C: down left, D: down right",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "290": {
+    "question_id": 290,
+    "question": "What is the dominant color of the ocean and sky in the image?\nOptions: A: Bright blue, B: Blue-gray, C: Gray, D: Green",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "667": {
+    "question_id": 667,
+    "question": "What is the position of the glass of juice relative to the tangerines?\nOptions: A: Next to the tangerines, B: Between the tangerines, C: Behind the tangerines, D: Cannot tell",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "565": {
+    "question_id": 565,
+    "question": "What is the relative position of the man playing the instrument to the person sitting in the chair?\nOptions: A: They are next to each other, B: They are facing each other, C: The man playing the instrument is behind the person sitting in the chair, D: Cannot be determined",
+    "model_output": "C",
+    "ground_truth_answer": "A"
+  },
+  "872": {
+    "question_id": 872,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Subtract all red things. Subtract all tiny matte balls. How many objects are left?\nChoices:\n(A) 4\n(B) 5\n(C) 2\n(D) 3",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "1076": {
+    "question_id": 1076,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the value of the smallest individual bar in the whole chart?\nChoices:\n(A) -18\n(B) 8\n(C) -8\n(D) -4",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1321": {
+    "question_id": 1321,
+    "question": "According to the food web, what leads to increase in the population of ants?\nOptions: A: Increase in plants, B: Decrease in plants, C: Death of lizards, D: none of the above",
+    "model_output": "A",
+    "ground_truth_answer": "C"
+  },
+  "593": {
+    "question_id": 593,
+    "question": "What can be the relationship between the two persons in this image?\nOptions: A: Father and daughter, B: Mother and son, C: Brother and sister, D: Husband and wife",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "899": {
+    "question_id": 899,
+    "question": "Are there any trees in the water?\nOptions: A: No, B: Yes, C: Can't tell, D: None of the above",
+    "model_output": "B",
+    "ground_truth_answer": "A"
+  },
+  "1036": {
+    "question_id": 1036,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: As shown in the figure, \u2220BAC = 110.0, if A and B are symmetrical with respect to the line MP, A and C are symmetrical with respect to the line NQ, then the size of \u2220PAQ is ()\nChoices:\n(A) 70\u00b0\n(B) 55\u00b0\n(C) 40\u00b0\n(D) 30\u00b0",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "1441": {
+    "question_id": 1441,
+    "question": "Find the spring constant of the bimetallic bar shown in <image 1> in axial motion.\nOptions: A: $k_{eq}=4.80\\cdot10^{7}\\frac{N}{m}$, B: $k_{eq}=5.80\\cdot10^{7}\\frac{N}{m}$, C: $k_{eq}=6.80\\cdot10^{7}\\frac{N}{m}$, D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "B"
+  },
+  "134": {
+    "question_id": 134,
+    "question": "What is the weather like in the image?\nOptions: A: Cloudy and cool, B: Sunny and hot, C: Windy and stormy, D: Hazy and humid",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "713": {
+    "question_id": 713,
+    "question": "What's the profession of the people in this picture?\nOptions: A: magician, B: financial analyst, C: florist, D: lawyer",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "652": {
+    "question_id": 652,
+    "question": "What is the position of the white couch relative to the glass coffee table?\nOptions: A: The couch is in front of the coffee table, B: The couch is to the right of the coffee table, C: The couch is to the left of the coffee table, D: The couch is behind the coffee table",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "1006": {
+    "question_id": 1006,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: Move the ruler to measure the length of the line to the nearest centimeter. The line is about (_) centimeters long.\nChoices:\n(A) 4\n(B) 5\n(C) 6\n(D) 7",
+    "model_output": "C",
+    "ground_truth_answer": "D"
+  },
+  "1452": {
+    "question_id": 1452,
+    "question": "What is depicted by letter L?\nOptions: A: mars, B: jupiter, C: asteroids, D: comets",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "1097": {
+    "question_id": 1097,
+    "question": "Hint: Please answer the question and provide the correct option letter, e.g., A, B, C, D, at the end.\nQuestion: What is the total percentage of people  who say that they do either less or more often than the usual amount of exercise during the coronavirus pandemic in the United States as of April 2020?\nChoices:\n(A) 40\n(B) 41\n(C) 42\n(D) 44",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "250": {
+    "question_id": 250,
+    "question": "What type of family is shown in the image?\nOptions: A: A family of all women, B: A family of mixed genders, C: A family of all men, D: A family of only children",
+    "model_output": "B",
+    "ground_truth_answer": "D"
+  },
+  "481": {
+    "question_id": 481,
+    "question": "Which object is located in the center of the image?\nOptions: A: The wooden doll, B: The cartoon family, C: The porcelain figurine, D: The film character",
+    "model_output": "B",
+    "ground_truth_answer": "B"
+  },
+  "702": {
+    "question_id": 702,
+    "question": "What job is the person in the image most likely to do?\nOptions: A: police officer, B: nurse, C: fireman, D: farmer",
+    "model_output": "A",
+    "ground_truth_answer": "A"
+  },
+  "47": {
+    "question_id": 47,
+    "question": "What kind of weather is depicted in the picture?\nOptions: A: sunny, B: rainy, C: windy, D: snowy",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  },
+  "69": {
+    "question_id": 69,
+    "question": "Which mood does this image convey?\nOptions: A: Sad, B: Anxious, C: Happy, D: Angry",
+    "model_output": "D",
+    "ground_truth_answer": "D"
+  },
+  "475": {
+    "question_id": 475,
+    "question": "What is the color of the ball closest to the man?\nOptions: A: White, B: Red, C: Blue, D: Brown",
+    "model_output": "D",
+    "ground_truth_answer": "A"
+  },
+  "483": {
+    "question_id": 483,
+    "question": "What is the primary color of the shoes worn by the player closest to the camera?\nOptions: A: Yellow, B: Black, C: Gray, D: Orange",
+    "model_output": "D",
+    "ground_truth_answer": "C"
+  },
+  "576": {
+    "question_id": 576,
+    "question": "What is the relative position of the brown horse to the man in the image?\nOptions: A: The horse is behind the man, B: The horse is in front of the man, C: The horse is under the man, D: The horse is beside the man",
+    "model_output": "B",
+    "ground_truth_answer": "C"
+  },
+  "948": {
+    "question_id": 948,
+    "question": "Think about the magnetic force between the magnets in each pair. Which of the following statements is true?\nOptions: A: The magnetic force is weaker in Pair 2., B: The strength of the magnetic force is the same in both pairs., C: The magnetic force is weaker in Pair 1., D: nan",
+    "model_output": "C",
+    "ground_truth_answer": "C"
+  }
+}

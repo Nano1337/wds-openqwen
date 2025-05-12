@@ -152,7 +152,7 @@ class TrainingStrategy(ABC):
             batch_size=self.per_device_batch_size,
             sampler=sampler,
             collate_fn=collator,
-            num_workers=2,
+            num_workers=8,
             worker_init_fn=self.worker_init_fn,
         )
         
@@ -242,7 +242,7 @@ class TrainingStrategy(ABC):
 
                             # Save ckpt every 5k steps
                             # if self.max_steps is not None and metrics.global_step % 10000 == 0 and metrics.global_step < self.max_steps:
-                            if metrics.global_step % 15625 == 0:
+                            if metrics.global_step % 1000 == 0:
                                 self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
                                 dist.barrier()
                             
@@ -652,8 +652,8 @@ class TrainingStrategy(ABC):
                             metrics.commit(global_step=metrics.global_step + 1, lr=self.lr_scheduler.get_last_lr()[0])
                             status = metrics.push()
 
-                            # Save ckpt every 5k steps
-                            if self.max_steps is not None and metrics.global_step % 5000 == 0 and metrics.global_step < self.max_steps:
+                            # Save ckpt every 1k steps
+                            if self.max_steps is not None and metrics.global_step % 1000 == 0 and metrics.global_step < self.max_steps:
                                 self.save_checkpoint(metrics.run_dir, metrics.global_step, epoch, loss.item())
                                 dist.barrier()
 

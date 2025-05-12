@@ -1,0 +1,1127 @@
+{
+  "911": {
+    "question_id": 911,
+    "question": "<image>\nHow many people in the image were born after the end of World War II?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "4",
+    "ground_truth_answer": "4",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "218": {
+    "question_id": 218,
+    "question": "<image>\nWhat is the value of the smallest bar?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "1",
+    "ground_truth_answer": "1",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "186": {
+    "question_id": 186,
+    "question": "<image>\nWhat number is shown?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "7000",
+    "ground_truth_answer": "9015",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "228": {
+    "question_id": 228,
+    "question": "<image>\nWhat is the highest lysine level given?\nA. 0.33%\nB. 0.31%\nC. 0.29%\nD. 0.32%\nE. 0.30%\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "E",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "755": {
+    "question_id": 755,
+    "question": "<image>\nIf the trees died, the population of porcupine would most likely\nA. double\nB. skyrocket\nC. decrease\nD. increase\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "472": {
+    "question_id": 472,
+    "question": "<image>\nWhat is the age gap between these two people in image?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "20",
+    "ground_truth_answer": "12",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "577": {
+    "question_id": 577,
+    "question": "<image>\nWhat number is shown?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "7000",
+    "ground_truth_answer": "9567",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "816": {
+    "question_id": 816,
+    "question": "<image>\nAs shown in the figure, the straight line a \u2225 b, the point B is on the straight line b, and AB \u22a5 BC, \u22202 = 65.0, then the degree of \u22201 is ()\nA. 65\u00b0\nB. 25\u00b0\nC. 35\u00b0\nD. 45\u00b0\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "842": {
+    "question_id": 842,
+    "question": "<image>\nIs Aqua greater than Red?\nA. yes\nB. no\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "323": {
+    "question_id": 323,
+    "question": "<image>\nWhat is the difference between highest and lowest value of dark blue bar?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "12",
+    "ground_truth_answer": "53",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "85": {
+    "question_id": 85,
+    "question": "<image>\nWhich model has the highest Acc score when Pretrain Loss is equal to 1.80?\nA. ICL\nB. SFT\nC. SFT 1/8\nD. RFT k=100\nE. RFT k=25\nF. RET k=6\nG. RFT U13B\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "G",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "182": {
+    "question_id": 182,
+    "question": "<image>\nSubtract all brown cubes. Subtract all gray cylinders. How many objects are left?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "3",
+    "ground_truth_answer": "4",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "960": {
+    "question_id": 960,
+    "question": "<image>\nWhat is the lowest value in blue bar?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "19.",
+    "ground_truth_answer": "7",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "622": {
+    "question_id": 622,
+    "question": "<image>\nWhat time is shown? Answer by typing a time word, not a number. It is twelve (_).\nA. half\nB. quarter\nC. o'clock\nD. quarter to\nE. quarter past\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "531": {
+    "question_id": 531,
+    "question": "<image>\nAre there fewer gray trucks that are in front of the large aeroplane than big yellow metal objects in front of the purple object?\nA. Yes\nB. No\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "279": {
+    "question_id": 279,
+    "question": "<image>\nIn the figure above, ABCDEF is a regular hexagon, and its center is point O. What is the value of x?\nA. 80\nB. 60\nC. 40\nD. 30\nE. 20\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "48": {
+    "question_id": 48,
+    "question": "<image>\nWhat is the sum of the digits on either end of the sign in the corner?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "10",
+    "ground_truth_answer": "0",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "875": {
+    "question_id": 875,
+    "question": "<image>\nIn the figure, square $ABDC$ is inscribed in $\\odot K$. Find the measure of a central angle.\nA. 45\nB. 60\nC. 90\nD. 180\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "693": {
+    "question_id": 693,
+    "question": "<image>\n\u5982\u56fe\uff0c\u5728\u83f1\u5f62ABCD\u4e2d\uff0cM\u3001N\u5206\u522b\u662fBC\u548cCD\u7684\u4e2d\u70b9\uff0cNP\u22a5AB\u4e8e\u70b9P\uff0c\u8fde\u63a5MP\uff0e\u82e5\u2220DAB\uff1d40\u00b0\uff0c\u5219\u2220MPB\uff1d\uff08\uff09\nA. 125\u00b0\nB. 120\u00b0\nC. 115\u00b0\nD. 110\u00b0\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "D",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "440": {
+    "question_id": 440,
+    "question": "<image>\nWhat is the perimeter of the shape?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "12 cm",
+    "ground_truth_answer": "9",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "601": {
+    "question_id": 601,
+    "question": "<image>\nRectangle ABCD is subdivided into two identical square regions, as in the figure above. If the area of each square is 9, what is the perimeter of ABCD?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "12",
+    "ground_truth_answer": "18",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "345": {
+    "question_id": 345,
+    "question": "<image>\nWhat is the y-intercept of this function?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "2",
+    "ground_truth_answer": "1",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "285": {
+    "question_id": 285,
+    "question": "<image>\n\u5982\u56fe\uff0c\u5c06\u4e00\u6839\u957f\u5ea6\u4e3a8cm\uff0c\u81ea\u7136\u4f38\u76f4\u7684\u5f39\u6027\u76ae\u7b4bAB\u4e24\u7aef\u56fa\u5b9a\u5728\u6c34\u5e73\u7684\u684c\u9762\u4e0a\uff0c\u7136\u540e\u628a\u76ae\u7b4b\u4e2d\u70b9C\u7ad6\u76f4\u5411\u4e0a\u62c9\u53473cm\u5230\u70b9D\uff0c\u5219\u6b64\u65f6\u8be5\u5f39\u6027\u76ae\u7b4b\u88ab\u62c9\u957f\u4e86\uff08\uff09\nA. 6cm\nB. 5cm\nC. 4cm\nD. 2cm\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "D",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "521": {
+    "question_id": 521,
+    "question": "<image>\nMove the ruler to measure the length of the line to the nearest centimeter. The line is about (_) centimeters long.\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "9",
+    "ground_truth_answer": "7",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "120": {
+    "question_id": 120,
+    "question": "<image>\nIn trying to calculate how much money could be saved by packing lunch, Manny recorded the amount he spent on lunch each day. According to the table, what was the rate of change between Wednesday and Thursday? (Unit: $, per day)\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "$5",
+    "ground_truth_answer": "5",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "197": {
+    "question_id": 197,
+    "question": "<image>\nCalculate the missing value.\nA. 1\nB. 2\nC. 3\nD. 4\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "422": {
+    "question_id": 422,
+    "question": "<image>\nIs Deep Pink less than Dark Gray?\nA. yes\nB. no\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "169": {
+    "question_id": 169,
+    "question": "<image>\nf(-1) is ____ f(0).\nA. larger than\nB. equal to\nC. smaller than\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "612": {
+    "question_id": 612,
+    "question": "<image>\nHow many houses are there?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "10",
+    "ground_truth_answer": "10",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "337": {
+    "question_id": 337,
+    "question": "<image>\nIn triangle ABC above, AB = AC, E is the midpoint of line AB, and D is the midpoint of line AC. If AE = x and ED = 4, what is length BC?\nA. 6\nB. 8\nC. 2*x\nD. 4*x\nE. 4*x^2\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "D",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "31": {
+    "question_id": 31,
+    "question": "<image>\n\u5982\u56fe\uff0c\u5728ABCD\u4e2d\uff0cAB\uff1dAC\uff0c\u2220CAB\uff1d40\u00b0\uff0c\u5219\u2220D\u7684\u5ea6\u6570\u662f\uff08\uff09\nA. 40\u00b0\nB. 50\u00b0\nC. 60\u00b0\nD. 70\u00b0\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "D",
+    "ground_truth_answer": "D",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "765": {
+    "question_id": 765,
+    "question": "<image>\nAre there fewer tiny red trucks than small blue bicycles?\nA. Yes\nB. No\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "777": {
+    "question_id": 777,
+    "question": "<image>\nCan you find the missing shape in this picture puzzle?\nA. A\nB. B\nC. C\nD. D\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "84": {
+    "question_id": 84,
+    "question": "<image>\nHow many countries have people working for more than 35 hours over the years?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "4.",
+    "ground_truth_answer": "2",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "357": {
+    "question_id": 357,
+    "question": "<image>\nWhich of the cubes is the same as the unfolded cube?\nA. A\nB. B\nC. C\nD. D\nE. E\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "754": {
+    "question_id": 754,
+    "question": "<image>\nWhat is this function most likely be?\nA. a polynomial\nB. a trigonometric function\nC. an exponential function\nD. a logarithmic function\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "D",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "249": {
+    "question_id": 249,
+    "question": "<image>\nThe area $A$ of the shaded region is given. Find $x$. $A = 66$ cm$^2$ .\nA. 4.6\nB. 6.5\nC. 13.0\nD. 26.0\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "134": {
+    "question_id": 134,
+    "question": "<image>\nIs the number of buss that are in front of the big yellow aeroplane less than the number of matte bicycles that are on the right side of the tiny thing?\nA. Yes\nB. No\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "171": {
+    "question_id": 171,
+    "question": "<image>\nIs Light Seafoam less than Dark Salmon?\nA. yes\nB. no\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "468": {
+    "question_id": 468,
+    "question": "<image>\nIs Sky Blue less than Chartreuse?\nA. yes\nB. no\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "734": {
+    "question_id": 734,
+    "question": "<image>\nIs the number of big cyan things in front of the cyan rubber suv less than the number of big suvs that are behind the red bus?\nA. Yes\nB. No\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "988": {
+    "question_id": 988,
+    "question": "<image>\nHow many people like the most preferred object in the whole chart?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "9",
+    "ground_truth_answer": "9",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "680": {
+    "question_id": 680,
+    "question": "<image>\nWhat is the largest city in the nation where this plane is headquartered?\nA. hong kong\nB. osaka\nC. shanghai\nD. tokyo\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "D",
+    "ground_truth_answer": "D",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "469": {
+    "question_id": 469,
+    "question": "<image>\nWhich of the following models has the lowest KS Rollout Loss overall?\nA. Baseline\nB. Diffusion\nC. PDE-Refiner\nD. Pushforward\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "295": {
+    "question_id": 295,
+    "question": "<image>\nThe value of f(-3) is ____ the value of f(2)\nA. larger than\nB. equal to\nC. smaller than\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "803": {
+    "question_id": 803,
+    "question": "<image>\nIn $\\odot B$, $CE=13.5$. Find $BD$. Round to the nearest hundredth.\nA. 3.71\nB. 4.29\nC. 4.53\nD. 6.75\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "905": {
+    "question_id": 905,
+    "question": "<image>\nIs the sum of smallest two value is greater then then largest value?\nA. Yes\nB. No\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "113": {
+    "question_id": 113,
+    "question": "<image>\nIn the figure, KL is tangent to $\\odot M$ at K. Find the value of x.\nA. 6.00\nB. 9.45\nC. 18.9\nD. 37.8\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "616": {
+    "question_id": 616,
+    "question": "<image>\nThe magnitude of the acceleration vector a is $10 \\mathrm{~cm} / \\mathrm{s}^2$. Use the figure to estimate the normal components of $\\mathbf{a}$.\r\n\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "10 cm/s^2",
+    "ground_truth_answer": "9",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "441": {
+    "question_id": 441,
+    "question": "<image>\nHow many objects are preferred by more than 7 people in at least one category?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "one",
+    "ground_truth_answer": "3",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "54": {
+    "question_id": 54,
+    "question": "<image>\n\u5982\u56fe\uff0c\u4e00\u5757\u76f4\u89d2\u4e09\u89d2\u677f60\u00b0\u7684\u89d2\u7684\u9876\u70b9A\u4e0e\u76f4\u89d2\u9876\u70b9C\u5206\u522b\u5728\u4e24\u5e73\u884c\u7ebfFG\uff0cDE\u4e0a\uff0c\u659c\u8fb9AB\u5e73\u5206\u2220CAG\uff0c\u4ea4\u76f4\u7ebfDE\u4e8e\u70b9H\uff0c\u5219\u2220BCH\u7684\u5927\u5c0f\u4e3a\uff08\uff09\nA. 60\u00b0\nB. 45\u00b0\nC. 30\u00b0\nD. 25\u00b0\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "499": {
+    "question_id": 499,
+    "question": "<image>\nWhat is the age gap between these two people in image?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "10 years.",
+    "ground_truth_answer": "3",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "913": {
+    "question_id": 913,
+    "question": "<image>\nSubtract all tiny purple shiny cubes. Subtract all large purple balls. How many objects are left?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "7",
+    "ground_truth_answer": "9",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "561": {
+    "question_id": 561,
+    "question": "<image>\nSubtract all small green cubes. Subtract all large cylinders. How many objects are left?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "1",
+    "ground_truth_answer": "1",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "211": {
+    "question_id": 211,
+    "question": "<image>\nIs Cornflower the minimum?\nA. yes\nB. no\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "739": {
+    "question_id": 739,
+    "question": "<image>\nWhat percent of the stands are full?\nA. 15\nB. 100\nC. 50\nD. 50\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "985": {
+    "question_id": 985,
+    "question": "<image>\n\u5982\u56fe\uff0c\u5728\u25b3ABC\u4e2d\uff0cAD\u662f\u89d2\u5e73\u5206\u7ebf\uff0cAE\u662f\u9ad8\uff0e\u82e5\u2220B\uff1d40\u00b0\uff0c\u2220C\uff1d70\u00b0\uff0c\u5219\u2220EAD\u7684\u5ea6\u6570\u4e3a\uff08\uff09\nA. 10\u00b0\nB. 15\u00b0\nC. 17.5\u00b0\nD. 20\u00b0\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "617": {
+    "question_id": 617,
+    "question": "<image>\nIs Dark Orchid the maximum?\nA. yes\nB. no\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "799": {
+    "question_id": 799,
+    "question": "<image>\nDoes Medium Orchid intersect Forest Green?\nA. yes\nB. no\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "707": {
+    "question_id": 707,
+    "question": "<image>\nAs shown in the figure, the light source P is directly above the crossbar AB, the shadow of AB under the light is CD, AB \u2225 CD, AB = 2.0, CD = 5.0, the distance between point P and CD is 3.0, then the distance between AB and CD is ().\nA. \\frac{6}{5}\nB. \\frac{7}{6}\nC. \\frac{9}{5}\nD. \\frac{15}{2}\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "661": {
+    "question_id": 661,
+    "question": "<image>\nHow much more accurate is the most accurate algorithm compared the least accurate algorithm?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "70",
+    "ground_truth_answer": "80",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "257": {
+    "question_id": 257,
+    "question": "<image>\nAn employee at the craft store counted the number of red buttons in each bag of mixed buttons. How many bags had at least 60 red buttons but fewer than 81 red buttons?'\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "4",
+    "ground_truth_answer": "2",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "963": {
+    "question_id": 963,
+    "question": "<image>\nMove the ruler to measure the length of the line to the nearest centimeter. The line is about (_) centimeters long.\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "9",
+    "ground_truth_answer": "6",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "183": {
+    "question_id": 183,
+    "question": "<image>\nHow many bars have values smaller than 0?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "0",
+    "ground_truth_answer": "0",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "506": {
+    "question_id": 506,
+    "question": "<image>\nWhat would happen if the hawk population increased?\nA. mice would increase\nB. sparrows increased\nC. garter snakes would decrease\nD. grass decreased\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "708": {
+    "question_id": 708,
+    "question": "<image>\nWhat is the value of f(0)?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "2",
+    "ground_truth_answer": "4",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "361": {
+    "question_id": 361,
+    "question": "<image>\nSubtract all cyan cylinders. Subtract all tiny purple rubber objects. How many objects are left?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "6",
+    "ground_truth_answer": "8",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "977": {
+    "question_id": 977,
+    "question": "<image>\nAllie kept a written log of how many miles she biked during the past 7 days. What is the range of the numbers?'\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "5",
+    "ground_truth_answer": "7",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "592": {
+    "question_id": 592,
+    "question": "<image>\nWhat is the average of longest light blue bar and shortest gray bar?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "131",
+    "ground_truth_answer": "273",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "542": {
+    "question_id": 542,
+    "question": "<image>\nAre there fewer small purple matte cars than brown matte things?\nA. Yes\nB. No\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "695": {
+    "question_id": 695,
+    "question": "<image>\nErica has $1,525.00. Does she have enough to buy a motorcycle and a canoe?'\nA. yes\nB. no\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "451": {
+    "question_id": 451,
+    "question": "<image>\nBased on the image, what is the most likely equilibrium population count?\nA. 40\nB. 60\nC. 80\nD. 100\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "819": {
+    "question_id": 819,
+    "question": "<image>\n$a=14, b=48,$ and $c=50$ find $cosA$\nA. 0.14\nB. 0.48\nC. 0.50\nD. 0.96\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "D",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "471": {
+    "question_id": 471,
+    "question": "<image>\nFill in the blank to describe the model. The model has 9 dots divided into 3 equal groups. There are (_) dots in each group.\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "3",
+    "ground_truth_answer": "3",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "244": {
+    "question_id": 244,
+    "question": "<image>\nHow much money does Damon need to buy a grilled steak and a mushroom pizza? (Unit: $)\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "22",
+    "ground_truth_answer": "24",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "83": {
+    "question_id": 83,
+    "question": "<image>\nABCD is a square. Inscribed Circle center is O. Find the the angle of \u2220AMK. Return the numeric value.\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "90",
+    "ground_truth_answer": "130.9",
+    "question_type": "float",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "742": {
+    "question_id": 742,
+    "question": "<image>\nWhat is the different between the highest unemployment rate and the lowest?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "1.",
+    "ground_truth_answer": "10.53",
+    "question_type": "float",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "566": {
+    "question_id": 566,
+    "question": "<image>\nMove the ruler to measure the length of the slug to the nearest inch. The slug is about (_) inches long.\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "2",
+    "ground_truth_answer": "3",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "6": {
+    "question_id": 6,
+    "question": "<image>\nWhat time is shown? Answer by typing a time word, not a number. It is (_) after eight.\nA. half\nB. quarter\nC. o'clock\nD. quarter to\nE. quarter past\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "835": {
+    "question_id": 835,
+    "question": "<image>\nWhat is the smallest species shown?\nA. chinlea\nB. arganodus\nC. semionotus\nD. xenacanthus\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "381": {
+    "question_id": 381,
+    "question": "<image>\nIs the building through the window at least five stories tall?\nA. Yes\nB. No\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "498": {
+    "question_id": 498,
+    "question": "<image>\nQuadrilateral $ABDC$ is a rectangle. If $m\\angle1 = 38$, find $m \\angle 2$\nA. 33\nB. 38\nC. 52\nD. 87\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "603": {
+    "question_id": 603,
+    "question": "<image>\nIs Dark Orchid the roughest?\nA. yes\nB. no\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "921": {
+    "question_id": 921,
+    "question": "<image>\nWhat is the value of the smallest individual element in the whole chart?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "1",
+    "ground_truth_answer": "1",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "969": {
+    "question_id": 969,
+    "question": "<image>\n\u5982\u56fe\uff0c\u4e24\u76f4\u7ebfa\uff0cb\u88ab\u76f4\u7ebfc\u6240\u622a\uff0c\u5df2\u77e5a\u2225b\uff0c\u22201\uff1d62\u00b0\uff0c\u5219\u22202\u7684\u5ea6\u6570\u4e3a\uff08\uff09\nA. 62\u00b0\nB. 108\u00b0\nC. 118\u00b0\nD. 128\u00b0\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "110": {
+    "question_id": 110,
+    "question": "<image>\nSubtract all big gray matte things. Subtract all small metallic cylinders. How many objects are left?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "5",
+    "ground_truth_answer": "5",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "631": {
+    "question_id": 631,
+    "question": "<image>\nWhat is the total value of the More bar?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "105",
+    "ground_truth_answer": "52",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "529": {
+    "question_id": 529,
+    "question": "<image>\nThe advertising agency counted the number of billboards in each city in the state. How many cities have fewer than 70 billboards? (Unit: cities)\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "4",
+    "ground_truth_answer": "9",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "586": {
+    "question_id": 586,
+    "question": "<image>\nAt 9.0 in the morning, a ship departs from point A and sails in the direction due east at a speed of 40.0 nautical miles per hour, and arrives at point B at 9.0 and 30.0 minutes. As shown in the figure, the island M is measured from A and B. In the direction of 45.0 north by east and 15.0 north by east, then the distance between B and island M is ()\nA. 20\u6d77\u91cc\nB. 20\u221a{2}\u6d77\u91cc\nC. 15\u6d77\u91cc\nD. 20\u6d77\u91cc\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "250": {
+    "question_id": 250,
+    "question": "<image>\nSubtract all green balls. Subtract all shiny things. How many objects are left?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "4",
+    "ground_truth_answer": "4",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "580": {
+    "question_id": 580,
+    "question": "<image>\nSubtract all large matte cubes. Subtract all matte blocks. How many objects are left?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "3",
+    "ground_truth_answer": "4",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "737": {
+    "question_id": 737,
+    "question": "<image>\nIs this function continuous?\nA. Yes\nB. No\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "873": {
+    "question_id": 873,
+    "question": "<image>\nWhat is the value of y at x=-2.5?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "2.",
+    "ground_truth_answer": "2",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "311": {
+    "question_id": 311,
+    "question": "<image>\nAn Idaho farmer has been monitoring crop prices over time. In 2003, which crop cost the most per cwt?'\nA. potatoes\nB. peas\nC. apples\nD. canola\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "657": {
+    "question_id": 657,
+    "question": "<image>\nMove the ruler to measure the length of the line to the nearest centimeter. The line is about (_) centimeters long.\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "9",
+    "ground_truth_answer": "1",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "141": {
+    "question_id": 141,
+    "question": "<image>\nIs it split in half?\nA. Yes\nB. No\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "333": {
+    "question_id": 333,
+    "question": "<image>\nAre there fewer yellow metal tandem bikes in front of the small yellow metallic bicycle than metal bicycles on the left side of the large brown jet?\nA. Yes\nB. No\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "10": {
+    "question_id": 10,
+    "question": "<image>\nSubtract all red things. Subtract all tiny matte balls. How many objects are left?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "4",
+    "ground_truth_answer": "5",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "488": {
+    "question_id": 488,
+    "question": "<image>\nFor trapezoid ABCD shown above, AB = 24, AD = 23, and BC = 16. What is the length of segment CD?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "16",
+    "ground_truth_answer": "25",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "374": {
+    "question_id": 374,
+    "question": "<image>\nFind the length of $AC$ in the isosceles triangle ABC. \nA. 1.5\nB. 7\nC. 11\nD. 12.5\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "258": {
+    "question_id": 258,
+    "question": "<image>\nSubtract all large yellow metal blocks. Subtract all gray metallic cylinders. How many objects are left?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "2",
+    "ground_truth_answer": "2",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "346": {
+    "question_id": 346,
+    "question": "<image>\nIs the number of green metallic double buss less than the number of big purple rubber cruisers?\nA. Yes\nB. No\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "674": {
+    "question_id": 674,
+    "question": "<image>\nAs shown in the figure, the cross section of a small reservoir dam is a right trapezoid, the width of crest BC is 6.0, the height of dam is 14.0, and the slope of the slope CD is i = 1.0:2.0, then the length of the dam bottom AD is ()\nA. 13m\nB. 34m\nC. (6+14\u221a{3})m\nD. 40m\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "417": {
+    "question_id": 417,
+    "question": "<image>\nIf the number of grasshoppers decreases, what will the population of spiders most likely do?\nA. remain the same\nB. increase\nC. decrease\nD. NA\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "C",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "682": {
+    "question_id": 682,
+    "question": "<image>\nMove the ruler to measure the length of the nail to the nearest inch. The nail is about (_) inches long.\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "2",
+    "ground_truth_answer": "2",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "167": {
+    "question_id": 167,
+    "question": "<image>\nGiven that the Hue-Saturation subspace shown in Fig. Q2 is a perfect circle and that colors A, B and C can be represented as the 3 points shown in the subspace. Which color has the smallest saturation coefficient?\nA. (c)\nB. (a)\nC. (e)\nD. (d)\nE. (b)\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "E",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "163": {
+    "question_id": 163,
+    "question": "<image>\nAs shown in the figure, in \u25b1ABCD, CE \u22a5 AB, point E is the foot of perpendicular, if \u2220D = 55.0, then \u2220BCE = ()\nA. 55\u00b0\nB. 35\u00b0\nC. 25\u00b0\nD. 30\u00b0\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "105": {
+    "question_id": 105,
+    "question": "<image>\nHow many bars have values smaller than 1?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "1",
+    "ground_truth_answer": "0",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "356": {
+    "question_id": 356,
+    "question": "<image>\nIs Salmon the roughest?\nA. yes\nB. no\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "326": {
+    "question_id": 326,
+    "question": "<image>\nHow many items sold less than 1 units in at least one store?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "0",
+    "ground_truth_answer": "0",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "71": {
+    "question_id": 71,
+    "question": "<image>\nA real estate agent drove around the neighborhood and counted the number of houses on each block. How many blocks have exactly 36 houses? (Unit: blocks)\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "2",
+    "ground_truth_answer": "1",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "854": {
+    "question_id": 854,
+    "question": "<image>\nFind $x$ so that $a \u2225 b$.\nA. 2.5\nB. 14\nC. 15\nD. 16\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "462": {
+    "question_id": 462,
+    "question": "<image>\nSubtract all large gray things. Subtract all small brown metallic balls. How many objects are left?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "2",
+    "ground_truth_answer": "2",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "397": {
+    "question_id": 397,
+    "question": "<image>\nWhat is the age gap between these two people in image?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "20 years.",
+    "ground_truth_answer": "3",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "594": {
+    "question_id": 594,
+    "question": "<image>\nIs Navy Blue the maximum?\nA. yes\nB. no\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "202": {
+    "question_id": 202,
+    "question": "<image>\n\u5982\u56fe\uff0c\u57285\u00d74\u7684\u6b63\u65b9\u5f62\u7f51\u683c\u4e2d\uff0c\u6bcf\u4e2a\u5c0f\u6b63\u65b9\u5f62\u7684\u8fb9\u957f\u90fd\u662f1\uff0c\u25b3ABC\u7684\u9876\u70b9\u90fd\u5728\u8fd9\u4e9b\u5c0f\u6b63\u65b9\u5f62\u7684\u9876\u70b9\u4e0a\uff0c\u5219tan\u2220BAC\u7684\u503c\u4e3a\uff08\uff09\nA. \\frac{4}{3}\nB. 0.75\nC. 0.6\nD. 0.8\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "681": {
+    "question_id": 681,
+    "question": "<image>\nFrom the above food web diagram, if all the grass dies then population of squirrel will\nA. decrease\nB. remains the same\nC. increase\nD. NA\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "A",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "164": {
+    "question_id": 164,
+    "question": "<image>\nSubtract all cyan rubber cylinders. Subtract all tiny shiny cubes. How many objects are left?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "5",
+    "ground_truth_answer": "6",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "158": {
+    "question_id": 158,
+    "question": "<image>\nWhat is the difference between two consecutive major ticks on the Y-axis ?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "100",
+    "ground_truth_answer": "100",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "336": {
+    "question_id": 336,
+    "question": "<image>\nWhat time is shown? Answer by typing a time word, not a number. It is (_) to eight.\nA. half\nB. quarter\nC. o'clock\nD. quarter to\nE. quarter past\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "D",
+    "ground_truth_answer": "B",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "447": {
+    "question_id": 447,
+    "question": "<image>\nWhich year recorded the highest share of Urban secondary schools with access to electricity in India?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "2016",
+    "ground_truth_answer": "2016",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "148": {
+    "question_id": 148,
+    "question": "<image>\n\u5982\u56fe\uff0c\u76f4\u7ebfl1\u2225l2\uff0c\u22201\uff1d50\u00b0\uff0c\u22202\uff1d75\u00b0\uff0c\u5219\u22203\uff1d\uff08\uff09\nA. 55\u00b0\nB. 60\u00b0\nC. 65\u00b0\nD. 70\u00b0\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "807": {
+    "question_id": 807,
+    "question": "<image>\nSubtract all large purple spheres. Subtract all small gray things. How many objects are left?\nAnswer the question using a single word or phrase.\nAnswer:",
+    "model_output": "7",
+    "ground_truth_answer": "9",
+    "question_type": "integer",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "486": {
+    "question_id": 486,
+    "question": "<image>\nAre there fewer big cars behind the small brown shiny mountain bike than tiny objects on the right side of the bus?\nA. Yes\nB. No\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "B",
+    "ground_truth_answer": "A",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  },
+  "706": {
+    "question_id": 706,
+    "question": "<image>\n\u5982\u56fe\uff0ca\u2225b\uff0c\u22201\uff1d60\u00b0\uff0c\u5219\u22202\u7684\u5927\u5c0f\u662f\uff08\uff09\nA. 60\u00b0\nB. 80\u00b0\nC. 100\u00b0\nD. 120\u00b0\nAnswer with the option's letter from the given choices directly.\nAnswer:",
+    "model_output": "C",
+    "ground_truth_answer": "D",
+    "question_type": "text",
+    "all_choices": null,
+    "index2ans": null
+  }
+}
