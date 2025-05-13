@@ -160,7 +160,7 @@ class PrismaticVLM(VLM):
             overwatch.info(f"[Frozen]    🥶 =>> LLM Backbone `{self.llm_backbone.identifier}`", ctx_level=1)
             overwatch.info(f"[TRAINABLE] 🔥 =>> Projector `{self.arch_specifier}`", ctx_level=1)
 
-        elif stage == "finetune" or stage == "pretrain" or stage == "large-finetune" or stage == "dynamic-pretrain":
+        elif stage == "finetune" or stage == "pretrain" or stage == "large-finetune" or stage == "dynamic-pretrain" or stage == "datology-pretrain":
             self.vision_backbone.requires_grad_(False)
             self.llm_backbone.requires_grad_(True)
             self.projector.requires_grad_(True)
@@ -195,11 +195,11 @@ class PrismaticVLM(VLM):
             overwatch.info(f"[TRAINABLE] 🔥 =>> Projector `{self.arch_specifier}`", ctx_level=1)
 
         else:
-            raise ValueError(f"Stage `{stage}` is not supported for LLaVa! Try < align | finetune | dynamic-pretrain >")
+            raise ValueError(f"Stage `{stage}` is not supported for LLaVa! Try < align | finetune | dynamic-pretrain | datology-pretrain >")
 
     def load_from_checkpoint(self, stage: str, run_dir: Path, pretrained_checkpoint: Optional[Path] = None) -> None:
         """Load weights from checkpoint (if required by the given stage)."""
-        assert stage in {"align", "finetune", "large-finetune", "full-finetune", "pretrain", "full-pretrain", "dynamic-pretrain"}, f"Stage {stage} is not supported!"
+        assert stage in {"align", "finetune", "large-finetune", "full-finetune", "pretrain", "full-pretrain", "dynamic-pretrain", "datology-pretrain"}, f"Stage {stage} is not supported!"
         
         if stage.endswith("pretrain") and (run_dir / "checkpoints" / "latest-checkpoint.pt").exists():
             pretrained_checkpoint = str(run_dir / "checkpoints" / "latest-checkpoint.pt")

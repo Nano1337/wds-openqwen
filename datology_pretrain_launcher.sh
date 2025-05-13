@@ -10,7 +10,7 @@
 #SBATCH --partition=main
 #SBATCH -t 72:00:00                          # Time limit (hh:mm:ss)
 #SBATCH --gpus-per-node=8                       # Specify a list of generic consumable resources (per node)
-##SBATCH --reservation=haoli_resv2
+#SBATCH --reservation=haoli_resv
 ########
 # Manually set and enter project root (FSX mount)
 export PROJECT_ROOT="/fsx/users/haoli/datopenqwen"
@@ -65,12 +65,23 @@ echo "========================="
 
 ########
 # Set training configuration
-CKPTID="qwen_vlm_multinode_14_4nodes"                                         # Checkpoint ID 
+CKPTID="qwen_vlm_datology_debug"                                         # Checkpoint ID 
 GLOBAL_BSZ=256                                               # Global batch size
 PER_GPU_BSZ=4                                               # Per GPU batch size
 
-# Hardcoded dataset paths with WebDataset :: operator to concatenate
-DATASET_PATH="s3://datology-research/haoli/Open-Qwen2VL-Data/ccs_webdataset/{00000..01302}.tar::s3://datology-research/haoli/Open-Qwen2VL-Data/datacomp_medium_mlm_filter_su_85_union_dfn_webdataset/{00000000..00002012}.tar"
+# Define dataset paths in an array, IMPORTANT: make sure you don't put any commas as list separators here in this bash script
+DATASET_PATHS=(
+    "s3://datology-assets-prod/job_assets/synthetic/templated_recap_scale/image_text_dataset_to_wds/R008131_20250324_182506/dataset.wds/{0000000000..0000017915}.tar"
+    "s3://datology-assets-prod/job_assets/synthetic/imagenet_mined_alleval/image_text_dataset_to_wds/R005829_20250213_190211/dataset.wds/{0000000000..0000004280}.tar"
+    "s3://datology-assets-prod/job_assets/rpm/ret_blogpost_regen/ret_blogpost_export_wds/image_text_dataset_to_wds/R008398_20250327_170903/dataset.wds/{0000000000..0000020519}.tar"
+    "s3://datology-assets-prod/job_assets/multimodal_plus_vlm/mscoco_mined/ret_vlm_mscoco_wds/image_text_dataset_to_wds/R009756_20250403_193831/dataset.wds/{0000000000..0000016896}.tar"
+    "s3://datology-assets-prod/job_assets/multimodal_plus_vlm/imagenet_mined/ret_vlm_imagenet_wds/image_text_dataset_to_wds/R008628_20250331_184944/dataset.wds/{0000000000..0000016896}.tar"
+)
+
+# Join operation to ensure paths are separated by ::
+DATASET_PATH=$(printf "::%s" "${DATASET_PATHS[@]}")
+DATASET_PATH=${DATASET_PATH:2}  # Remove the leading '::'
+echo "DATASET_PATH: $DATASET_PATH"
 
 # Print configuration
 echo "Running with configuration:"
@@ -91,6 +102,6 @@ srun \
   --cpus-per-task=$SLURM_CPUS_PER_TASK \
   --output="logs/$CKPTID/out/train_%j_node%t.out" \
   --error="logs/$CKPTID/err/train_%j_node%t.err" \
-  bash prismatic-vlms/train.sh "$CKPTID" "$GLOBAL_BSZ" "$PER_GPU_BSZ" "$DATASET_PATH"
+  bash prismatic-vlms/datology_train.sh "$CKPTID" "$GLOBAL_BSZ" "$PER_GPU_BSZ" "$DATASET_PATH"
 
 echo "Job completed at $(date)"

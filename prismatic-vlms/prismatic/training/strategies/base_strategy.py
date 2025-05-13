@@ -117,7 +117,7 @@ class TrainingStrategy(ABC):
         resume_step = self.load_latest_checkpoint(metrics.run_dir) or 0
         
         # Special handling for WebDataset streaming from S3
-        if stage == "dynamic-pretrain":
+        if stage == "dynamic-pretrain" or stage == "datology-pretrain":
             # Use WDSPackedDataset's built-in dataloader
             data_info = dataset.get_dataloader(batch_size=self.per_device_batch_size)
             return self.run_training_with_wds_dataloader(data_info, metrics, stage, seed)
@@ -271,7 +271,7 @@ class TrainingStrategy(ABC):
         self,
         data_info,
         metrics: Metrics,
-        stage: str = "dynamic-pretrain",
+        stage: str = "datology-pretrain",
         seed: int = 7,
     ) -> None:
         """Run training using a WebDataset dataloader for a single epoch."""

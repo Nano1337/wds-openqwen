@@ -13,7 +13,7 @@ from prismatic.conf import DatasetConfig
 from prismatic.models.backbones.llm.prompting import PromptBuilder
 from prismatic.models.backbones.vision import ImageTransform
 from prismatic.preprocessing.datasets import (AlignDataset, FinetuneDataset, 
-                                           FinetuneLargeDataset, PreTrainDataset, WDSDynamicPackingDataset)
+                                           FinetuneLargeDataset, PreTrainDataset, WDSDynamicPackingDataset, WDSDynamicPackingDatologyDataset)
 from prismatic.util.data_utils import PaddedCollatorForLanguageModeling, PaddedCollatorForMMLanguageModeling, SharedEpoch, DataInfo, detshuffle2, ResampledShards2
 from prismatic.util.data_utils import get_dataset_size, count_samples, log_and_continue, group_by_keys_nothrow, tarfile_to_samples_nothrow, pytorch_worker_seed, world_info_from_env
 
@@ -50,7 +50,8 @@ DATASET_INITIALIZER = {
     "large-finetune": FinetuneLargeDataset, 
     "pretrain": PreTrainDataset, 
     "full-pretrain": PreTrainDataset, 
-    "dynamic-pretrain": WDSDynamicPackingDataset
+    "dynamic-pretrain": WDSDynamicPackingDataset,
+    "datology-pretrain": WDSDynamicPackingDatologyDataset
 }
 
 
@@ -102,7 +103,7 @@ def get_dataset_and_collator(
         )
         return dataset, collator
         
-    elif stage == "dynamic-pretrain":
+    elif stage == "dynamic-pretrain" or stage == "datology-pretrain":
         # For WebDataset streaming with on-the-fly sequence packing
         collator = PaddedCollatorForMMLanguageModeling(
             tokenizer.model_max_length, tokenizer.pad_token_id, default_image_resolution, padding_side=padding_side
