@@ -37,14 +37,14 @@ NUM_FILES=$(wc -l < tar_list.txt)
 echo "🧾 Found $NUM_FILES .tar.gz files. Processing in batches of 25..."
 
 # ==== Step 3: Batch in groups of 25 ====
-split -l 25 tar_list.txt tar_batch_
+split -l 5 tar_list.txt tar_batch_
 
 for BATCH in tar_batch_*; do
   echo "🚀 Starting batch: $BATCH"
   
-  cat "$BATCH" | xargs -I {} -P 25 bash -c '
+  cat "$BATCH" | xargs -I {} -P 5 bash -c '
     echo "🗃️ Extracting {} with pigz (7 threads)..."
-    if tar --use-compress-program="pigz -d -p 7" -xf "{}" -C "'"$TARGET_DIR"'"; then
+    if tar --use-compress-program="pigz -d -p 30" -xf "{}" -C "'"$TARGET_DIR"'"; then
       echo "🧹 Deleting {}"
       rm "{}"
     else

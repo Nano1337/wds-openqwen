@@ -2,22 +2,22 @@
 #SBATCH -J openqwen_train                       # Job name
 #SBATCH -o logs/openqwen_train.out                  # Name of stdout output log file (%j expands to jobID)
 #SBATCH -e logs/openqwen_train.err                  # Name of stderr output log file (%j expands to jobID)
-#SBATCH --nodes=1                                 # Total number of nodes requested
+#SBATCH --nodes=4                                 # Total number of nodes requested
 #SBATCH --ntasks-per-node=8                       # Total number of task requested
-#SBATCH --cpus-per-task=8                        # Total number of cores requested
+#SBATCH --cpus-per-task=16                        # Total number of cores requested
 #SBATCH --mem=512G
 #SBATCH --qos=high_priority_nice
 #SBATCH --partition=main
 #SBATCH -t 72:00:00                          # Time limit (hh:mm:ss)
 #SBATCH --gpus-per-node=8                       # Specify a list of generic consumable resources (per node)
-#SBATCH --reservation=haoli_resv2
+##SBATCH --reservation=haoli_resv2
 ########
 # Manually set and enter project root (FSX mount)
 export PROJECT_ROOT="/fsx/users/haoli/datopenqwen"
 cd "$PROJECT_ROOT/"
 
-# Create logs directory if it doesn't exist
-mkdir -p slurm_logs
+# Create directory for Slurm to write logs
+mkdir -p logs
 
 # Activate virtualenv
 source "$PROJECT_ROOT/.venv/bin/activate"
@@ -65,7 +65,7 @@ echo "========================="
 
 ########
 # Set training configuration
-CKPTID="qwen_vlm_dp"                                         # Checkpoint ID 
+CKPTID="qwen_vlm_multinode_14_4nodes"                                         # Checkpoint ID 
 GLOBAL_BSZ=256                                               # Global batch size
 PER_GPU_BSZ=4                                               # Per GPU batch size
 
@@ -80,7 +80,13 @@ echo "  Per GPU batch size: $PER_GPU_BSZ"
 echo "  Dataset path: $DATASET_PATH"
 echo "========================="
 
-# Run the training script
-./prismatic-vlms/train.sh "$CKPTID" "$GLOBAL_BSZ" "$PER_GPU_BSZ" "$DATASET_PATH"
+# Launch training across all nodes, capturing per-node logs
+srun \
+  --nodes=$SLURM_JOB_NUM_NODES \
+  --ntasks-per-node=1 \
+  --cpus-per-task=$SLURM_CPUS_PER_TASK \
+  --output=logs/train_%j_node%t.out \
+  --error=logs/train_%j_node%t.err \
+  bash prismatic-vlms/train.sh "$CKPTID" "$GLOBAL_BSZ" "$PER_GPU_BSZ" "$DATASET_PATH"
 
 echo "Job completed at $(date)"

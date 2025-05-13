@@ -151,3 +151,4 @@ data/
 logs/
 checkpoints/
 old_first_checkpoints/
+results/

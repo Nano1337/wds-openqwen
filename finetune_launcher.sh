@@ -10,7 +10,7 @@
 #SBATCH --partition=main
 #SBATCH -t 72:00:00                          # Time limit (hh:mm:ss)
 #SBATCH --gpus-per-node=8                       # Specify a list of generic consumable resources (per node)
-#SBATCH --reservation=haoli_resv2
+##SBATCH --reservation=haoli_resv
 ########
 # Manually set and enter project root (FSX mount)
 export PROJECT_ROOT="/fsx/users/haoli/datopenqwen"
@@ -45,18 +45,25 @@ echo "========================="
 
 ########
 # Set training configuration
-CKPTID="qwen_vlm_dp"                                         # Checkpoint ID 
-CKPT_PATH="/fsx/users/haoli/datopenqwen/checkpoints/pretrain+qwen2.5-1.5b-instruct-continue-training-qwen_vlm_dp+stage-dynamic-pretrain+x7"                                               # Checkpoint Path
-DATA_ROOT="/fsx/data/common/MAmmoTH-VL-Instruct-12M"                                               # Data Root
+CKPTID="llava_sft_4nodepretrained"                                       
+CKPT_PATH="/fsx/users/haoli/datopenqwen/checkpoints/pretrain+qwen2.5-1.5b-instruct-continue-training-qwen_vlm_multinode_14_4nodes+stage-dynamic-pretrain+x7"
+IS_LARGE_DATASET=false
 
 # Print configuration
 echo "Running with configuration:"
 echo "  Checkpoint ID: $CKPTID"
 echo "  Checkpoint Path: $CKPT_PATH"
 echo "  Data Root: $DATA_ROOT"
+echo "  Is Large Dataset: $IS_LARGE_DATASET"
 echo "========================="
 
 # Run the training script
-./prismatic-vlms/fine_tune_mammoth.sh "$CKPT_PATH" "$CKPTID" "$DATA_ROOT" 
+if [ "$IS_LARGE_DATASET" = true ]; then
+    DATA_ROOT="/fsx/data/common/MAmmoTH-VL-Instruct-12M"                                               # Data Root
+    ./prismatic-vlms/fine_tune_mammoth.sh "$CKPT_PATH" "$CKPTID" "$DATA_ROOT" 
+else
+    DATA_ROOT="/fsx/data/common/llava-1.5-665k-instructions"                                               # Data Root
+    ./prismatic-vlms/fine_tune.sh "$CKPT_PATH" "$CKPTID" "$DATA_ROOT" 
+fi
 
 echo "Job completed at $(date)"

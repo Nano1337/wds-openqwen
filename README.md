@@ -39,3 +39,6 @@ To set up the data (if it doesn't already exist in `/fsx/data/common/vlm_eval_da
 ```Shell
 ./prepare_vlm_eval_data.sh
 ```
+
+# Other Notes
+Never use dataset.train_num_samples since that messes with lr scheduler and instead use model.{x}_max_steps where x in {pretrain, finetune}

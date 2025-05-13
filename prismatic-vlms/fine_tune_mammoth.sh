@@ -2,8 +2,6 @@ CKPT_PATH=$1
 CKPTID=$2
 DATA_ROOT=$3
 
-DATAPATH="${DATA_ROOT}/mammoth_si_10M_simple.jsonl"
-
 # mount_path: you can change it to the path where you pre-download the pre-trained LLMs, if you will to download the model directly from HF hub, please use the holder name of the model, i.e. Qwen for Qwen-series models. Then the mount_path will be concatenated with model_id
 
 # trackers: you can change to ["jsonl",] ["wandb",] ["jsonl","wandb"] to decide whether to visualize your training on wandb
@@ -24,7 +22,7 @@ torchrun --standalone --nnodes 1 --nproc-per-node 8 prismatic-vlms/scripts/pretr
   --run_root_dir checkpoints \
   --dataset.type "llava-v15" \
   --pretrained_checkpoint ${CKPT_PATH}/checkpoints/latest-checkpoint.pt \
-  --dataset.finetune_stage_components=["${DATAPATH}","${DATA_ROOT}/single_image_data"]
+  --dataset.finetune_stage_components=["${DATA_ROOT}/mammoth_si_10M_simple.jsonl","${DATA_ROOT}/single_image_data"]
 
   # took out --model.finetune_max_steps 1295 for dataset.train_num_samples
 

@@ -10,7 +10,9 @@
 #SBATCH --partition=main
 #SBATCH -t 72:00:00                          # Time limit (hh:mm:ss)
 #SBATCH --gpus-per-node=8                       # Specify a list of generic consumable resources (per node)
-#SBATCH --reservation=haoli_resv
+##SBATCH --reservation=haoli_resv
+#SBATCH --dependency=afterok:278467            # change this to automatically run after the finetune job
+
 ########
 # Manually set and enter project root (FSX mount)
 export PROJECT_ROOT="/fsx/users/haoli/datopenqwen"
@@ -50,8 +52,8 @@ echo "========================="
 ########
 # Set training configuration
 DATAPATH="/fsx/data/common"
-CKPT_PATH="/fsx/users/haoli/datopenqwen/checkpoints/qwen2.5-1.5b-instruct-continue-training-qwen_vlm_dp+stage-large-finetune+x7"
-CKPTID="qwen_vlm_dp"
+CKPT_PATH="/fsx/users/haoli/datopenqwen/checkpoints/qwen2.5-1.5b-instruct-continue-training-llava_sft_4nodepretrained+stage-finetune+x7"
+CKPTID="llava_sft_4nodepretrained"
 
 # Print configuration
 echo "Running with configuration:"
